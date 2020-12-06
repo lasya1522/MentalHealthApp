@@ -25,8 +25,8 @@ public class fragment_test extends Fragment {
         testViewModel =
                 new ViewModelProvider(this).get(TestViewModel.class);
         View root = inflater.inflate(R.layout.fragment_test, container, false);
-        final TextView textView = root.findViewById(R.id.testTextView);
-        testViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        final TextView textView = root.findViewById(R.id.test_text);
+       testViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
