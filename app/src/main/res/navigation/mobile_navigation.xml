@@ -24,7 +24,12 @@
         tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/navigation_test"
-        android:name="com.example.app.fragment_test"
+        android:name="com.example.app.TestFragment"
         android:label="Test"
         tools:layout="@layout/fragment_test" />
+    <fragment
+        android:id="@+id/navigation_FifthFragment"
+        android:name="com.example.app.FifthFragment"
+        android:label="FifthFragment"
+        tools:layout="@layout/fragment_fifth" />
 </navigation>
