@@ -13,9 +13,6 @@ import androidx.lifecycle.Observer;
 //import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.app.R;
-import com.example.app.ui.TestViewModel;
-
 public class TestFragment extends Fragment {
 
     private TestViewModel testViewModel;

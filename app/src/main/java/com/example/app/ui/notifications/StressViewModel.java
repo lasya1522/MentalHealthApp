@@ -1,16 +1,16 @@
-package com.example.app.ui;
+package com.example.app.ui.notifications;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class TestViewModel extends ViewModel {
+public class StressViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public TestViewModel() {
+    public StressViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is test fragment");
+        mText.setValue("This is notifications fragment");
     }
 
     public LiveData<String> getText() {

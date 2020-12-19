@@ -1,4 +1,4 @@
-package com.example.app.ui.dashboard;
+package com.example.app.ui.notifications;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,21 +10,22 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.app.R;
 
-public class DashboardFragment extends Fragment {
+public class StressFragment extends Fragment {
 
-    private DashboardViewModel dashboardViewModel;
+    private StressViewModel stressViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
-        final TextView textView = root.findViewById(R.id.text_dashboard);
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        stressViewModel =
+                new ViewModelProvider(this).get(StressViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_stress, container, false);
+        final TextView textView = root.findViewById(R.id.text_stress);
+        stressViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
