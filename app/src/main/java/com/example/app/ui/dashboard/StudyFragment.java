@@ -23,7 +23,7 @@ public class StudyFragment extends Fragment {
         studyViewModel =
                 new ViewModelProvider(this).get(StudyViewModel.class);
         View root = inflater.inflate(R.layout.fragment_study, container, false);
-        final TextView textView = root.findViewById(R.id.text_study);
+        final TextView textView = root.findViewById(R.id.sleepTitle);
         studyViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {

@@ -7,17 +7,67 @@
     tools:context=".ui.notifications.StressFragment">
 
     <TextView
-        android:id="@+id/text_stress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/goalsQ"
+        android:layout_width="248dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="20dp"
+        android:text="Write down your goals! (list below, idk how to make one)"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_gravity="center_horizontal" />
+        app:layout_constraintTop_toBottomOf="@+id/stressA" />
+
+    <EditText
+        android:id="@+id/stressA"
+        android:layout_width="391dp"
+        android:layout_height="96dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="What has been stressing you out?"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <Button
+        android:id="@+id/dataBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View data"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <CheckBox
+        android:id="@+id/goalsCheck"
+        android:layout_width="321dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="32dp"
+        android:text="I achieved my goals. **if user doesnt check this, show text box asking why"
+        app:layout_constraintBottom_toTopOf="@+id/goalsA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/goalsA"
+        android:layout_width="389dp"
+        android:layout_height="152dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:text="What stopped you from achieving your goals?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="385dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="316dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="Stress Section"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/stressA"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
