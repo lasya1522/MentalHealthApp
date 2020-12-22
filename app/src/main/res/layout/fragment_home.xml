@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.home.HomeFragment"
+    android:background = "@color/purple_200">
 
     <TextView
         android:id="@+id/text_home"
@@ -24,11 +25,11 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="92dp"
-        android:layout_height="85dp"
-        android:layout_marginStart="156dp"
-        android:layout_marginLeft="156dp"
-        android:layout_marginTop="88dp"
+        android:layout_width="47dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="172dp"
+        android:layout_marginLeft="172dp"
+        android:layout_marginTop="68dp"
         android:src="@drawable/ic_launcher_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -57,12 +58,20 @@
         android:id="@+id/button5"
         android:layout_width="339dp"
         android:layout_height="94dp"
-        android:layout_marginTop="208dp"
+        android:layout_marginTop="184dp"
         android:text="View today's quizzes!"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.416"
+        app:layout_constraintHorizontal_bias="0.527"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="167dp"
+        tools:layout_editor_absoluteY="142dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

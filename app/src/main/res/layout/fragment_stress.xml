@@ -57,7 +57,8 @@
         android:text="What stopped you from achieving your goals?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="385dp" />
+        tools:layout_editor_absoluteY="385dp"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView3"

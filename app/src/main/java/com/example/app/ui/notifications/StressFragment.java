@@ -24,7 +24,7 @@ public class StressFragment extends Fragment {
         stressViewModel =
                 new ViewModelProvider(this).get(StressViewModel.class);
         View root = inflater.inflate(R.layout.fragment_stress, container, false);
-        final TextView textView = root.findViewById(R.id.text_stress);
+        final TextView textView = root.findViewById(R.id.test_text);
         stressViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
