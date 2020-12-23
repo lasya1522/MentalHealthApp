@@ -24,13 +24,13 @@ public class StressFragment extends Fragment {
         stressViewModel =
                 new ViewModelProvider(this).get(StressViewModel.class);
         View root = inflater.inflate(R.layout.fragment_stress, container, false);
-        final TextView textView = root.findViewById(R.id.test_text);
-        stressViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+       // final TextView textView = root.findViewById(R.id.);
+        //stressViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+           // @Override
+           // public void onChanged(@Nullable String s) {
+                //textView.setText(s);
+            //}
+       // });
         return root;
     }
 }
