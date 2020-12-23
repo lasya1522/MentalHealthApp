@@ -14,6 +14,7 @@
         <!-- Customize your theme here. -->
     </style>
 
+
     <style name="Theme.MESAApp.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -22,4 +23,6 @@
     <style name="Theme.MESAApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.MESAApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
 </resources>
