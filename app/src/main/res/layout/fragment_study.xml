@@ -10,12 +10,13 @@
         android:id="@+id/editTextTextMultiLine3"
         android:layout_width="255dp"
         android:layout_height="75dp"
-        android:layout_marginTop="556dp"
+        android:layout_marginTop="512dp"
         android:ems="10"
         android:gravity="start|top"
         android:hint="If you didn't reach your goals, explain why:"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -93,7 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="76dp"
         android:layout_marginLeft="76dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="32dp"
         android:text="I reached my sleep goals"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine2" />
