@@ -19,16 +19,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    //initializing button that will take us from the home screen to the quiz
-    Button button = (Button) findViewById(R.id.button5);
-    button.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(MainActivity.this,DailyQuizzes.class);
-            startActivity(intent);
-        }
-    });
-
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -38,6 +28,17 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
-    }
 
+        //configureQuizButton();
+    }
+    /*private void configureQuizButton(){
+        Button quizButton = (Button) findViewById(R.id.viewQuiz);
+        quizButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                startActivity(new Intent(MainActivity.this, DailyQuizzes.class));
+            }
+        });
+    }
+*/
 }
