@@ -6,18 +6,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.app.DailyQuizzes;
-import com.example.app.MainActivity;
+import com.example.app.DailyQuizzesActivity;
 import com.example.app.R;
 
 public class HomeFragment extends Fragment {
@@ -41,19 +38,11 @@ public class HomeFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), DailyQuizzes.class);
+                Intent intent = new Intent(getActivity(), DailyQuizzesActivity.class);
                 startActivity(intent);
             }
         });
-        //initializing button that will take us from the home screen to the qui
-       /* button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeFragment.this, DailyQuizzes.class);
-                startActivity(intent);
-            }
-        });
-        */
+
         return root;
     }
 }

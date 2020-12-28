@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">App</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_dashboard">Stress</string>
+    <string name="title_notifications">Sleep</string>
+    <string name = "title_daily">Daily Life</string>
+    <string name = "title_data">Data</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="textView">TextView</string>
