@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.app.R;
 
-public class StudyFragment extends Fragment {
+public class SleepFragment extends Fragment {
 
-    private StudyViewModel studyViewModel;
+    private SleepViewModel sleepViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        studyViewModel =
-                new ViewModelProvider(this).get(StudyViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_study, container, false);
+        sleepViewModel =
+                new ViewModelProvider(this).get(SleepViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_sleep, container, false);
         final TextView textView = root.findViewById(R.id.sleepTitle);
-        studyViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        sleepViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

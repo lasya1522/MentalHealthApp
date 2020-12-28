@@ -4,11 +4,11 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class StudyViewModel extends ViewModel {
+public class SleepViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public StudyViewModel() {
+    public SleepViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is stress fragment");
     }
