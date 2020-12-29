@@ -5,45 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.dashboard.SleepFragment">
-    <EditText
-        android:id="@+id/editTextTextMultiLine3"
-        android:layout_width="255dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="512dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="@string/if_you_didn_t_reach_your_goals_explain_why"
-        android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextTextMultiLine2"
-        android:layout_width="255dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="328dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="What are your goals for sleep?"
-        android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextTime2"
-        android:layout_width="132dp"
-        android:layout_height="47dp"
-        android:layout_marginEnd="56dp"
-        android:layout_marginRight="56dp"
-        android:layout_marginBottom="60dp"
-        android:ems="10"
-        android:hint="Wake-up time: "
-        android:inputType="time"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextMultiLine"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/sleepTitle"
@@ -52,9 +13,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:gravity="center_horizontal"
-        android:text="Sleep"
+        android:text="@string/sleep"
         android:textAlignment="center"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -64,43 +26,80 @@
         android:layout_marginLeft="8dp" />
 
     <EditText
-        android:id="@+id/editTextTime"
-        android:layout_width="116dp"
-        android:layout_height="45dp"
-        android:layout_marginBottom="60dp"
-        android:ems="10"
-        android:hint="Bed time: "
-        android:inputType="time"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextMultiLine"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTime2"
-        app:layout_constraintHorizontal_bias="0.355"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/sleepTitle"
-        app:layout_constraintVertical_bias="0.982" />
-
-    <EditText
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/sleepQuestion1"
         android:layout_width="255dp"
         android:layout_height="75dp"
         android:layout_marginBottom="76dp"
+        android:autofillHints=""
         android:ems="10"
         android:gravity="start|top"
-        android:hint="@string/what_affected_your_sleep"
+        android:hint="1. What affected your sleep"
         android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextMultiLine2"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/sleepQuestion2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.225"
         app:layout_constraintStart_toStartOf="parent"
-        android:autofillHints="" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <CheckBox
         android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginLeft="76dp"
         android:layout_marginTop="32dp"
-        android:text="@string/i_reached_my_sleep_goals"
+        android:text="I reached my sleep goals"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.221"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine2" />
+        app:layout_constraintTop_toBottomOf="@+id/sleepQuestion2"
+        app:layout_constraintVertical_bias="0.009" />
 
+    <EditText
+        android:id="@+id/sleepQuestion2"
+        android:layout_width="255dp"
+        android:layout_height="75dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="3. What are your goals for sleep?"
+        android:inputType="textMultiLine"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.225"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.445" />
+
+    <EditText
+        android:id="@+id/sleepGoalText1"
+        android:layout_width="255dp"
+        android:layout_height="75dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="4. What prevented you from achieving your goals?"
+        android:inputType="textMultiLine"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.225"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.774" />
+
+    <TextView
+        android:id="@+id/sleepResults"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your sleep ratings."
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.453"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.115" />
 </androidx.constraintlayout.widget.ConstraintLayout>
