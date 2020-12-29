@@ -10,10 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.App">
-        <activity android:name=".NightQuiz"></activity>
-        <activity android:name=".MorningQuiz" />
+        <activity android:name=".NightQuizActivity"></activity>
+        <activity android:name=".MorningQuizActivity" />
         <activity
-            android:name=".DailyQuizzes"
+            android:name=".DailyQuizzesActivity"
             tools:ignore="ExtraText" />
         <activity
             android:name=".MainActivity"
