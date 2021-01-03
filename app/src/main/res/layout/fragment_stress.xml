@@ -71,7 +71,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:text="Stress Section"
-        android:textSize="24sp"
+        android:textSize="23sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/stressA"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -10,7 +10,7 @@ public class SleepViewModel extends ViewModel {
 
     public SleepViewModel() {
         mText = new MutableLiveData<>();
-       mText.setValue("This is stress fragment");
+      // mText.setValue("This is stress fragment");
     }
 
     public LiveData<String> getText() {

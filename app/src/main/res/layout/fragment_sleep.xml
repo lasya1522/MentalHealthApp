@@ -11,25 +11,24 @@
         android:layout_width="85dp"
         android:layout_height="35dp"
         android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:gravity="center_horizontal"
-        android:text="@string/sleep"
+        android:text="Sleep Section"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textSize="23sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.011"
-        android:layout_marginLeft="8dp" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/sleepQuestion1"
-        android:layout_width="255dp"
-        android:layout_height="75dp"
-        android:layout_marginBottom="76dp"
+        android:layout_width="348dp"
+        android:layout_height="48dp"
         android:autofillHints=""
         android:ems="10"
         android:gravity="start|top"
@@ -39,10 +38,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/sleepQuestion2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.225"
+        app:layout_constraintHorizontal_bias="0.224"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.792" />
 
     <CheckBox
         android:id="@+id/checkBox"
@@ -59,8 +58,8 @@
 
     <EditText
         android:id="@+id/sleepQuestion2"
-        android:layout_width="255dp"
-        android:layout_height="75dp"
+        android:layout_width="362dp"
+        android:layout_height="53dp"
         android:ems="10"
         android:gravity="start|top"
         android:hint="3. What are your goals for sleep?"
@@ -69,15 +68,15 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.225"
+        app:layout_constraintHorizontal_bias="0.224"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.445" />
+        app:layout_constraintVertical_bias="0.443" />
 
     <EditText
         android:id="@+id/sleepGoalText1"
-        android:layout_width="255dp"
-        android:layout_height="75dp"
+        android:layout_width="373dp"
+        android:layout_height="68dp"
         android:ems="10"
         android:gravity="start|top"
         android:hint="4. What prevented you from achieving your goals?"
@@ -86,10 +85,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.225"
+        app:layout_constraintHorizontal_bias="0.224"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.774" />
+        app:layout_constraintVertical_bias="0.787" />
 
     <TextView
         android:id="@+id/sleepResults"
@@ -98,8 +97,8 @@
         android:text="Your sleep ratings."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.453"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.115" />
+        app:layout_constraintVertical_bias="0.126" />
 </androidx.constraintlayout.widget.ConstraintLayout>
