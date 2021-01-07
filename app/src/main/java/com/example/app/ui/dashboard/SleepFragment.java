@@ -26,6 +26,9 @@ public class SleepFragment extends Fragment {
         sleepViewModel = new ViewModelProvider(this).get(SleepViewModel.class);
         View root = inflater.inflate(R.layout.fragment_sleep, container, false);
         final TextView textView = root.findViewById(R.id.sleepTitle);
+        //code for buttons
+        submitBtn = (Button) root.findViewById(R.id.submitBtn);
+
         sleepViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -33,10 +36,6 @@ public class SleepFragment extends Fragment {
             }
         });
         return root;
-
-        //code for buttons
-        //submitBtn.findViewById(R.id.submitBtn);
-
     }
 
     }
