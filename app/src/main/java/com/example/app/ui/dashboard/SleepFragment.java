@@ -19,7 +19,7 @@ public class SleepFragment extends Fragment {
     private SleepViewModel sleepViewModel;
     //create references to buttons
     Button submitBtn;
-
+    Button saveBtn;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -28,6 +28,21 @@ public class SleepFragment extends Fragment {
         final TextView textView = root.findViewById(R.id.sleepTitle);
         //code for buttons
         submitBtn = (Button) root.findViewById(R.id.submitBtn);
+        submitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SleepData sleepData2 = new SleepData("Homework", "Sleep for 8 hours tonight");
+                //Toast.makeText(SleepFragment.this, "Submit", Toast.LENGTH_SHORT).show();
+                //find out where and why use Toast(to confirm that you have added some respond
+                // which we have to further discuss and implement into our design
+            }
+        });
+        saveBtn = (Button) root.findViewById(R.id.saveBtn);
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
 
         sleepViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
