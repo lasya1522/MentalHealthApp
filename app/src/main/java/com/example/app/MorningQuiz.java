@@ -56,5 +56,8 @@ public class MorningQuiz extends Quiz {
     public Integer getStressLevel(){
         return stressLevel;
     }
+    public Date getDate(){
+        return date;
+    }
 
 }

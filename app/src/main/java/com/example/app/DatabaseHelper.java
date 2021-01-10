@@ -44,6 +44,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put( COLUMN_MORNING_CURRENT_MOOD, morningQuiz.getCurrentMood());
         cv.put( COLUMN_MORNING_STRESS_LEVEL, morningQuiz.getStressLevel());
+        cv.put( COLUMN_MORNING_DATE, morningQuiz.getDate().toString()); //should I keep the toString()?
         cv.put( COLUMN_MORNING_SLEEP_RATING, morningQuiz.getSleepRating());
         cv.put( COLUMN_MORNING_SLEEP_DURATION, morningQuiz.getSleepDuration());
 
