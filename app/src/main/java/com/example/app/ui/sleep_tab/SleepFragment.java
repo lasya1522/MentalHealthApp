@@ -1,4 +1,4 @@
-package com.example.app.ui.dashboard;
+package com.example.app.ui.sleep_tab;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

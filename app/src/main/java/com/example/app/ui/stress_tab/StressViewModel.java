@@ -1,4 +1,4 @@
-package com.example.app.ui.notifications;
+package com.example.app.ui.stress_tab;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

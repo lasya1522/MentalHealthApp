@@ -11,11 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App">
         <activity android:name=".NightQuizActivity"
-            android:parentActivityName=".DailyQuizzesActivity"/>
+            android:parentActivityName=".ui.DailyQuizzesActivity"/>
         <activity android:name=".MorningQuizActivity"
-            android:parentActivityName=".DailyQuizzesActivity"/>
+            android:parentActivityName=".ui.DailyQuizzesActivity"/>
         <activity
-            android:name=".DailyQuizzesActivity"
+            android:name=".ui.DailyQuizzesActivity"
             tools:ignore="ExtraText"
             android:parentActivityName=".MainActivity"/>
         <activity

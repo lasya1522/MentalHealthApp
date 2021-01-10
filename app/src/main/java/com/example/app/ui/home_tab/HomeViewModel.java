@@ -1,4 +1,4 @@
-package com.example.app.ui.home;
+package com.example.app.ui.home_tab;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

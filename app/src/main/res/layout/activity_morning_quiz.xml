@@ -7,7 +7,7 @@
     tools:context=".MorningQuizActivity">
 
     <Button
-        android:id="@+id/stressBtn2"
+        android:id="@+id/btn_stress2"
         android:layout_width="65dp"
         android:layout_height="60dp"
         android:text="😐"
@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="0.76" />
 
     <Button
-        android:id="@+id/stressBtn3"
+        android:id="@+id/btn_stress3"
         android:layout_width="65dp"
         android:layout_height="60dp"
         android:text="🙂"
@@ -32,7 +32,7 @@
         app:layout_constraintVertical_bias="0.76" />
 
     <Button
-        android:id="@+id/stressBtn1"
+        android:id="@+id/btn_stress1"
         android:layout_width="65dp"
         android:layout_height="60dp"
         android:text="😟"
@@ -45,7 +45,7 @@
         app:layout_constraintVertical_bias="0.76" />
 
     <Button
-        android:id="@+id/moodBtn5"
+        android:id="@+id/btn_mood5"
         android:layout_width="65dp"
         android:layout_height="60dp"
         android:text="😊"
@@ -58,7 +58,7 @@
         app:layout_constraintVertical_bias="0.116" />
 
     <Button
-        android:id="@+id/moodBtn1"
+        android:id="@+id/btn_mood1"
         android:layout_width="65dp"
         android:layout_height="60dp"
         android:text="😔"
@@ -71,7 +71,7 @@
         app:layout_constraintVertical_bias="0.117" />
 
     <Button
-        android:id="@+id/moodBtn3"
+        android:id="@+id/btn_mood3"
         android:layout_width="65dp"
         android:layout_height="60dp"
         android:text="😐"
@@ -84,7 +84,7 @@
         app:layout_constraintVertical_bias="0.116" />
 
     <Button
-        android:id="@+id/moodBtn4"
+        android:id="@+id/btn_mood4"
         android:layout_width="65dp"
         android:layout_height="60dp"
         android:text="🙂"
@@ -97,7 +97,7 @@
         app:layout_constraintVertical_bias="0.116" />
 
     <Button
-        android:id="@+id/moodBtn2"
+        android:id="@+id/btn_mood2"
         android:layout_width="65dp"
         android:layout_height="60dp"
         android:text="😕"
@@ -151,7 +151,7 @@
         app:layout_constraintVertical_bias="0.448" />
 
     <EditText
-        android:id="@+id/editTextNumber"
+        android:id="@+id/et_sleepDuration"
         android:layout_width="172dp"
         android:layout_height="42dp"
         android:ems="10"
@@ -178,7 +178,7 @@
         app:layout_constraintVertical_bias="0.641" />
 
     <EditText
-        android:id="@+id/editTextNumberSigned2"
+        android:id="@+id/et_sleepRating"
         android:layout_width="185dp"
         android:layout_height="40dp"
         android:ems="10"
@@ -189,5 +189,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.385" />
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Submit"
+        tools:layout_editor_absoluteX="158dp"
+        tools:layout_editor_absoluteY="505dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
