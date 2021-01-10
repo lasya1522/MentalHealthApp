@@ -10,7 +10,7 @@
         android:id="@+id/btn_stress2"
         android:layout_width="65dp"
         android:layout_height="60dp"
-        android:text="😐"
+        android:text="@string/smileyBtnMorning1"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,7 +22,7 @@
         android:id="@+id/btn_stress3"
         android:layout_width="65dp"
         android:layout_height="60dp"
-        android:text="🙂"
+        android:text="@string/smileyBtnMorning2"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,7 +35,7 @@
         android:id="@+id/btn_stress1"
         android:layout_width="65dp"
         android:layout_height="60dp"
-        android:text="😟"
+        android:text="@string/smileyBtnMorning3"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,7 +48,7 @@
         android:id="@+id/btn_mood5"
         android:layout_width="65dp"
         android:layout_height="60dp"
-        android:text="😊"
+        android:text="@string/smileyBtnMorning4"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +61,7 @@
         android:id="@+id/btn_mood1"
         android:layout_width="65dp"
         android:layout_height="60dp"
-        android:text="😔"
+        android:text="@string/smileyBtnMorning5"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,7 +74,7 @@
         android:id="@+id/btn_mood3"
         android:layout_width="65dp"
         android:layout_height="60dp"
-        android:text="😐"
+        android:text="@string/smileyBtnMorning6"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -87,7 +87,7 @@
         android:id="@+id/btn_mood4"
         android:layout_width="65dp"
         android:layout_height="60dp"
-        android:text="🙂"
+        android:text="@string/smileyBtnMorning7"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -100,7 +100,7 @@
         android:id="@+id/btn_mood2"
         android:layout_width="65dp"
         android:layout_height="60dp"
-        android:text="😕"
+        android:text="@string/smileyBtnMorning8"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -161,7 +161,9 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.552" />
+        app:layout_constraintVertical_bias="0.552"
+        android:autofillHints=""
+        tools:ignore="LabelFor" />
 
     <TextView
         android:id="@+id/textView5"
@@ -188,7 +190,9 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.385" />
+        app:layout_constraintVertical_bias="0.385"
+        android:autofillHints=""
+        tools:ignore="LabelFor" />
 
     <Button
         android:id="@+id/btn_submit"

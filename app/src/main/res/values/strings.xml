@@ -40,4 +40,27 @@
     <string name="hr46">4-6 hours</string>
     <string name="hr13">1-3 hours</string>
     <string name="hr6">6+ hours</string>
+    <string name="smileyBtnNight1">smileyBtnNight1</string>
+    <string name="smileyBtn2">smileyBtnNight2</string>
+    <string name="smileyBtnNight3">😟</string>
+    <string name="smileyBtnNight4">😕</string>
+    <string name="smileyBtnNight5">😊</string>
+    <string name="smileyBtnNight6">😔</string>
+    <string name="smileyBtnNight7">🙂</string>
+    <string name="smileyBtnNight9">😐</string>
+    <string name="smileyBtnMorning1">😐</string>
+    <string name="smileyBtnMorning2">🙂</string>
+    <string name="smileyBtnMorning3">😟</string>
+    <string name="smileyBtnMorning4">😊</string>
+    <string name="smileyBtnMorning5">😔</string>
+    <string name="smileyBtnMorning6">😐</string>
+    <string name="smileyBtnMorning7">🙂</string>
+    <string name="smileyBtnMorning8">😕</string>
+    <string name="introMessage">Logo of app goes here</string>
+    <string name="quizDailyMessage">View today\'s quizzes!</string>
+    <string name="stressGoalsInput">Write down your goals! (list below)</string>
+    <string name="stressReasonInput1">What has been stressing you out?</string>
+    <string name="stressGoalCheckbox">I achieved my goals. **if user doesnt check this, show text box asking why</string>
+    <string name="stressGoalPreventionText">What stopped you from achieving your goals?</string>
+    <string name="stressSectionHeader">Stress Section</string>
 </resources>
