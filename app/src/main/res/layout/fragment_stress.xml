@@ -12,12 +12,10 @@
         android:layout_height="23dp"
         android:text="Write down your goals! (list below)"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/goalsA"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.382" />
+        tools:layout_editor_absoluteY="377dp" />
 
     <EditText
         android:id="@+id/stressA"
@@ -28,8 +26,9 @@
         android:hint="What has been stressing you out?"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.55"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        tools:layout_editor_absoluteY="91dp" />
 
     <Button
         android:id="@+id/dataBtn"
@@ -66,22 +65,21 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="316dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_width="153dp"
+        android:layout_height="39dp"
         android:text="Stress Section"
         android:textSize="23sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/stressA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.558"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteY="16dp" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="38dp"
-        tools:layout_editor_absoluteY="452dp"
-        tools:ignore="MissingConstraints" />
+        android:layout_width="137dp"
+        android:layout_height="39dp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="501dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
