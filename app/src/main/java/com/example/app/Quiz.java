@@ -12,8 +12,4 @@ public class Quiz {
         this.stressLevel = stressLevel;
         this.date = date;
     }
-    /*public Quiz(){
-
-    }
-     */
 }

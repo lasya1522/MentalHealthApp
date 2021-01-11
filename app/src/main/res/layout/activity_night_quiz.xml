@@ -46,7 +46,7 @@
         app:layout_constraintVertical_bias="0.93" />
 
     <Button
-        android:id="@+id/moodBtn"
+        android:id="@+id/btn_mood2_n"
         android:layout_width="65dp"
         android:layout_height="60dp"
         android:text="@string/smileyBtnNight4"
@@ -59,7 +59,7 @@
         app:layout_constraintVertical_bias="0.116" />
 
     <Button
-        android:id="@+id/moodBtn6"
+        android:id="@+id/btn_mood5_n"
         android:layout_width="65dp"
         android:layout_height="60dp"
         android:text="@string/smileyBtnNight5"
@@ -72,7 +72,7 @@
         app:layout_constraintVertical_bias="0.116" />
 
     <Button
-        android:id="@+id/moodBtn7"
+        android:id="@+id/btn_mood1_n"
         android:layout_width="65dp"
         android:layout_height="60dp"
         android:text="@string/smileyBtnNight6"
@@ -85,7 +85,7 @@
         app:layout_constraintVertical_bias="0.117" />
 
     <Button
-        android:id="@+id/moodBtn8"
+        android:id="@+id/btn_mood4_n"
         android:layout_width="65dp"
         android:layout_height="60dp"
         android:text="@string/smileyBtnNight7"
@@ -98,7 +98,7 @@
         app:layout_constraintVertical_bias="0.116" />
 
     <Button
-        android:id="@+id/moodBtn9"
+        android:id="@+id/btn_mood3_n"
         android:layout_width="65dp"
         android:layout_height="60dp"
         android:text="@string/smileyBtnNight9"
@@ -329,8 +329,12 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="301dp"
-        tools:layout_editor_absoluteY="29dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         tools:padding="16dp">
 
         <LinearLayout

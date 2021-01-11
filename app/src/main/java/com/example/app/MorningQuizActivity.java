@@ -15,6 +15,7 @@ public class MorningQuizActivity extends AppCompatActivity {
     private EditText et_sleepDuration;
 
     private Button btn_submit;
+
     private Button btn_mood1;
     private Button btn_mood2;
     private Button btn_mood3;
@@ -25,7 +26,7 @@ public class MorningQuizActivity extends AppCompatActivity {
     private Button btn_stress2;
     private Button btn_stress3;
 
-    private Integer moodChoice; //is this really the best way to keep track of the mood and the stresss level choice?
+    private Integer moodChoice; //is this really the best way to keep track of the mood and the stress level choice?
     private Integer stressLevelChoice;
 
     DatabaseHelper databaseHelper;
