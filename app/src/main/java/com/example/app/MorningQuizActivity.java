@@ -14,7 +14,7 @@ public class MorningQuizActivity extends AppCompatActivity {
     private EditText et_sleepRating;
     private EditText et_sleepDuration;
 
-    private Button btn_submit;
+    private Button btn_submit, btn_save;
 
     private Button btn_mood1;
     private Button btn_mood2;
@@ -46,9 +46,7 @@ public class MorningQuizActivity extends AppCompatActivity {
         btn_mood4 = findViewById(R.id.btn_mood4);
         btn_mood5 = findViewById(R.id.btn_mood5);
 
-        btn_stress1 = findViewById(R.id.btn_stress1);
         btn_stress2 = findViewById(R.id.btn_stress2);
-        btn_stress3 = findViewById(R.id.btn_stress3);
 
         et_sleepDuration = findViewById(R.id.et_sleepDuration);
         et_sleepRating = findViewById(R.id.et_sleepRating);

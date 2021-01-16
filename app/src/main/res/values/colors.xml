@@ -8,4 +8,7 @@
     <color name="black">#FF000000</color>   ``` `
 
     <color name="white">#FFFFFFFF</color>
+    <color name="purple_550" />
+    <color name="blue_800">#1E2964</color>
+    <color name="blue_880">#222368</color>
 </resources>

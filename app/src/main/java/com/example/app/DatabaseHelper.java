@@ -109,8 +109,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 int customerAge = cursor.getInt(2);
                 boolean customerActive = cursor.getInt(3) == 1 ? true: false;
 
-                CustomerModel newCustomer = new CustomerModel(customerID, customerName, customerAge, customerActive );
-                returnList.add(newCustomer);
+                //CustomerModel newCustomer = new CustomerModel(customerID, customerName, customerAge, customerActive );
+                //returnList.add(newCustomer);
             } while(cursor.moveToNext());
 
         } else {

@@ -34,8 +34,8 @@
     <string name="ViewQuizzes">View today\'s quizzes!</string>
     <string name="relax_time">How much time did you spend being productive?</string>
     <string name="relax_timeQ">How much time did you spend relaxing?</string>
+    <string name="how_much_time_did_you_spend_exercising">How much time did you spend exercising?</string>
     <string name="rateStress">Rate your stress levels:</string>
-    <string name="studyTime">How much time did you spend studying?</string>
     <string name="hr0">0 hours</string>
     <string name="hr46">4-6 hours</string>
     <string name="hr13">1-3 hours</string>
@@ -63,4 +63,6 @@
     <string name="stressGoalCheckbox">I achieved my goals. **if user doesnt check this, show text box asking why</string>
     <string name="stressGoalPreventionText">What stopped you from achieving your goals?</string>
     <string name="stressSectionHeader">Stress Section</string>
+    <string name="previous_quizzes">Previous Quizzes</string>
+    <string name="_2_do_you_feel_cranky_or_too_tired">2. Do you feel cranky or too tired?</string>
 </resources>
