@@ -86,20 +86,6 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/question2"
-        android:layout_width="354dp"
-        android:layout_height="69dp"
-        android:text="@string/_2_do_you_feel_cranky_or_too_tired"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.266" />
-
-    <TextView
         android:id="@+id/textView4"
         android:layout_width="313dp"
         android:layout_height="46dp"
@@ -141,21 +127,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.68" />
 
-    <EditText
-        android:id="@+id/et_sleepRating"
-        android:layout_width="185dp"
-        android:layout_height="40dp"
-        android:ems="10"
-        android:inputType="numberSigned"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.385"
-        android:autofillHints=""
-        tools:ignore="LabelFor" />
-
     <Button
         android:id="@+id/btn_submit"
         android:layout_width="wrap_content"
@@ -170,7 +141,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_stress2" />
 
     <EditText
-        android:id="@+id/sleepRating"
+        android:id="@+id/et_sleepRating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"

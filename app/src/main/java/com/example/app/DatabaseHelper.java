@@ -16,7 +16,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //are for the sql commands ??
     public static final String MORNING_QUIZ_TABLE = "MORNING_QUIZ_TABLE"; //don't totally understand these vars
     public static final String COLUMN_MORNING_CURRENT_MOOD = "MORNING_CURRENT_MOOD";
-    public static final String COLUMN_MORNING_STRESS_LEVEL = "MORNING_STRESS_LEVEL";
     public static final String COLUMN_MORNING_DATE = "MORNING_DATE";
     public static final String COLUMN_MORNING_SLEEP_RATING = "MORNING_SLEEP_RATING";
     public static final String COLUMN_MORNING_SLEEP_DURATION = "MORNING_SLEEP_DURATION";
@@ -28,10 +27,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_NIGHT_DATE = "NIGHT_DATE";
     public static final String COLUMN_NIGHT_PRODUCTIVE_TIME = "NIGHT_PRODUCTIVE_TIME";
     public static final String COLUMN_NIGHT_RELAX_TIME = "NIGHT_RELAX_TIME";
+    public static final String COLUMN_NIGHT_EXERCISE_TIME = "NIGHT_EXERCISE_TIME";
 
     public DatabaseHelper(@Nullable Context context) {
 
-        super(context, "Save trial", null, 2); //I had to increment the version number in order to get it to work after adding the date column
+        super(context, "Save trial", null, 4); //I had to increment the version number in order to get it to work after adding the date column
         //the onUpgrade code won't be called unless I do that
     }
 
@@ -39,10 +39,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         //database is made up of different tables ??
-        String createMorningTableStatement = "CREATE TABLE MORNING_QUIZ_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT, MORNING_CURRENT_MOOD TEXT, MORNING_STRESS_LEVEL TEXT, MORNING_DATE TEXT, MORNING_SLEEP_RATING TEXT, MORNING_SLEEP_DURATION TEXT)";
+        String createMorningTableStatement = "CREATE TABLE MORNING_QUIZ_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT, MORNING_CURRENT_MOOD TEXT, MORNING_DATE TEXT, MORNING_SLEEP_RATING TEXT, MORNING_SLEEP_DURATION TEXT)";
         //not sure what's going on with the commas and the + here... look more into SQL statements
 
-        String createNightTableStatement = "CREATE TABLE MORNING_QUIZ_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NIGHT_CURRENT_MOOD TEXT, NIGHT_STRESS_LEVEL TEXT, NIGHT_DATE TEXT, NIGHT_PRODUCTIVE_TIME TEXT, NIGHT_RELAX_TIME TEXT)";
+        String createNightTableStatement = "CREATE TABLE MORNING_QUIZ_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NIGHT_CURRENT_MOOD TEXT, NIGHT_STRESS_LEVEL TEXT, NIGHT_DATE TEXT, NIGHT_PRODUCTIVE_TIME TEXT, NIGHT_RELAX_TIME TEXT, NIGHT_EXERCISE_TIME TEXT)";
 
         db.execSQL(createMorningTableStatement);
         db.execSQL(createNightTableStatement);
@@ -52,7 +52,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (newVersion > oldVersion){
-            db.execSQL("ALTER TABLE MORNING_QUIZ_TABLE ADD COLUMN MORNING_DATE INTEGER DEFAULT 0");
+           // db.execSQL("ALTER TABLE MORNING_QUIZ_TABLE ADD COLUMN MORNING_DATE STRING DEFAULT 0");
         }
 
     }
@@ -61,7 +61,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put( COLUMN_MORNING_CURRENT_MOOD, morningQuiz.getCurrentMood());
-        cv.put( COLUMN_MORNING_STRESS_LEVEL, morningQuiz.getStressLevel());
         cv.put( COLUMN_MORNING_DATE, morningQuiz.getDate().toString()); //should I keep the toString()?
         cv.put( COLUMN_MORNING_SLEEP_RATING, morningQuiz.getSleepRating());
         cv.put( COLUMN_MORNING_SLEEP_DURATION, morningQuiz.getSleepDuration());
@@ -79,10 +78,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put( COLUMN_NIGHT_CURRENT_MOOD, nightQuiz.getCurrentMood());
-        cv.put( COLUMN_NIGHT_STRESS_LEVEL, nightQuiz.getStressLevel());
         cv.put( COLUMN_NIGHT_DATE, nightQuiz.getDate().toString()); //should I keep the toString()?
         cv.put( COLUMN_NIGHT_RELAX_TIME, nightQuiz.getRelaxTime());
         cv.put( COLUMN_NIGHT_PRODUCTIVE_TIME, nightQuiz.getProductiveTime());
+        cv.put( COLUMN_NIGHT_EXERCISE_TIME, nightQuiz.getExerciseTime());
 
         //tells me whether the item was put into the database successfully
         long insert = db.insert(NIGHT_QUIZ_TABLE, null, cv);

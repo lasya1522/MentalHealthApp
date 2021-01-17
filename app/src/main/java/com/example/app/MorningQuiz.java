@@ -7,8 +7,8 @@ public class MorningQuiz extends Quiz {
     private Integer sleepRating;
     private Integer sleepDuration;
 
-    public MorningQuiz(Integer currentMood, Integer stressLevel, Date date, Integer sleepRating, Integer sleepDuration) {
-        super(currentMood, stressLevel, date);
+    public MorningQuiz(Integer currentMood, Date date, Integer sleepRating, Integer sleepDuration) {
+        super(currentMood, date);
         this.sleepRating = sleepRating;
         this.sleepDuration = sleepDuration;
     }
@@ -21,7 +21,6 @@ public class MorningQuiz extends Quiz {
                 ", sleepDuration=" + sleepDuration +
                 ", date=" + date.toString() +
                 ", currentMood=" + currentMood +
-                ", stressLevel=" + stressLevel +
                 '}';
     }
 
@@ -38,10 +37,6 @@ public class MorningQuiz extends Quiz {
         this.currentMood = currentMood;
     }
 
-    public void setStressLevel(Integer stressLevel) {
-        this.stressLevel = stressLevel;
-    }
-
     public Integer getSleepRating() {
         return sleepRating;
     }
@@ -52,9 +47,6 @@ public class MorningQuiz extends Quiz {
 
     public Integer getCurrentMood(){
         return currentMood;
-    }
-    public Integer getStressLevel(){
-        return stressLevel;
     }
     public Date getDate(){
         return date;

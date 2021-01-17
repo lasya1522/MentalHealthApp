@@ -11,10 +11,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Calendar;
 
 public class MorningQuizActivity extends AppCompatActivity {
-    private EditText et_sleepRating;
-    private EditText et_sleepDuration;
 
-    private Button btn_submit, btn_save;
+   private EditText et_sleepRating;
+   private EditText et_sleepDuration;
+
+    private Button btn_submit;
 
     private Button btn_mood1;
     private Button btn_mood2;
@@ -22,12 +23,7 @@ public class MorningQuizActivity extends AppCompatActivity {
     private Button btn_mood4;
     private Button btn_mood5;
 
-    private Button btn_stress1;
-    private Button btn_stress2;
-    private Button btn_stress3;
-
-    private Integer moodChoice; //is this really the best way to keep track of the mood and the stress level choice?
-    private Integer stressLevelChoice;
+    private Integer moodChoice; //is this really the best way to keep track of the mood ? // may change to MC buttons
 
     DatabaseHelper databaseHelper;
 
@@ -46,7 +42,7 @@ public class MorningQuizActivity extends AppCompatActivity {
         btn_mood4 = findViewById(R.id.btn_mood4);
         btn_mood5 = findViewById(R.id.btn_mood5);
 
-        btn_stress2 = findViewById(R.id.btn_stress2);
+        //btn_stress2 = findViewById(R.id.btn_stress2);
 
         et_sleepDuration = findViewById(R.id.et_sleepDuration);
         et_sleepRating = findViewById(R.id.et_sleepRating);
@@ -58,9 +54,10 @@ public class MorningQuizActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 MorningQuiz morningQuiz;
+                Toast.makeText(MorningQuizActivity.this, "onClick works", Toast.LENGTH_LONG).show();
 
                 try {
-                    morningQuiz = new MorningQuiz(moodChoice, stressLevelChoice, Calendar.getInstance().getTime(),
+                    morningQuiz = new MorningQuiz(moodChoice, Calendar.getInstance().getTime(),
                             Integer.parseInt(et_sleepRating.getText().toString()),
                             Integer.parseInt(et_sleepDuration.getText().toString()));
 
@@ -113,29 +110,6 @@ public class MorningQuizActivity extends AppCompatActivity {
 
             }
         });
-
-        btn_stress1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                stressLevelChoice = 1;
-
-            }
-        });
-        btn_stress2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                stressLevelChoice = 2;
-
-            }
-        });
-        btn_stress3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                stressLevelChoice = 3;
-
-            }
-        });
-
 
     }
 

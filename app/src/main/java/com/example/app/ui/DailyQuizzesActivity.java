@@ -13,13 +13,15 @@ import com.example.app.R;
 
 public class DailyQuizzesActivity extends AppCompatActivity {
     private Button button; //Daily quiz button
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_quizzes);
 
         //takes user from daily quizzes to the actual night quiz when the touch the morning quiz btn
-        Button btnM = (findViewById(R.id.btn_morningQuiz));
+        Button btnM = (Button) (findViewById(R.id.btn_morningQuiz));
+
         btnM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
