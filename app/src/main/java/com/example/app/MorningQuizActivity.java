@@ -79,6 +79,7 @@ public class MorningQuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 moodChoice = 1;
+                Toast.makeText(MorningQuizActivity.this, "it works", Toast.LENGTH_SHORT).show();
 
             }
         });
