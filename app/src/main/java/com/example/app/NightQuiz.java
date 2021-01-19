@@ -3,15 +3,17 @@ package com.example.app;
 import java.util.Date;
 
 public class NightQuiz extends Quiz{
-    private Integer productiveTime;
-    private Integer relaxTime;
-    private Integer exerciseTime;
+    private String productiveTime;
+    private String relaxTime;
+    private String exerciseTime;
+    private Integer stressLevel;
 
-    public NightQuiz(Integer currentMood,  Date date, Integer productiveTime, Integer relaxTime, Integer studyTime) {
+    public NightQuiz(Integer currentMood, Integer stressLevel, Date date, String productiveTime, String relaxTime, String exerciseTime) {
         super(currentMood, date);
         this.productiveTime = productiveTime;
         this.relaxTime = relaxTime;
         this.exerciseTime = exerciseTime;
+        this.stressLevel = stressLevel;
     }
 
     @Override
@@ -22,14 +24,18 @@ public class NightQuiz extends Quiz{
                 ", exerciseTime=" + exerciseTime +
                  ", date=" + date.toString() +
                 ", currentMood=" + currentMood +
-                '}';
+                ", stressLevel=" + stressLevel +
+                '}' ;
     }
 
-    public Integer getProductiveTime() { return productiveTime; }
-    public Integer getRelaxTime() { return relaxTime; }
-    public Integer getExerciseTime(){return exerciseTime; }
+    public String getProductiveTime() { return productiveTime; }
+    public String getRelaxTime() { return relaxTime; }
+    public String getExerciseTime(){return exerciseTime; }
     public Integer getCurrentMood(){
         return currentMood;
+    }
+    public Integer getStressLevel(){
+        return stressLevel;
     }
     public Date getDate(){
         return date;

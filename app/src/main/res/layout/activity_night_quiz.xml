@@ -7,7 +7,7 @@
     tools:context=".NightQuizActivity">
 
     <Button
-        android:id="@+id/stressBtn"
+        android:id="@+id/btn_stress1_n"
         android:layout_width="65dp"
         android:layout_height="60dp"
         android:text="@string/smileyBtnNight3"
@@ -114,44 +114,44 @@
         tools:ignore="MissingConstraints" />
 
     <RadioButton
-        android:id="@+id/radBtn1"
+        android:id="@+id/btn_productive_1"
         android:layout_width="81dp"
         android:layout_height="60dp"
         android:text="@string/hr0"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/radBtn4"
+        app:layout_constraintEnd_toEndOf="@+id/btn_productive_4"
         app:layout_constraintHorizontal_bias="0.07"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.362" />
 
     <RadioButton
-        android:id="@+id/radBtn2"
+        android:id="@+id/btn_productive_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hr46"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/radBtn4"
+        app:layout_constraintEnd_toEndOf="@+id/btn_productive_4"
         app:layout_constraintHorizontal_bias="0.567"
-        app:layout_constraintStart_toEndOf="@+id/radBtn1"
+        app:layout_constraintStart_toEndOf="@+id/btn_productive_1"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.374"
         tools:ignore="MissingConstraints" />
 
     <RadioButton
-        android:id="@+id/radBtn3"
+        android:id="@+id/btn_productive_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hr13"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/radBtn4"
+        app:layout_constraintEnd_toEndOf="@+id/btn_productive_4"
         app:layout_constraintHorizontal_bias="0.371"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.372" />
 
     <RadioButton
-        android:id="@+id/radBtn4"
+        android:id="@+id/btn_productive_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hr6"
@@ -177,44 +177,44 @@
         app:layout_constraintVertical_bias="0.46" />
 
     <RadioButton
-        android:id="@+id/radBtn5"
+        android:id="@+id/btn_relax_1"
         android:layout_width="81dp"
         android:layout_height="60dp"
         android:text="@string/hr0"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/radBtn4"
+        app:layout_constraintEnd_toEndOf="@+id/btn_productive_4"
         app:layout_constraintHorizontal_bias="0.101"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.563" />
 
     <RadioButton
-        android:id="@+id/radBtn6"
+        android:id="@+id/btn_relax_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hr46"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/radBtn8"
+        app:layout_constraintEnd_toEndOf="@+id/btn_relax_4"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/radBtn7"
+        app:layout_constraintStart_toEndOf="@+id/btn_relax_2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.563"
         tools:ignore="MissingConstraints" />
 
     <RadioButton
-        android:id="@+id/radBtn7"
+        android:id="@+id/btn_relax_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hr13"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/radBtn4"
+        app:layout_constraintEnd_toEndOf="@+id/btn_productive_4"
         app:layout_constraintHorizontal_bias="0.371"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.563" />
 
     <RadioButton
-        android:id="@+id/radBtn8"
+        android:id="@+id/btn_relax_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hr6"
@@ -240,43 +240,43 @@
         app:layout_constraintVertical_bias="0.638" />
 
     <RadioButton
-        android:id="@+id/radBtn9"
+        android:id="@+id/btn_exercise_1"
         android:layout_width="81dp"
         android:layout_height="60dp"
         android:text="@string/hr0"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/radBtn4"
+        app:layout_constraintEnd_toEndOf="@+id/btn_productive_4"
         app:layout_constraintHorizontal_bias="0.07"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.699" />
 
     <RadioButton
-        android:id="@+id/radBtn10"
+        android:id="@+id/btn_exercise_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hr46"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/radBtn12"
-        app:layout_constraintStart_toEndOf="@+id/radBtn9"
+        app:layout_constraintEnd_toEndOf="@+id/btn_exercise_4"
+        app:layout_constraintStart_toEndOf="@+id/btn_exercise_1"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.699"
         tools:ignore="MissingConstraints" />
 
     <RadioButton
-        android:id="@+id/radBtn11"
+        android:id="@+id/btn_exercise_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hr13"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/radBtn4"
+        app:layout_constraintEnd_toEndOf="@+id/btn_productive_4"
         app:layout_constraintHorizontal_bias="0.371"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.699" />
 
     <RadioButton
-        android:id="@+id/radBtn12"
+        android:id="@+id/btn_exercise_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hr6"
@@ -302,7 +302,7 @@
         app:layout_constraintVertical_bias="0.784" />
 
     <Button
-        android:id="@+id/btn_stress2"
+        android:id="@+id/btn_stress2_n"
         android:layout_width="65dp"
         android:layout_height="60dp"
         android:text="@string/smileyBtnMorning1"
@@ -313,7 +313,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.848" />
     <Button
-        android:id="@+id/stressBtn3"
+        android:id="@+id/btn_stress3_n"
         android:layout_width="65dp"
         android:layout_height="60dp"
         android:text="🙂"
@@ -326,7 +326,7 @@
         app:layout_constraintVertical_bias="0.848" />
 
     <Button
-        android:id="@+id/submitBtn_Night"
+        android:id="@+id/btn_submit_n"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Submit"

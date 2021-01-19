@@ -54,7 +54,6 @@ public class MorningQuizActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 MorningQuiz morningQuiz;
-                Toast.makeText(MorningQuizActivity.this, "onClick works", Toast.LENGTH_LONG).show();
 
                 try {
                     morningQuiz = new MorningQuiz(moodChoice, Calendar.getInstance().getTime(),

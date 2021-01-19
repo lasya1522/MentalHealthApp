@@ -31,18 +31,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public DatabaseHelper(@Nullable Context context) {
 
-        super(context, "Save trial", null, 4); //I had to increment the version number in order to get it to work after adding the date column
+        super(context, "Save trial", null, 5); //I had to increment the version number in order to get it to work after adding the date column
         //the onUpgrade code won't be called unless I do that
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        //database is made up of different tables ??
+        //database is made up of different tables ?? //edit: yes, i think so
         String createMorningTableStatement = "CREATE TABLE MORNING_QUIZ_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT, MORNING_CURRENT_MOOD TEXT, MORNING_DATE TEXT, MORNING_SLEEP_RATING TEXT, MORNING_SLEEP_DURATION TEXT)";
-        //not sure what's going on with the commas and the + here... look more into SQL statements
 
-        String createNightTableStatement = "CREATE TABLE MORNING_QUIZ_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NIGHT_CURRENT_MOOD TEXT, NIGHT_STRESS_LEVEL TEXT, NIGHT_DATE TEXT, NIGHT_PRODUCTIVE_TIME TEXT, NIGHT_RELAX_TIME TEXT, NIGHT_EXERCISE_TIME TEXT)";
+        String createNightTableStatement = "CREATE TABLE NIGHT_QUIZ_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NIGHT_CURRENT_MOOD TEXT, NIGHT_STRESS_LEVEL TEXT, NIGHT_DATE TEXT, NIGHT_PRODUCTIVE_TIME TEXT, NIGHT_RELAX_TIME TEXT, NIGHT_EXERCISE_TIME TEXT)";
 
         db.execSQL(createMorningTableStatement);
         db.execSQL(createNightTableStatement);
@@ -52,7 +51,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (newVersion > oldVersion){
-           db.execSQL("ALTER TABLE MORNING_QUIZ_TABLE ADD COLUMN MORNING_DATE STRING DEFAULT 0");
+           //db.execSQL("ALTER TABLE MORNING_QUIZ_TABLE ADD COLUMN MORNING_DATE STRING DEFAULT 0");
+
+            String createNightTableStatement = "CREATE TABLE NIGHT_QUIZ_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NIGHT_CURRENT_MOOD TEXT, NIGHT_STRESS_LEVEL TEXT, NIGHT_DATE TEXT, NIGHT_PRODUCTIVE_TIME TEXT, NIGHT_RELAX_TIME TEXT, NIGHT_EXERCISE_TIME TEXT)";
+            db.execSQL(createNightTableStatement);
         }
 
     }
@@ -77,6 +79,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean addNightQuiz(NightQuiz nightQuiz){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
+
         cv.put( COLUMN_NIGHT_CURRENT_MOOD, nightQuiz.getCurrentMood());
         cv.put( COLUMN_NIGHT_DATE, nightQuiz.getDate().toString()); //should I keep the toString()?
         cv.put( COLUMN_NIGHT_RELAX_TIME, nightQuiz.getRelaxTime());
