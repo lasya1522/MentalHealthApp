@@ -52,7 +52,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (newVersion > oldVersion){
-           // db.execSQL("ALTER TABLE MORNING_QUIZ_TABLE ADD COLUMN MORNING_DATE STRING DEFAULT 0");
+           db.execSQL("ALTER TABLE MORNING_QUIZ_TABLE ADD COLUMN MORNING_DATE STRING DEFAULT 0");
         }
 
     }
