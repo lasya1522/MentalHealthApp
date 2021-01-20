@@ -4,11 +4,11 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class StressViewModel extends ViewModel {
+public class TrendsViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public StressViewModel() {
+    public TrendsViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is notifications fragment");
     }

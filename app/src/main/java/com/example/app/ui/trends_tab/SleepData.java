@@ -1,4 +1,4 @@
-package com.example.app.ui.sleep_tab;
+package com.example.app.ui.trends_tab;
 
 public class SleepData {
     //private instance variables

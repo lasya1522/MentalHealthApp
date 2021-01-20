@@ -1,4 +1,4 @@
-package com.example.app.ui.sleep_tab;
+package com.example.app.ui.trends_tab;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,15 +15,15 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.app.R;
 
-public class SleepFragment extends Fragment {
-    private SleepViewModel sleepViewModel;
+public class GoalsFragment extends Fragment {
+    private GoalsViewModel sleepViewModel;
     //create references to buttons
     Button submitBtn;
     Button saveBtn;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        sleepViewModel = new ViewModelProvider(this).get(SleepViewModel.class);
+        sleepViewModel = new ViewModelProvider(this).get(GoalsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_sleep, container, false);
         final TextView textView = root.findViewById(R.id.sleepTitle);
         //code for buttons

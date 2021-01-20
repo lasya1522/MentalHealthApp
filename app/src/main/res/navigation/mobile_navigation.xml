@@ -12,22 +12,22 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/navigation_stress"
-        android:name="com.example.app.ui.sleep_tab.SleepFragment"
+        android:name="com.example.app.ui.trends_tab.GoalsFragment"
         android:label="Study"
         tools:layout="@layout/fragment_sleep"/>
     <fragment
         android:id="@+id/navigation_sleep"
-        android:name="com.example.app.ui.stress_tab.StressFragment"
+        android:name="com.example.app.ui.stress_tab.TrendsFragment"
         android:label="Stress"
         tools:layout="@layout/fragment_stress" />
     <fragment
         android:id="@+id/navigation_dailyLife"
-        android:name="com.example.app.ui.DailyFragment"
+        android:name="com.example.app.ui.StrategiesFragment"
         android:label="Test"
         tools:layout="@layout/fragment_daily" />
     <fragment
         android:id="@+id/navigation_data"
-        android:name="com.example.app.ui.DataFragment"
+        android:name="com.example.app.ui.SettingsFragment"
         android:label="FifthFragment"
         tools:layout="@layout/fragment_data" />
 </navigation>

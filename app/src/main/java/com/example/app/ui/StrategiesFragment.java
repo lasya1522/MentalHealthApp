@@ -13,14 +13,14 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.app.R;
 
-public class DailyFragment extends Fragment {
+public class StrategiesFragment extends Fragment {
 
-    private DailyViewModel dailyViewModel;
+    private StrategiesViewModel dailyViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         dailyViewModel =
-                new ViewModelProvider(this).get(DailyViewModel.class);
+                new ViewModelProvider(this).get(StrategiesViewModel.class);
         View root = inflater.inflate(R.layout.fragment_daily, container, false);
         final TextView textView = root.findViewById(R.id.test_text);
         //dailyViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {

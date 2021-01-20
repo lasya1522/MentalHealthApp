@@ -11,14 +11,14 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.app.R;
 
-public class StressFragment extends Fragment {
+public class TrendsFragment extends Fragment {
 
-    private StressViewModel stressViewModel;
+    private TrendsViewModel stressViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         stressViewModel =
-                new ViewModelProvider(this).get(StressViewModel.class);
+                new ViewModelProvider(this).get(TrendsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_stress, container, false);
        // final TextView textView = root.findViewById(R.id.);
         //stressViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {

@@ -1,14 +1,14 @@
-package com.example.app.ui.sleep_tab;
+package com.example.app.ui.trends_tab;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class SleepViewModel extends ViewModel {
+public class GoalsViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public SleepViewModel() {
+    public GoalsViewModel() {
         mText = new MutableLiveData<>();
       // mText.setValue("This is stress fragment");
     }
