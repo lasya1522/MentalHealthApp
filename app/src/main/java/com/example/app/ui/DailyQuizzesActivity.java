@@ -7,7 +7,8 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.app.MorningQuizActivity;
+import com.example.app.DailyQuizActivity;
+
 import com.example.app.R;
 
 public class DailyQuizzesActivity extends AppCompatActivity {
@@ -24,8 +25,8 @@ public class DailyQuizzesActivity extends AppCompatActivity {
         btnM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(DailyQuizzesActivity.this, MorningQuizActivity.class);
-                startActivity(intent1);
+              //  Intent intent1 = new Intent(DailyQuizzesActivity.this, MorningQuizActivity.class);
+              //  startActivity(intent1);
             }
         });
         //takes user from daily quizzes to the actual night quiz when the touch the night quiz btn

@@ -59,14 +59,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean addMorningQuiz(MorningQuiz morningQuiz){
+    public boolean addDailyQuiz(DailyQuiz dailyQuiz){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put( COLUMN_MORNING_CURRENT_MOOD, morningQuiz.getCurrentMood());
+       /* cv.put( COLUMN_MORNING_CURRENT_MOOD, dailyQuiz.getCurrentMood());
         cv.put( COLUMN_MORNING_DATE, morningQuiz.getDate().toString()); //should I keep the toString()?
         cv.put( COLUMN_MORNING_SLEEP_RATING, morningQuiz.getSleepRating());
         cv.put( COLUMN_MORNING_SLEEP_DURATION, morningQuiz.getSleepDuration());
 
+
+        */
         //tells me whether the item was put into the database successfully
         long insert = db.insert(MORNING_QUIZ_TABLE, null, cv);
         if (insert == -1){

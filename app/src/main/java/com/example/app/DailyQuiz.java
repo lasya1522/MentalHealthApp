@@ -2,7 +2,7 @@ package com.example.app;
 
 import java.util.Date;
 
-public class Quiz {
+public class DailyQuiz {
 
     private Date date;
     private String mood;
@@ -16,7 +16,7 @@ public class Quiz {
     private String other;
 
 
-    public Quiz(Date date, String mood, String sleepTime, String sleepRating, String productiveTime, String relaxTime, String exerciseTime, String stressLevel, String stressors, String other) {
+    public DailyQuiz(Date date, String mood, String sleepTime, String sleepRating, String productiveTime, String relaxTime, String exerciseTime, String stressLevel, String stressors, String other) {
         this.date = date;
         this.mood = mood;
         this.sleepTime = sleepTime;

@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Calendar;
 import java.util.Date;
 
-public class MorningQuizActivity extends AppCompatActivity {
+public class DailyQuizActivity extends AppCompatActivity {
 
    private EditText et_sleepRating;
    private EditText et_sleepDuration;
@@ -57,26 +57,24 @@ public class MorningQuizActivity extends AppCompatActivity {
         //et_sleepDuration = findViewById(R.id.et_sleepDuration);
         //et_sleepRating = findViewById(R.id.et_sleepRating);
 
-        databaseHelper = new DatabaseHelper(MorningQuizActivity.this);
+        databaseHelper = new DatabaseHelper(DailyQuizActivity.this);
 
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                MorningQuiz morningQuiz;
+                DailyQuiz dailyQuiz;
 
                 try {
-                    morningQuiz = new MorningQuiz(mood, Calendar.getInstance().getTime(),
-                            Integer.parseInt(et_sleepRating.getText().toString()),
-                            Integer.parseInt(et_sleepDuration.getText().toString()));
+                    dailyQuiz = new DailyQuiz(date, mood, sleepTime, sleepRating, productiveTime, relaxTime, exerciseTime, stressLevel, stressors, other);
 
-                    Toast.makeText(MorningQuizActivity.this, morningQuiz.toString(), Toast.LENGTH_LONG).show();
-                    databaseHelper = new DatabaseHelper(MorningQuizActivity.this);
-                    boolean success = databaseHelper.addMorningQuiz(morningQuiz);
-                    Toast.makeText(MorningQuizActivity.this, "success " + success, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DailyQuizActivity.this, dailyQuiz.toString(), Toast.LENGTH_LONG).show();
+                    databaseHelper = new DatabaseHelper(DailyQuizActivity.this);
+                    boolean success = databaseHelper.addDailyQuiz(dailyQuiz);
+                    Toast.makeText(DailyQuizActivity.this, "success " + success, Toast.LENGTH_SHORT).show();
 
                 } catch (Exception e) {
-                    Toast.makeText(MorningQuizActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DailyQuizActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
 
                 }
             }
@@ -87,36 +85,36 @@ public class MorningQuizActivity extends AppCompatActivity {
         btn_mood1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moodChoice = 1;
-                Toast.makeText(MorningQuizActivity.this, "it works", Toast.LENGTH_SHORT).show();
+               // mood = 1;
+               // Toast.makeText(MorningQuizActivity.this, "it works", Toast.LENGTH_SHORT).show();
 
             }
         });
         btn_mood2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moodChoice = 2;
+               // mood = 2;
 
             }
         });
         btn_mood3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moodChoice = 3;
+                //moodChoice = 3;
 
             }
         });
         btn_mood4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moodChoice = 4;
+               // moodChoice = 4;
 
             }
         });
         btn_mood5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moodChoice = 5;
+               // moodChoice = 5;
 
             }
         });
