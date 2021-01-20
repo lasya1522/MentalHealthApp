@@ -1,4 +1,4 @@
-package com.example.app.ui.stress_tab;
+package com.example.app.ui.goals_tab;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,15 +11,15 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.app.R;
 
-public class TrendsFragment extends Fragment {
+public class GoalsFragment extends Fragment {
 
-    private TrendsViewModel stressViewModel;
+    private GoalsViewModel goalsViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        stressViewModel =
-                new ViewModelProvider(this).get(TrendsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_stress, container, false);
+        goalsViewModel =
+                new ViewModelProvider(this).get(GoalsViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_goals, container, false);
        // final TextView textView = root.findViewById(R.id.);
         //stressViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
            // @Override

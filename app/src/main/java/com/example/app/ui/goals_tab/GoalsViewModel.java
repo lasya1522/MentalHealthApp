@@ -1,16 +1,16 @@
-package com.example.app.ui.stress_tab;
+package com.example.app.ui.goals_tab;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class TrendsViewModel extends ViewModel {
+public class GoalsViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public TrendsViewModel() {
+    public GoalsViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is notifications fragment");
+        mText.setValue("This is goals fragment");
     }
 
     public LiveData<String> getText() {

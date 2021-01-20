@@ -15,16 +15,16 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.app.R;
 
-public class GoalsFragment extends Fragment {
-    private GoalsViewModel sleepViewModel;
+public class TrendsFragment extends Fragment {
+    private TrendsViewModel trendsViewModel;
     //create references to buttons
     Button submitBtn;
     Button saveBtn;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        sleepViewModel = new ViewModelProvider(this).get(GoalsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_sleep, container, false);
+        trendsViewModel = new ViewModelProvider(this).get(TrendsViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_trends, container, false);
         final TextView textView = root.findViewById(R.id.sleepTitle);
         //code for buttons
         submitBtn = (Button) root.findViewById(R.id.submitBtn);
@@ -44,7 +44,7 @@ public class GoalsFragment extends Fragment {
             }
         });
 
-        sleepViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        trendsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

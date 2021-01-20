@@ -15,13 +15,13 @@ import com.example.app.R;
 
 public class StrategiesFragment extends Fragment {
 
-    private StrategiesViewModel dailyViewModel;
+    private StrategiesViewModel strategiesViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dailyViewModel =
+        strategiesViewModel =
                 new ViewModelProvider(this).get(StrategiesViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_daily, container, false);
+        View root = inflater.inflate(R.layout.fragment_strategies, container, false);
         final TextView textView = root.findViewById(R.id.test_text);
         //dailyViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             //@Override

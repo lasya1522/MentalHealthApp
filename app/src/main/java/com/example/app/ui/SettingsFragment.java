@@ -21,13 +21,13 @@ import java.util.ArrayList;
 
 public class SettingsFragment extends Fragment {
 
-    private SettingsViewModel dataViewModel;
+    private SettingsViewModel settingsViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dataViewModel =
+        settingsViewModel =
                 new ViewModelProvider(this).get(SettingsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_data, container, false);
+        View root = inflater.inflate(R.layout.fragment_settings, container, false);
         final TextView textView = root.findViewById(R.id.test_text);
         /*dataViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
