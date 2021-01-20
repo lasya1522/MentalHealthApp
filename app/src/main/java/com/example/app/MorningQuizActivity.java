@@ -34,18 +34,18 @@ public class MorningQuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_morning_quiz);
         //the back arrow will appear on the morning quiz in the action bar
 
-        btn_submit = findViewById(R.id.btn_submit);
+        //btn_submit = findViewById(R.id.btn_submit);
 
-        btn_mood1 = findViewById(R.id.btn_mood1);
-        btn_mood2 = findViewById(R.id.btn_mood2);
-        btn_mood3 = findViewById(R.id.btn_mood3);
-        btn_mood4 = findViewById(R.id.btn_mood4);
-        btn_mood5 = findViewById(R.id.btn_mood5);
+        //btn_mood1 = findViewById(R.id.btn_mood1);
+        //btn_mood2 = findViewById(R.id.btn_mood2);
+        //btn_mood3 = findViewById(R.id.btn_mood3);
+        //btn_mood4 = findViewById(R.id.btn_mood4);
+        //btn_mood5 = findViewById(R.id.btn_mood5);
 
         //btn_stress2 = findViewById(R.id.btn_stress2);
 
-        et_sleepDuration = findViewById(R.id.et_sleepDuration);
-        et_sleepRating = findViewById(R.id.et_sleepRating);
+        //et_sleepDuration = findViewById(R.id.et_sleepDuration);
+        //et_sleepRating = findViewById(R.id.et_sleepRating);
 
         databaseHelper = new DatabaseHelper(MorningQuizActivity.this);
 
