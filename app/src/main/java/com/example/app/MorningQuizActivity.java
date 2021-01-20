@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Calendar;
+import java.util.Date;
 
 public class MorningQuizActivity extends AppCompatActivity {
 
@@ -23,7 +24,16 @@ public class MorningQuizActivity extends AppCompatActivity {
     private Button btn_mood4;
     private Button btn_mood5;
 
-    private Integer moodChoice; //is this really the best way to keep track of the mood ? // may change to MC buttons
+    private Date date;
+    private String mood;
+    private String sleepTime;
+    private String sleepRating;
+    private String productiveTime;
+    private String relaxTime;
+    private String exerciseTime;
+    private String stressLevel;
+    private String stressors;
+    private String other;//is this really the best way to keep track of the mood ? // may change to MC buttons
 
     DatabaseHelper databaseHelper;
 
@@ -31,7 +41,7 @@ public class MorningQuizActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_morning_quiz);
+        setContentView(R.layout.activity_daily_quiz);
         //the back arrow will appear on the morning quiz in the action bar
 
         //btn_submit = findViewById(R.id.btn_submit);
@@ -56,7 +66,7 @@ public class MorningQuizActivity extends AppCompatActivity {
                 MorningQuiz morningQuiz;
 
                 try {
-                    morningQuiz = new MorningQuiz(moodChoice, Calendar.getInstance().getTime(),
+                    morningQuiz = new MorningQuiz(mood, Calendar.getInstance().getTime(),
                             Integer.parseInt(et_sleepRating.getText().toString()),
                             Integer.parseInt(et_sleepDuration.getText().toString()));
 

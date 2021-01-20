@@ -30,6 +30,7 @@ public class TrendsFragment extends Fragment {
         submitBtn = (Button) root.findViewById(R.id.submitBtn);
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View v) {
                 SleepData sleepData2 = new SleepData("Homework", "Sleep for 8 hours tonight");
                 //Toast.makeText(SleepFragment.this, "Submit", Toast.LENGTH_SHORT).show();
