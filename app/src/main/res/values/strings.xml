@@ -8,15 +8,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="textView">TextView</string>
-    <string name="stress">Stress</string>
-    <string name="daily_life">Daily Life</string>
-    <string name="data">Data</string>
     <string name="morning_quiz">Morning Quiz</string>
-    <string name="night_quiz">Night Quiz</string>
     <string name="todo">TODO</string>
     <string name="sleep">Sleep</string>
 
-    <string name="SubmitWord">Submit</string>
 
     <string name="ViewQuizzes">View today\'s quizzes!</string>
     <string name="relax_time">How much time did you spend being productive?</string>
@@ -24,7 +19,7 @@
     <string name="how_much_time_did_you_spend_exercising">How much time did you spend exercising?</string>
     <string name="rateStress">Rate your stress levels:</string>
 
-
+    <string name="welcomeMsg">Welcome!</string>
     <string name="introMessage">Logo of app goes here</string>
     <string name="quizDailyMessage">View today\'s quizzes!</string>
     <string name="stressGoalsInput">Write down your goals! (list below)</string>
@@ -36,5 +31,5 @@
     <string name="question3">3. How would you rate your sleep?</string>
     <string name="question4">4. How much time did you spend being productive?</string>
     <string name="question5">5. How much time did you spend relaxing?</string>
-    <string name="welcomeMsg">Welcome!</string>
+    <string name="question6">6. How much time did you spend exercising?</string>
 </resources>

@@ -25,7 +25,7 @@ public class TrendsFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         trendsViewModel = new ViewModelProvider(this).get(TrendsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_trends, container, false);
-        final TextView textView = root.findViewById(R.id.sleepTitle);
+        final TextView textView = root.findViewById(R.id.trendTitle);
         //code for buttons
         submitBtn = (Button) root.findViewById(R.id.submitBtn);
         submitBtn.setOnClickListener(new View.OnClickListener() {
