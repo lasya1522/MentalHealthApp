@@ -48,7 +48,7 @@
                 app:layout_constraintVertical_bias="0.15">
 
                 <RadioButton
-                    android:id="@+id/radioButton5"
+                    android:id="@+id/btn_mood1"
                     android:layout_width="228dp"
                     android:layout_height="31dp"
                     android:layout_weight="1"
@@ -56,7 +56,7 @@
                     android:textSize="18sp" />
 
                 <RadioButton
-                    android:id="@+id/radioButton6"
+                    android:id="@+id/btn_mood2"
                     android:layout_width="228dp"
                     android:layout_height="31dp"
                     android:layout_weight="1"
@@ -64,7 +64,7 @@
                     android:textSize="18sp" />
 
                 <RadioButton
-                    android:id="@+id/radioButton7"
+                    android:id="@+id/btn_mood3"
                     android:layout_width="228dp"
                     android:layout_height="31dp"
                     android:layout_weight="1"
@@ -72,7 +72,7 @@
                     android:textSize="18sp" />
 
                 <RadioButton
-                    android:id="@+id/radioButton8"
+                    android:id="@+id/btn_mood4"
                     android:layout_width="228dp"
                     android:layout_height="31dp"
                     android:layout_weight="1"
@@ -96,45 +96,13 @@
                 app:layout_constraintVertical_bias="0.253" />
 
 
-            <RadioGroup
-                android:id="@+id/radioGroup"
-                android:layout_width="398dp"
-                android:layout_height="70dp"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.339">
-
-                <RadioButton
-                    android:id="@+id/radioButton9"
-                    android:layout_width="109dp"
-                    android:layout_height="wrap_content"
-                    android:text="1-3 hours"
-                    android:textSize="18sp" />
-
-                <RadioButton
-                    android:id="@+id/radioButton10"
-                    android:layout_width="109dp"
-                    android:layout_height="wrap_content"
-                    android:text="4-6 hours"
-                    android:textSize="18sp" />
-
-                <RadioButton
-                    android:id="@+id/radioButton11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="7-10 hours"
-                    android:textSize="18sp" />
-
-                <RadioButton
-                    android:id="@+id/radioButton12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="10+ hour" />
-            </RadioGroup>
+            <EditText
+                android:id="@+id/et_sleepTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number" />
 
             <TextView
                 android:id="@+id/textView8"
@@ -164,21 +132,21 @@
                 app:layout_constraintVertical_bias="0.121">
 
                 <RadioButton
-                    android:id="@+id/radioButton13"
+                    android:id="@+id/btn_sleepRating1"
                     android:layout_width="127dp"
                     android:layout_height="69dp"
                     android:text="Great"
                     android:textSize="18sp" />
 
                 <RadioButton
-                    android:id="@+id/radioButton14"
+                    android:id="@+id/btn_sleepRating2"
                     android:layout_width="127dp"
                     android:layout_height="69dp"
                     android:text="Decent"
                     android:textSize="18sp" />
 
                 <RadioButton
-                    android:id="@+id/radioButton15"
+                    android:id="@+id/btn_sleepRating3"
                     android:layout_width="140dp"
                     android:layout_height="69dp"
                     android:text="Bad"
@@ -200,50 +168,13 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.642" />
 
-            <RadioGroup
-                android:id="@+id/radioGroup5"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView8"
-                app:layout_constraintVertical_bias="0.429">
-
-                <RadioButton
-                    android:id="@+id/radioButton16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="None"
-                    android:textSize="18sp" />
-
-                <RadioButton
-                    android:id="@+id/radioButton17"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="1-30 min"
-                    android:textSize="18sp" />
-
-                <RadioButton
-                    android:id="@+id/radioButton18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="1-3 hours"
-                    android:textSize="18sp" />
-                <RadioButton
-                    android:id="@+id/radioButton19"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="3+ hours"
-                    android:textSize="18sp"/>
-
-            </RadioGroup>
+            <EditText
+                android:id="@+id/et_productiveTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number" />
 
             <TextView
                 android:id="@+id/textView10"
@@ -260,50 +191,13 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.86" />
 
-            <RadioGroup
-                android:id="@+id/radioGroup6"
-                android:layout_width="397dp"
-                android:layout_height="48dp"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.945">
-
-                <RadioButton
-                    android:id="@+id/radioButton20"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="None"
-                    android:textSize="18sp" />
-
-                <RadioButton
-                    android:id="@+id/radioButton21"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="1-30 min"
-                    android:textSize="18sp" />
-
-                <RadioButton
-                    android:id="@+id/radioButton22"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="1-3 hours"
-                    android:textSize="18sp" />
-
-                <RadioButton
-                    android:id="@+id/radioButton23"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="3+ hours"
-                    android:textSize="18sp" />
-            </RadioGroup>
+            <EditText
+                android:id="@+id/et_relaxTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number" />
 
             <TextView
                 android:id="@+id/textView11"
@@ -320,6 +214,20 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.2" />
 
+            <EditText
+                android:id="@+id/et_exerciseTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number" />
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Button" />
 
 
         </LinearLayout>

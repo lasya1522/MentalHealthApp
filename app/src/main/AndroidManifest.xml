@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.App">
-        <activity android:name=".MorningQuizActivity"
+        <activity android:name=".DailyQuizActivity"
             android:parentActivityName=".ui.DailyQuizzesActivity"/>
         <activity
             android:name=".ui.DailyQuizzesActivity"

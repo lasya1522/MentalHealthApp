@@ -27,7 +27,7 @@ public class TrendsFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_trends, container, false);
         final TextView textView = root.findViewById(R.id.trendTitle);
         //code for buttons
-        submitBtn = (Button) root.findViewById(R.id.submitBtn);
+       // submitBtn = (Button) root.findViewById(R.id.submitBtn);
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
 
@@ -38,7 +38,7 @@ public class TrendsFragment extends Fragment {
                 // which we have to further discuss and implement into our design
             }
         });
-        saveBtn = (Button) root.findViewById(R.id.saveBtn);
+     //   saveBtn = (Button) root.findViewById(R.id.saveBtn);
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

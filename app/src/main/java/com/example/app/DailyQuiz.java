@@ -6,17 +6,17 @@ public class DailyQuiz {
 
     private Date date;
     private String mood;
-    private String sleepTime;
+    private Integer sleepTime;
     private String sleepRating;
-    private String productiveTime;
-    private String relaxTime;
-    private String exerciseTime;
+    private Integer productiveTime;
+    private Integer relaxTime;
+    private Integer exerciseTime;
     private String stressLevel;
     private String stressors;
     private String other;
 
 
-    public DailyQuiz(Date date, String mood, String sleepTime, String sleepRating, String productiveTime, String relaxTime, String exerciseTime, String stressLevel, String stressors, String other) {
+    public DailyQuiz(Date date, String mood, Integer sleepTime, String sleepRating, Integer productiveTime, Integer relaxTime, Integer exerciseTime, String stressLevel, String stressors, String other) {
         this.date = date;
         this.mood = mood;
         this.sleepTime = sleepTime;
@@ -37,7 +37,7 @@ public class DailyQuiz {
         return mood;
     }
 
-    public String getSleepTime() {
+    public Integer getSleepTime() {
         return sleepTime;
     }
 
@@ -45,15 +45,15 @@ public class DailyQuiz {
         return sleepRating;
     }
 
-    public String getProductiveTime() {
+    public Integer getProductiveTime() {
         return productiveTime;
     }
 
-    public String getRelaxTime() {
+    public Integer getRelaxTime() {
         return relaxTime;
     }
 
-    public String getExerciseTime() {
+    public Integer getExerciseTime() {
         return exerciseTime;
     }
 
@@ -77,7 +77,7 @@ public class DailyQuiz {
         this.mood = mood;
     }
 
-    public void setSleepTime(String sleepTime) {
+    public void setSleepTime(Integer sleepTime) {
         this.sleepTime = sleepTime;
     }
 
@@ -85,15 +85,15 @@ public class DailyQuiz {
         this.sleepRating = sleepRating;
     }
 
-    public void setProductiveTime(String productiveTime) {
+    public void setProductiveTime(Integer productiveTime) {
         this.productiveTime = productiveTime;
     }
 
-    public void setRelaxTime(String relaxTime) {
+    public void setRelaxTime(Integer relaxTime) {
         this.relaxTime = relaxTime;
     }
 
-    public void setExerciseTime(String exerciseTime) {
+    public void setExerciseTime(Integer exerciseTime) {
         this.exerciseTime = exerciseTime;
     }
 

@@ -14,8 +14,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.app.MorningQuizActivity;
-import com.example.app.ui.DailyQuizzesActivity;
+import com.example.app.DailyQuizActivity;
+//import com.example.app.DailyQuizActivity;
+//import com.example.app.ui.DailyQuizzesActivity;
 import com.example.app.R;
 
 public class HomeFragment extends Fragment {
@@ -39,7 +40,7 @@ public class HomeFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), MorningQuizActivity.class);
+                Intent intent = new Intent(getActivity(), DailyQuizActivity.class);
                 startActivity(intent);
             }
         });

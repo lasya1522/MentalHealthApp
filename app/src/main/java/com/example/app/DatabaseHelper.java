@@ -78,7 +78,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean addNightQuiz(NightQuiz nightQuiz){
+   /* public boolean addNightQuiz(NightQuiz nightQuiz){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
@@ -123,4 +123,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return returnList;
     }
+
+    */
 }

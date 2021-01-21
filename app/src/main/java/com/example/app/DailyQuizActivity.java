@@ -22,15 +22,25 @@ public class DailyQuizActivity extends AppCompatActivity {
     private Button btn_mood2;
     private Button btn_mood3;
     private Button btn_mood4;
-    private Button btn_mood5;
+
+    private EditText et_sleepTime;
+
+    private Button btn_sleepRating1;
+    private Button btn_sleepRating2;
+    private Button btn_sleepRating3;
+
+    private EditText et_productiveTime;
+    private EditText et_relaxTime;
+    private EditText et_exerciseTime;
+
 
     private Date date;
     private String mood;
-    private String sleepTime;
+    private Integer sleepTime;
     private String sleepRating;
-    private String productiveTime;
-    private String relaxTime;
-    private String exerciseTime;
+    private Integer productiveTime;
+    private Integer relaxTime;
+    private Integer exerciseTime;
     private String stressLevel;
     private String stressors;
     private String other;//is this really the best way to keep track of the mood ? // may change to MC buttons
@@ -42,35 +52,58 @@ public class DailyQuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_quiz);
-        //the back arrow will appear on the morning quiz in the action bar
 
-        //btn_submit = findViewById(R.id.btn_submit);
+        btn_mood1 = findViewById(R.id.btn_mood1);
+        btn_mood2 = findViewById(R.id.btn_mood2);
+        btn_mood3 = findViewById(R.id.btn_mood3);
+        btn_mood4 = findViewById(R.id.btn_mood4);
 
-        //btn_mood1 = findViewById(R.id.btn_mood1);
-        //btn_mood2 = findViewById(R.id.btn_mood2);
-        //btn_mood3 = findViewById(R.id.btn_mood3);
-        //btn_mood4 = findViewById(R.id.btn_mood4);
-        //btn_mood5 = findViewById(R.id.btn_mood5);
+        et_sleepTime = findViewById(R.id.et_sleepTime);
 
-        //btn_stress2 = findViewById(R.id.btn_stress2);
+        btn_sleepRating1 = findViewById(R.id.btn_sleepRating1);
+        btn_sleepRating2 = findViewById(R.id.btn_sleepRating2);
+        btn_sleepRating3 = findViewById(R.id.btn_sleepRating3);
 
-        //et_sleepDuration = findViewById(R.id.et_sleepDuration);
-        //et_sleepRating = findViewById(R.id.et_sleepRating);
+        et_productiveTime = findViewById(R.id.et_productiveTime);
+        et_relaxTime = findViewById(R.id.et_relaxTime);
+        et_exerciseTime = findViewById(R.id.et_exerciseTime);
+
+        btn_submit = findViewById(R.id.btn_submit);
 
         databaseHelper = new DatabaseHelper(DailyQuizActivity.this);
 
-        btn_submit.setOnClickListener(new View.OnClickListener() {
+      btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 DailyQuiz dailyQuiz;
 
+                //need some way to test whether all necessary fields were filled in with a valid number. initialize int vars to -1? check before try?
+
                 try {
+                    Date date = Calendar.getInstance().getTime();
+
+                    if ((Integer.parseInt(et_sleepTime.getText().toString()) < 24) && (Integer.parseInt(et_sleepTime.getText().toString()) >= 0)){
+                        sleepTime = Integer.parseInt(et_sleepTime.getText().toString());
+                    }
+                    if ((Integer.parseInt(et_productiveTime.getText().toString()) < 24) && (Integer.parseInt(et_productiveTime.getText().toString()) >= 0)){
+                        productiveTime = Integer.parseInt(et_productiveTime.getText().toString());
+                    }
+                    if ((Integer.parseInt(et_relaxTime.getText().toString()) < 24) && (Integer.parseInt(et_relaxTime.getText().toString()) >= 0)){
+                        relaxTime = Integer.parseInt(et_relaxTime.getText().toString());
+                    }
+                    if ((Integer.parseInt(et_exerciseTime.getText().toString()) < 24) && (Integer.parseInt(et_exerciseTime.getText().toString()) >= 0)){
+                        exerciseTime = Integer.parseInt(et_exerciseTime.getText().toString());
+                    }
+
+                    //technically, will we need to change this code because I basically copied it off a tutorial?
                     dailyQuiz = new DailyQuiz(date, mood, sleepTime, sleepRating, productiveTime, relaxTime, exerciseTime, stressLevel, stressors, other);
 
                     Toast.makeText(DailyQuizActivity.this, dailyQuiz.toString(), Toast.LENGTH_LONG).show();
+
                     databaseHelper = new DatabaseHelper(DailyQuizActivity.this);
                     boolean success = databaseHelper.addDailyQuiz(dailyQuiz);
+
                     Toast.makeText(DailyQuizActivity.this, "success " + success, Toast.LENGTH_SHORT).show();
 
                 } catch (Exception e) {
@@ -80,12 +113,10 @@ public class DailyQuizActivity extends AppCompatActivity {
             }
         });
 
-        // whenever the button is selected, the instance variable is updated with that choice.
-        // Lasya is right; are buttons really the best choice for this? idk, but here we are for now
         btn_mood1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // mood = 1;
+               mood = "Good";
                // Toast.makeText(MorningQuizActivity.this, "it works", Toast.LENGTH_SHORT).show();
 
             }
@@ -93,32 +124,31 @@ public class DailyQuizActivity extends AppCompatActivity {
         btn_mood2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // mood = 2;
+               mood = "Decent";
 
             }
         });
         btn_mood3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //moodChoice = 3;
+                mood = "Bad";
 
             }
         });
         btn_mood4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // moodChoice = 4;
+               mood = "Tired";
 
             }
         });
-        btn_mood5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               // moodChoice = 5;
 
-            }
-        });
+
+
+
+
 
     }
+
 
 }
