@@ -81,29 +81,27 @@ public class DailyQuizActivity extends AppCompatActivity {
                 //need some way to test whether all necessary fields were filled in with a valid number. initialize int vars to -1? check before try?
 
                 try {
+
                     Date date = Calendar.getInstance().getTime();
 
-                    if ((Integer.parseInt(et_sleepTime.getText().toString()) < 24) && (Integer.parseInt(et_sleepTime.getText().toString()) >= 0)){
-                        sleepTime = Integer.parseInt(et_sleepTime.getText().toString());
-                        Toast.makeText(DailyQuizActivity.this, sleepTime, Toast.LENGTH_SHORT).show();
+
+                    if ((Integer.parseInt(String.valueOf(et_sleepTime.getText())) < 24) && (Integer.parseInt(String.valueOf(et_sleepTime.getText())) >= 0)){
+                        sleepTime = Integer.parseInt(String.valueOf(et_sleepTime.getText()));
                     }
-                    if ((Integer.parseInt(et_productiveTime.getText().toString()) < 24) && (Integer.parseInt(et_productiveTime.getText().toString()) >= 0)){
-                        productiveTime = Integer.parseInt(et_productiveTime.getText().toString());
-                        Toast.makeText(DailyQuizActivity.this, productiveTime, Toast.LENGTH_SHORT).show();
+                   if ((Integer.parseInt(String.valueOf(et_productiveTime.getText())) < 24) && (Integer.parseInt(String.valueOf(et_productiveTime.getText())) >= 0)){
+                        productiveTime = Integer.parseInt(String.valueOf(et_productiveTime.getText()));
                     }
-                    if ((Integer.parseInt(et_relaxTime.getText().toString()) < 24) && (Integer.parseInt(et_relaxTime.getText().toString()) >= 0)){
-                        relaxTime = Integer.parseInt(et_relaxTime.getText().toString());
-                        Toast.makeText(DailyQuizActivity.this, relaxTime, Toast.LENGTH_SHORT).show();
+                    if ((Integer.parseInt(String.valueOf(et_relaxTime.getText())) < 24) && (Integer.parseInt(String.valueOf(et_relaxTime.getText())) >= 0)){
+                        relaxTime = Integer.parseInt(String.valueOf(et_relaxTime.getText()));
                     }
-                    if ((Integer.parseInt(et_exerciseTime.getText().toString()) < 24) && (Integer.parseInt(et_exerciseTime.getText().toString()) >= 0)){
-                        exerciseTime = Integer.parseInt(et_exerciseTime.getText().toString());
-                        Toast.makeText(DailyQuizActivity.this, exerciseTime, Toast.LENGTH_SHORT).show();
+                    if ((Integer.parseInt(String.valueOf(et_exerciseTime.getText())) < 24) && (Integer.parseInt(String.valueOf(et_exerciseTime.getText())) >= 0)) {
+                        exerciseTime = Integer.parseInt(String.valueOf(et_exerciseTime.getText()));
                     }
 
                     //technically, will we need to change this code because I basically copied it off a tutorial?
                     dailyQuiz = new DailyQuiz(date, mood, sleepTime, sleepRating, productiveTime, relaxTime, exerciseTime, stressLevel, stressors, other);
 
-                    Toast.makeText(DailyQuizActivity.this, dailyQuiz.toString(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(DailyQuizActivity.this, dailyQuiz.toString(), Toast.LENGTH_SHORT).show();
 
                     databaseHelper = new DatabaseHelper(DailyQuizActivity.this);
                     boolean success = databaseHelper.addDailyQuiz(dailyQuiz);

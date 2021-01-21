@@ -22,7 +22,7 @@ public class StrategiesFragment extends Fragment {
         strategiesViewModel =
                 new ViewModelProvider(this).get(StrategiesViewModel.class);
         View root = inflater.inflate(R.layout.fragment_strategies, container, false);
-        final TextView textView = root.findViewById(R.id.test_text);
+      //  final TextView textView = root.findViewById(R.id.test_text);
         //dailyViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             //@Override
             //public void onChanged(@Nullable String s) {

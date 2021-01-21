@@ -28,7 +28,7 @@ public class SettingsFragment extends Fragment {
         settingsViewModel =
                 new ViewModelProvider(this).get(SettingsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_settings, container, false);
-        final TextView textView = root.findViewById(R.id.test_text);
+       // final TextView textView = root.findViewById(R.id.test_text);
         /*dataViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -37,8 +37,8 @@ public class SettingsFragment extends Fragment {
         });
 
          */
-        PieChart pieChart;
-        pieChart = (PieChart) root.findViewById(R.id.chart);
+       /* PieChart pieChart;
+        //pieChart = (PieChart) root.findViewById(R.id.chart);
 
         ArrayList<PieEntry> entries = new ArrayList<PieEntry>();
         entries.add(new PieEntry(2));
@@ -50,7 +50,10 @@ public class SettingsFragment extends Fragment {
         pieChart.setData(data);
 
 
+
+        */
         return root;
+
     }
 
 

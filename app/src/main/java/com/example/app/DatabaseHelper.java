@@ -13,7 +13,9 @@ import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    //are for the sql commands ??
+    //??: are for the sql commands ??
+
+    //Emily: yes but why declare redundant strings?
     public static final String DAILY_QUIZ_TABLE = "DAILY_QUIZ_TABLE";
     public static final String COLUMN_MOOD = "MOOD";
     public static final String COLUMN_DATE = "DATE";
@@ -42,9 +44,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     */
 
+    //IS THERE A WAY TO SET THIS UP SO I DONT HAVE TO RECREATE THE THING EVERY TIME
+
     public DatabaseHelper(@Nullable Context context) {
 
-        super(context, "Save trial", null, 5); //I had to increment the version number in order to get it to work after adding the date column
+        super(context, "Save trial", null, 6); //I had to increment the version number in order to get it to work after adding the date column
         //the onUpgrade code won't be called unless I do that
     }
 
@@ -75,6 +79,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
          */
+        String createDailyQuizTableStatement = "CREATE TABLE DAILY_QUIZ_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT, MOOD TEXT, " + "DATE TEXT, SLEEP_TIME TEXT, SLEEP_RATING TEXT, PRODUCTIVE_TIME TEXT, RELAX_TIME TEXT, " + "EXERCISE_TIME TEXT, STRESS_LEVEL TEXT, STRESSORS TEXT, OTHER TEXT )";
+
+        db.execSQL(createDailyQuizTableStatement);
 
     }
 

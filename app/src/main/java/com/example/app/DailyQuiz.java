@@ -108,4 +108,20 @@ public class DailyQuiz {
     public void setOther(String other) {
         this.other = other;
     }
+
+    @Override
+    public String toString() {
+        return "DailyQuiz{" +
+                "date=" + date +
+                ", mood='" + mood + '\'' +
+                ", sleepTime=" + sleepTime +
+                ", sleepRating='" + sleepRating + '\'' +
+                ", productiveTime=" + productiveTime +
+                ", relaxTime=" + relaxTime +
+                ", exerciseTime=" + exerciseTime +
+                ", stressLevel='" + stressLevel + '\'' +
+                ", stressors='" + stressors + '\'' +
+                ", other='" + other + '\'' +
+                '}';
+    }
 }
