@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/question1"
@@ -12,7 +12,9 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,7 +24,7 @@
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="287dp"
-                android:layout_height="match_parent"
+                android:layout_height="55dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:text="@string/question1"
@@ -33,7 +35,7 @@
                 app:layout_constraintHorizontal_bias="0.369"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.063" />
+                app:layout_constraintVertical_bias="0.267" />
 
             <RadioGroup
                 android:id="@+id/radioGroup2"
@@ -98,7 +100,7 @@
 
             <EditText
                 android:id="@+id/et_sleepTime"
-                android:layout_width="match_parent"
+                android:layout_width="328dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
@@ -171,7 +173,7 @@
 
             <EditText
                 android:id="@+id/et_productiveTime"
-                android:layout_width="match_parent"
+                android:layout_width="297dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
@@ -230,6 +232,13 @@
                 android:layout_weight="1"
                 android:text="Submit" />
 
+            <EditText
+                android:id="@+id/editTextNumberSigned"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="numberSigned" />
 
         </LinearLayout>
 
@@ -237,4 +246,4 @@
     </ScrollView>
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
