@@ -37,21 +37,6 @@ public class SettingsFragment extends Fragment {
         });
 
          */
-       /* PieChart pieChart;
-        //pieChart = (PieChart) root.findViewById(R.id.chart);
-
-        ArrayList<PieEntry> entries = new ArrayList<PieEntry>();
-        entries.add(new PieEntry(2));
-        entries.add(new PieEntry(3));
-        entries.add(new PieEntry(2));
-
-        PieDataSet pieDataSet = new PieDataSet(entries, "pie chart");
-        PieData data = new PieData(pieDataSet);
-        pieChart.setData(data);
-
-
-
-        */
         return root;
 
     }

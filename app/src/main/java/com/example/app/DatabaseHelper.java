@@ -92,16 +92,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             // loop through the cursor (result set) and create new DailyQuiz objects. Put them into the return list
             do {
                 //should i change the order of the stuff because the date is second and that's kind of annoying? should I make it second
-                String dailyQuizMood = cursor.getString(0);
                 String dailyQuizDate = cursor.getString(1);
-                int dailyQuizSleepTime = cursor.getInt(2);
-                String dailyQuizSleepRating = cursor.getString(3);
-                int dailyQuizProductiveTime = cursor.getInt(4);
-                int dailyQuizRelaxTime = cursor.getInt(5);
-                int dailyQuizExerciseTime = cursor.getInt(6);
-                String dailyQuizStressLevel = cursor.getString(7);
-                String dailyQuizStressors = cursor.getString(8);
-                String dailyQuizOther = cursor.getString(9);
+                String dailyQuizMood = cursor.getString(2);
+                int dailyQuizSleepTime = cursor.getInt(3);
+                String dailyQuizSleepRating = cursor.getString(4);
+                int dailyQuizProductiveTime = cursor.getInt(5);
+                int dailyQuizRelaxTime = cursor.getInt(6);
+                int dailyQuizExerciseTime = cursor.getInt(7);
+                String dailyQuizStressLevel = cursor.getString(8);
+                String dailyQuizStressors = cursor.getString(9);
+                String dailyQuizOther = cursor.getString(10);
 
                 DailyQuiz quiz = new DailyQuiz(dailyQuizDate, dailyQuizMood, dailyQuizSleepTime, dailyQuizSleepRating, dailyQuizProductiveTime, dailyQuizRelaxTime, dailyQuizExerciseTime, dailyQuizStressLevel, dailyQuizStressors, dailyQuizOther  );
                 returnList.add(quiz);

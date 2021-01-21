@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,11 +15,24 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.app.DailyQuiz;
 import com.example.app.DailyQuizActivity;
 import com.example.app.DatabaseHelper;
 import com.example.app.MainActivity;
 import com.example.app.PastQuizzesActivity;
 import com.example.app.R;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.Chart;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TrendsFragment extends Fragment {
 
@@ -26,6 +40,7 @@ public class TrendsFragment extends Fragment {
     //create references to buttons
     Button submitBtn;
     Button saveBtn;
+    DatabaseHelper databaseHelper;
 
     Button btn_viewPastQuizzes;
 
@@ -34,6 +49,7 @@ public class TrendsFragment extends Fragment {
         trendsViewModel = new ViewModelProvider(this).get(TrendsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_trends, container, false);
         final TextView textView = root.findViewById(R.id.trendTitle);
+        databaseHelper = new DatabaseHelper(this.getContext()); //is this.getContext() safe to use? I guessed.
 
         btn_viewPastQuizzes = root.findViewById(R.id.btn_viewPastQuizzes);
 
@@ -76,6 +92,31 @@ public class TrendsFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        List<DailyQuiz> dailyQuizData = databaseHelper.getDailyQuizData();
+
+        //TESTED OUT GRAPHS BY CREATING A TEST GRAPH HERE
+
+        //we should do a "past 30 days" or "past 7 days" or whatever thing so that we have a finite thing
+        BarChart barChart;
+        barChart = (BarChart) root.findViewById(R.id.chart);
+        List<BarEntry> entries = new ArrayList<>();
+
+        //IMPORTANT: it is not showing the correct number on the graph here.?????????????????????
+        entries.add(new BarEntry(0f, dailyQuizData.get(0).getProductiveTime()));
+        Toast.makeText(this.getContext(), String.valueOf(dailyQuizData.get(0)), Toast.LENGTH_SHORT).show();
+        entries.add(new BarEntry(1f, dailyQuizData.get(1).getProductiveTime()));
+        entries.add(new BarEntry(2f, dailyQuizData.get(2).getProductiveTime()));
+        entries.add(new BarEntry(3f, dailyQuizData.get(3).getProductiveTime()));
+        // gap of 2f
+        entries.add(new BarEntry(5f, 70f));
+        entries.add(new BarEntry(6f, 60f));
+        BarDataSet set = new BarDataSet(entries, "BarDataSet");
+        BarData data = new BarData(set);
+        data.setBarWidth(0.9f); // set custom bar width
+        barChart.setData(data);
+        barChart.setFitBars(true); // make the x-axis fit exactly all bars
+        barChart.invalidate(); // refresh
 
         return root;
     }
