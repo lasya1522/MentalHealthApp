@@ -10,8 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.text.SimpleDateFormat;
 
 public class DailyQuizActivity extends AppCompatActivity {
+
+    //ARE THESE SUPPOSED TO BE PRIVATE OR JUST NOTHING??????? SEE PASTQUIZZESACTIVITY
 
    private EditText et_sleepRating;
    private EditText et_sleepDuration;
@@ -82,9 +85,8 @@ public class DailyQuizActivity extends AppCompatActivity {
 
                 try {
 
-                    Date date = Calendar.getInstance().getTime();
-
-
+                    //Date date = Calendar.getInstance().getTime();
+                    String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
                     if ((Integer.parseInt(String.valueOf(et_sleepTime.getText())) < 24) && (Integer.parseInt(String.valueOf(et_sleepTime.getText())) >= 0)){
                         sleepTime = Integer.parseInt(String.valueOf(et_sleepTime.getText()));
                     }

@@ -4,7 +4,11 @@ import java.util.Date;
 
 public class DailyQuiz {
 
-    private Date date;
+    //SHOULD I MAKE EVERYTHING int INSTEAD OF Integer?????? does it matter?
+
+    //the date should not be a string?
+
+    private String date;
     private String mood;
     private Integer sleepTime;
     private String sleepRating;
@@ -16,7 +20,7 @@ public class DailyQuiz {
     private String other;
 
 
-    public DailyQuiz(Date date, String mood, Integer sleepTime, String sleepRating, Integer productiveTime, Integer relaxTime, Integer exerciseTime, String stressLevel, String stressors, String other) {
+    public DailyQuiz(String date, String mood, Integer sleepTime, String sleepRating, Integer productiveTime, Integer relaxTime, Integer exerciseTime, String stressLevel, String stressors, String other) {
         this.date = date;
         this.mood = mood;
         this.sleepTime = sleepTime;
@@ -29,7 +33,7 @@ public class DailyQuiz {
         this.other = other;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -69,7 +73,7 @@ public class DailyQuiz {
         return other;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

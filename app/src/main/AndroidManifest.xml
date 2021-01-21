@@ -16,6 +16,7 @@
             android:name=".ui.DailyQuizzesActivity"
             tools:ignore="ExtraText"
             android:parentActivityName=".MainActivity"/>
+        <activity android:name=".PastQuizzesActivity"/>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">

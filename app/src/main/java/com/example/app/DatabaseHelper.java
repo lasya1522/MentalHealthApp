@@ -28,21 +28,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_STRESSORS = "STRESSORS";
     public static final String COLUMN_OTHER = "OTHER";//don't totally understand these vars
 
-   /* public static final String COLUMN_MORNING_CURRENT_MOOD = "MORNING_CURRENT_MOOD";
-    public static final String COLUMN_MORNING_DATE = "MORNING_DATE";
-    public static final String COLUMN_MORNING_SLEEP_RATING = "MORNING_SLEEP_RATING";
-    public static final String COLUMN_MORNING_SLEEP_DURATION = "MORNING_SLEEP_DURATION";
-    public static final String COLUMN_ID = "ID";
-
-    public static final String NIGHT_QUIZ_TABLE = "NIGHT_QUIZ_TABLE";
-    public static final String COLUMN_NIGHT_CURRENT_MOOD = "NIGHT_CURRENT_MOOD";
-    public static final String COLUMN_NIGHT_STRESS_LEVEL = "NIGHT_STRESS_LEVEL";
-    public static final String COLUMN_NIGHT_DATE = "NIGHT_DATE";
-    public static final String COLUMN_NIGHT_PRODUCTIVE_TIME = "NIGHT_PRODUCTIVE_TIME";
-    public static final String COLUMN_NIGHT_RELAX_TIME = "NIGHT_RELAX_TIME";
-    public static final String COLUMN_NIGHT_EXERCISE_TIME = "NIGHT_EXERCISE_TIME";
-
-    */
 
     //IS THERE A WAY TO SET THIS UP SO I DONT HAVE TO RECREATE THE THING EVERY TIME
 
@@ -55,31 +40,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        //get rid of the +, combine into one long string
-        String createDailyQuizTableStatement = "CREATE TABLE DAILY_QUIZ_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT, MOOD TEXT, " + "DATE TEXT, SLEEP_TIME TEXT, SLEEP_RATING TEXT, PRODUCTIVE_TIME TEXT, RELAX_TIME TEXT, " + "EXERCISE_TIME TEXT, STRESS_LEVEL TEXT, STRESSORS TEXT, OTHER TEXT )";
+        //how do I delete our old test data?
+
+        String createDailyQuizTableStatement = "CREATE TABLE DAILY_QUIZ_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT, DATE TEXT, MOOD TEXT, SLEEP_TIME TEXT, SLEEP_RATING TEXT, PRODUCTIVE_TIME TEXT, RELAX_TIME TEXT, " + "EXERCISE_TIME TEXT, STRESS_LEVEL TEXT, STRESSORS TEXT, OTHER TEXT )";
 
         db.execSQL(createDailyQuizTableStatement);
-        //database is made up of different tables ?? //edit: yes, i think so
-       // String createMorningTableStatement = "CREATE TABLE MORNING_QUIZ_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT, MORNING_CURRENT_MOOD TEXT, MORNING_DATE TEXT, MORNING_SLEEP_RATING TEXT, MORNING_SLEEP_DURATION TEXT)";
 
-        //String createNightTableStatement = "CREATE TABLE NIGHT_QUIZ_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NIGHT_CURRENT_MOOD TEXT, NIGHT_STRESS_LEVEL TEXT, NIGHT_DATE TEXT, NIGHT_PRODUCTIVE_TIME TEXT, NIGHT_RELAX_TIME TEXT, NIGHT_EXERCISE_TIME TEXT)";
-
-        //db.execSQL(createMorningTableStatement);
-        //db.execSQL(createNightTableStatement);
     }
 
     //called if the database version number changes. It prevents previous user's apps from breaking when you change the database design
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        /*if (newVersion > oldVersion){
-           //db.execSQL("ALTER TABLE MORNING_QUIZ_TABLE ADD COLUMN MORNING_DATE STRING DEFAULT 0");
 
-            String createNightTableStatement = "CREATE TABLE NIGHT_QUIZ_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NIGHT_CURRENT_MOOD TEXT, NIGHT_STRESS_LEVEL TEXT, NIGHT_DATE TEXT, NIGHT_PRODUCTIVE_TIME TEXT, NIGHT_RELAX_TIME TEXT, NIGHT_EXERCISE_TIME TEXT)";
-            db.execSQL(createNightTableStatement);
-        }
-
-         */
-        String createDailyQuizTableStatement = "CREATE TABLE DAILY_QUIZ_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT, MOOD TEXT, " + "DATE TEXT, SLEEP_TIME TEXT, SLEEP_RATING TEXT, PRODUCTIVE_TIME TEXT, RELAX_TIME TEXT, " + "EXERCISE_TIME TEXT, STRESS_LEVEL TEXT, STRESSORS TEXT, OTHER TEXT )";
+        String createDailyQuizTableStatement = "CREATE TABLE DAILY_QUIZ_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT, DATE TEXT, MOOD TEXT, SLEEP_TIME TEXT, SLEEP_RATING TEXT, PRODUCTIVE_TIME TEXT, RELAX_TIME TEXT, " + "EXERCISE_TIME TEXT, STRESS_LEVEL TEXT, STRESSORS TEXT, OTHER TEXT )";
 
         db.execSQL(createDailyQuizTableStatement);
 
@@ -88,8 +61,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean addDailyQuiz(DailyQuiz dailyQuiz){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
+        cv.put(COLUMN_DATE, dailyQuiz.getDate());
         cv.put(COLUMN_MOOD, dailyQuiz.getMood());
-        cv.put(COLUMN_DATE, dailyQuiz.getDate().toString()); //should I keep the toString()? No, I don't want to keep the toString(). How to store as type Date?????
         cv.put(COLUMN_SLEEP_TIME, dailyQuiz.getSleepTime());
         cv.put(COLUMN_SLEEP_RATING, dailyQuiz.getSleepRating());
         cv.put(COLUMN_PRODUCTIVE_TIME, dailyQuiz.getProductiveTime());
@@ -108,43 +81,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-   /* public boolean addNightQuiz(NightQuiz nightQuiz){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-
-        cv.put( COLUMN_NIGHT_CURRENT_MOOD, nightQuiz.getCurrentMood());
-        cv.put( COLUMN_NIGHT_DATE, nightQuiz.getDate().toString()); //should I keep the toString()?
-        cv.put( COLUMN_NIGHT_RELAX_TIME, nightQuiz.getRelaxTime());
-        cv.put( COLUMN_NIGHT_PRODUCTIVE_TIME, nightQuiz.getProductiveTime());
-        cv.put( COLUMN_NIGHT_EXERCISE_TIME, nightQuiz.getExerciseTime());
-
-        //tells me whether the item was put into the database successfully
-        long insert = db.insert(NIGHT_QUIZ_TABLE, null, cv);
-        if (insert == -1){
-            return false;
-        } else {
-            return true;
-        }
-
-    }
-
-    public List<MorningQuiz> getMorningQuizData () {
-        List<MorningQuiz> returnList = new ArrayList<MorningQuiz>();
-        String queryString = "SELECT * FROM " + MORNING_QUIZ_TABLE;
+    public List<DailyQuiz> getDailyQuizData () {
+        List<DailyQuiz> returnList = new ArrayList<DailyQuiz>();
+        String queryString = "SELECT * FROM " + DAILY_QUIZ_TABLE;
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(queryString, null);
 
         if (cursor.moveToFirst()){
-            // loop through the cursor (result set) and create new morningQuiz objects. Put them into the return list
+            // loop through the cursor (result set) and create new DailyQuiz objects. Put them into the return list
             do {
-                int morningQuizID = cursor.getInt(0);
-                String morning = cursor.getString(1);
-                int customerAge = cursor.getInt(2);
-                boolean customerActive = cursor.getInt(3) == 1 ? true: false;
+                //should i change the order of the stuff because the date is second and that's kind of annoying? should I make it second
+                String dailyQuizMood = cursor.getString(0);
+                String dailyQuizDate = cursor.getString(1);
+                int dailyQuizSleepTime = cursor.getInt(2);
+                String dailyQuizSleepRating = cursor.getString(3);
+                int dailyQuizProductiveTime = cursor.getInt(4);
+                int dailyQuizRelaxTime = cursor.getInt(5);
+                int dailyQuizExerciseTime = cursor.getInt(6);
+                String dailyQuizStressLevel = cursor.getString(7);
+                String dailyQuizStressors = cursor.getString(8);
+                String dailyQuizOther = cursor.getString(9);
 
-                //CustomerModel newCustomer = new CustomerModel(customerID, customerName, customerAge, customerActive );
-                //returnList.add(newCustomer);
+                DailyQuiz quiz = new DailyQuiz(dailyQuizDate, dailyQuizMood, dailyQuizSleepTime, dailyQuizSleepRating, dailyQuizProductiveTime, dailyQuizRelaxTime, dailyQuizExerciseTime, dailyQuizStressLevel, dailyQuizStressors, dailyQuizOther  );
+                returnList.add(quiz);
             } while(cursor.moveToNext());
 
         } else {
@@ -153,6 +113,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return returnList;
     }
-
-    */
 }

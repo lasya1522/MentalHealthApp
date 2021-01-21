@@ -1,5 +1,6 @@
 package com.example.app.ui.trends_tab;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,22 +14,32 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.app.DailyQuizActivity;
+import com.example.app.DatabaseHelper;
+import com.example.app.MainActivity;
+import com.example.app.PastQuizzesActivity;
 import com.example.app.R;
 
 public class TrendsFragment extends Fragment {
+
     private TrendsViewModel trendsViewModel;
     //create references to buttons
     Button submitBtn;
     Button saveBtn;
+
+    Button btn_viewPastQuizzes;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         trendsViewModel = new ViewModelProvider(this).get(TrendsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_trends, container, false);
         final TextView textView = root.findViewById(R.id.trendTitle);
+
+        btn_viewPastQuizzes = root.findViewById(R.id.btn_viewPastQuizzes);
+
         //code for buttons
        // submitBtn = (Button) root.findViewById(R.id.submitBtn);
-        submitBtn.setOnClickListener(new View.OnClickListener() {
+      /*  submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
 
             public void onClick(View v) {
@@ -38,19 +49,34 @@ public class TrendsFragment extends Fragment {
                 // which we have to further discuss and implement into our design
             }
         });
+
+       */
      //   saveBtn = (Button) root.findViewById(R.id.saveBtn);
-        saveBtn.setOnClickListener(new View.OnClickListener() {
+       /* saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
             }
         });
 
-        trendsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        */
+
+       /* trendsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
             }
         });
+
+        */
+
+        btn_viewPastQuizzes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), PastQuizzesActivity.class);
+                startActivity(intent);
+            }
+        });
+
         return root;
     }
 
