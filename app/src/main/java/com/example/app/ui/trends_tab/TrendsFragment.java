@@ -103,11 +103,11 @@ public class TrendsFragment extends Fragment {
         List<BarEntry> entries = new ArrayList<>();
 
         //IMPORTANT: it is not showing the correct number on the graph here.?????????????????????
-        entries.add(new BarEntry(0f, dailyQuizData.get(0).getProductiveTime()));
-        Toast.makeText(this.getContext(), String.valueOf(dailyQuizData.get(0)), Toast.LENGTH_SHORT).show();
-        entries.add(new BarEntry(1f, dailyQuizData.get(1).getProductiveTime()));
-        entries.add(new BarEntry(2f, dailyQuizData.get(2).getProductiveTime()));
-        entries.add(new BarEntry(3f, dailyQuizData.get(3).getProductiveTime()));
+        //entries.add(new BarEntry(0f, dailyQuizData.get(0).getProductiveTime()));
+        //Toast.makeText(this.getContext(), String.valueOf(dailyQuizData.get(0)), Toast.LENGTH_SHORT).show();
+        //entries.add(new BarEntry(1f, dailyQuizData.get(1).getProductiveTime()));
+        //entries.add(new BarEntry(2f, dailyQuizData.get(2).getProductiveTime()));
+        //entries.add(new BarEntry(3f, dailyQuizData.get(3).getProductiveTime()));
         // gap of 2f
         entries.add(new BarEntry(5f, 70f));
         entries.add(new BarEntry(6f, 60f));
