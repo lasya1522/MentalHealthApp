@@ -33,7 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public DatabaseHelper(@Nullable Context context) {
 
-        super(context, "Save trial", null, 6); //I had to increment the version number in order to get it to work after adding the date column
+        super(context, "Save trial", null, 7); //I had to increment the version number in order to get it to work after adding the date column
         //the onUpgrade code won't be called unless I do that
     }
 
@@ -41,6 +41,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         //how do I delete our old test data?
+
+        //I CAN'T GET THE ORDER OF THE MOOD AND THE DATE TO CHANGE
 
         String createDailyQuizTableStatement = "CREATE TABLE DAILY_QUIZ_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT, DATE TEXT, MOOD TEXT, SLEEP_TIME TEXT, SLEEP_RATING TEXT, PRODUCTIVE_TIME TEXT, RELAX_TIME TEXT, " + "EXERCISE_TIME TEXT, STRESS_LEVEL TEXT, STRESSORS TEXT, OTHER TEXT )";
 
@@ -52,9 +54,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        String createDailyQuizTableStatement = "CREATE TABLE DAILY_QUIZ_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT, DATE TEXT, MOOD TEXT, SLEEP_TIME TEXT, SLEEP_RATING TEXT, PRODUCTIVE_TIME TEXT, RELAX_TIME TEXT, " + "EXERCISE_TIME TEXT, STRESS_LEVEL TEXT, STRESSORS TEXT, OTHER TEXT )";
+        //String createDailyQuizTableStatement = "CREATE TABLE DAILY_QUIZ_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT, DATE TEXT, MOOD TEXT, SLEEP_TIME TEXT, SLEEP_RATING TEXT, PRODUCTIVE_TIME TEXT, RELAX_TIME TEXT, " + "EXERCISE_TIME TEXT, STRESS_LEVEL TEXT, STRESSORS TEXT, OTHER TEXT )";
 
-        db.execSQL(createDailyQuizTableStatement);
+        //db.execSQL(createDailyQuizTableStatement);
 
     }
 
@@ -92,8 +94,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             // loop through the cursor (result set) and create new DailyQuiz objects. Put them into the return list
             do {
                 //should i change the order of the stuff because the date is second and that's kind of annoying? should I make it second
-                String dailyQuizDate = cursor.getString(1);
-                String dailyQuizMood = cursor.getString(2);
+
+                //I CAN'T GET  THE DATE AND THE MOOD TO SWITCH COLUMN ORDER
+                String dailyQuizDate = cursor.getString(2);
+                String dailyQuizMood = cursor.getString(1);
                 int dailyQuizSleepTime = cursor.getInt(3);
                 String dailyQuizSleepRating = cursor.getString(4);
                 int dailyQuizProductiveTime = cursor.getInt(5);
@@ -109,8 +113,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         } else {
             //failure. do not add anything to the list
-
         }
+
         return returnList;
+    }
+
+    //method edited from tutorial-- CHANGE SYNTAX???-- is this method needed though>???? should we just have a deleteAll method?
+    public boolean deleteOne (DailyQuiz dailyQuiz) {
+        //find customerModel in the database. if it is found, delete it and return true
+        // if it's not found, return false
+        SQLiteDatabase db = this.getWritableDatabase();
+        String queryString = "DELETE FROM " + DAILY_QUIZ_TABLE + " WHERE " + COLUMN_DATE  + " = " + dailyQuiz.getDate();
+        Cursor cursor = db.rawQuery(queryString, null);
+        if (cursor.moveToFirst()){
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public void deleteAll () {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String queryString = "DELETE FROM " + DAILY_QUIZ_TABLE;
+        Cursor cursor = db.rawQuery(queryString, null);
+        do {
+        } while(cursor.moveToNext());
     }
 }
