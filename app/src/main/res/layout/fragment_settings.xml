@@ -36,16 +36,16 @@
 
     <TextView
         android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="328dp"
+        android:layout_height="48dp"
         android:text="Importance of mental health(students), summary of app,
         0ur goal-paragraph or so(mayeb even include mesa logo as a drawable"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.124"
+        app:layout_constraintHorizontal_bias="0.349"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.253" />
+        app:layout_constraintVertical_bias="0.252" />
 
     <Button
         android:id="@+id/btn_clearData"

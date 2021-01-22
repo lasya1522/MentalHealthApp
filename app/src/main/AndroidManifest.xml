@@ -11,6 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App">
         <activity android:name=".DailyQuizActivity"
+            android:label="Daily Quiz"
             android:parentActivityName=".ui.DailyQuizzesActivity"/>
         <activity
             android:name=".ui.DailyQuizzesActivity"

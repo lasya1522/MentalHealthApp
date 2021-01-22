@@ -18,7 +18,7 @@
 
             <TextView
                 android:id="@+id/trendTitle"
-                android:layout_width="385dp"
+                android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:layout_marginTop="32dp"
                 android:gravity="center_vertical"
@@ -116,7 +116,9 @@
                 android:id="@+id/btn_viewPastQuizzes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="View Past Quizzes" />
+                android:text="View Past Quizzes"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="#9F84FF" />
 
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/chart"
