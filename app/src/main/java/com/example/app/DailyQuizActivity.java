@@ -16,25 +16,33 @@ public class DailyQuizActivity extends AppCompatActivity {
 
     //ARE THESE SUPPOSED TO BE PRIVATE OR JUST NOTHING??????? SEE PASTQUIZZESACTIVITY
 
-   private EditText et_sleepRating;
-   private EditText et_sleepDuration;
+    EditText et_sleepRating;
+    EditText et_sleepDuration;
 
-    private Button btn_submit;
+    Button btn_submit;
 
-    private Button btn_mood1;
-    private Button btn_mood2;
-    private Button btn_mood3;
-    private Button btn_mood4;
+    Button btn_mood1;
+    Button btn_mood2;
+    Button btn_mood3;
+    Button btn_mood4;
 
-    private EditText et_sleepTime;
+    EditText et_sleepTime;
 
-    private Button btn_sleepRating1;
-    private Button btn_sleepRating2;
-    private Button btn_sleepRating3;
+    Button btn_sleepRating1;
+    Button btn_sleepRating2;
+    Button btn_sleepRating3;
 
-    private EditText et_productiveTime;
-    private EditText et_relaxTime;
-    private EditText et_exerciseTime;
+    EditText et_productiveTime;
+    EditText et_relaxTime;
+    EditText et_exerciseTime;
+
+    Button btn_stressLevel1;
+    Button btn_stressLevel2;
+    Button btn_stressLevel3;
+    Button btn_stressLevel4;
+
+    EditText et_stressors;
+    EditText et_other;
 
 
     private Date date;
@@ -71,55 +79,77 @@ public class DailyQuizActivity extends AppCompatActivity {
         et_relaxTime = findViewById(R.id.et_relaxTime);
         et_exerciseTime = findViewById(R.id.et_exerciseTime);
 
+        btn_stressLevel1 = findViewById(R.id.btn_stressLevel1);
+        btn_stressLevel2 = findViewById(R.id.btn_stressLevel2);
+        btn_stressLevel3 = findViewById(R.id.btn_stressLevel3);
+        btn_stressLevel4 = findViewById(R.id.btn_stressLevel4);
+
+        et_stressors = findViewById(R.id.et_stressors);
+        et_other = findViewById(R.id.et_other);
+
         btn_submit = findViewById(R.id.btn_submit);
+
+        stressors = "";
+        other = "";
 
         databaseHelper = new DatabaseHelper(DailyQuizActivity.this);
 
       btn_submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+          @Override
+          public void onClick(View v) {
 
-                DailyQuiz dailyQuiz;
-                //need some way to test whether all necessary fields were filled in with a valid number. initialize int vars to -1? check before try?
+              DailyQuiz dailyQuiz;
+              //need some way to test whether all necessary fields were filled in with a valid number. initialize int vars to -1? check before try?
 
-                try {
+              try {
 
-                    //Date date = Calendar.getInstance().getTime();
-                    String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
-                    if ((et_sleepTime.getText().toString().trim().equals("")) || ((et_productiveTime.getText().toString().trim().equals(""))) || (et_relaxTime.getText().toString().trim().equals("")||(et_exerciseTime.getText().toString().trim().equals("")))){
-                        Toast.makeText(DailyQuizActivity.this, "required fields left empty" , Toast.LENGTH_SHORT).show();
-                    } else if ((mood == null) || (date == null) || (sleepRating == null)){
-                        Toast.makeText(DailyQuizActivity.this, "mood, date or sleepRating is null", Toast.LENGTH_SHORT).show();
-                    }else {
-                        if ((Integer.parseInt(String.valueOf(et_sleepTime.getText())) < 24) && (Integer.parseInt(String.valueOf(et_sleepTime.getText())) >= 0)) {
-                            sleepTime = Integer.parseInt(String.valueOf(et_sleepTime.getText()));
-                        }
-                        if ((Integer.parseInt(String.valueOf(et_productiveTime.getText())) < 24) && (Integer.parseInt(String.valueOf(et_productiveTime.getText())) >= 0)) {
-                            productiveTime = Integer.parseInt(String.valueOf(et_productiveTime.getText()));
-                        }
-                        if ((Integer.parseInt(String.valueOf(et_relaxTime.getText())) < 24) && (Integer.parseInt(String.valueOf(et_relaxTime.getText())) >= 0)) {
-                            relaxTime = Integer.parseInt(String.valueOf(et_relaxTime.getText()));
-                        }
-                        if ((Integer.parseInt(String.valueOf(et_exerciseTime.getText())) < 24) && (Integer.parseInt(String.valueOf(et_exerciseTime.getText())) >= 0)) {
-                            exerciseTime = Integer.parseInt(String.valueOf(et_exerciseTime.getText()));
-                        }
+                  //to make it consistent, should I use all String.valueOf() or all .toString()?? or is it ok how it is?
+                  String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
 
-                        //technically, will we need to change this code because I basically copied it off a tutorial?
-                        dailyQuiz = new DailyQuiz(date, mood, sleepTime, sleepRating, productiveTime, relaxTime, exerciseTime, stressLevel, stressors, other);
+                  //surely there is a nicer way to code this?????
+                  if ((et_sleepTime.getText().toString().trim().equals("")) || ((et_productiveTime.getText().toString().trim().equals(""))) || (et_relaxTime.getText().toString().trim().equals("") || (et_exerciseTime.getText().toString().trim().equals("")))) {
+                      Toast.makeText(DailyQuizActivity.this, "required fields left empty", Toast.LENGTH_SHORT).show();
 
-                        Toast.makeText(DailyQuizActivity.this, dailyQuiz.toString(), Toast.LENGTH_SHORT).show();
+                  } else if ((mood == null) || (date == null) || (sleepRating == null) || (stressLevel == null)) {
+                      Toast.makeText(DailyQuizActivity.this, "mood, date, sleepRating, or stressLevel is null", Toast.LENGTH_SHORT).show();
 
-                        databaseHelper = new DatabaseHelper(DailyQuizActivity.this);
-                        boolean success = databaseHelper.addDailyQuiz(dailyQuiz);
+                  } else if ((Integer.parseInt(String.valueOf(et_sleepTime.getText())) > 24) || (Integer.parseInt(String.valueOf(et_sleepTime.getText())) < 0)) {
+                      Toast.makeText(DailyQuizActivity.this, "number not allowed", Toast.LENGTH_SHORT).show();
 
-                        Toast.makeText(DailyQuizActivity.this, "success " + success, Toast.LENGTH_SHORT).show();
+                  } else if ((Integer.parseInt(String.valueOf(et_productiveTime.getText())) > 24) || (Integer.parseInt(String.valueOf(et_productiveTime.getText())) < 0)) {
+                      Toast.makeText(DailyQuizActivity.this, "number not allowed", Toast.LENGTH_SHORT).show();
 
-                    }
-                } catch (Exception e) {
-                    Toast.makeText(DailyQuizActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                  } else if ((Integer.parseInt(String.valueOf(et_relaxTime.getText())) > 24) || (Integer.parseInt(String.valueOf(et_relaxTime.getText())) < 0)) {
+                      Toast.makeText(DailyQuizActivity.this, "number not allowed", Toast.LENGTH_SHORT).show();
 
-                }
-            }
+                  } else if ((Integer.parseInt(String.valueOf(et_exerciseTime.getText())) > 24) || (Integer.parseInt(String.valueOf(et_exerciseTime.getText())) < 0)) {
+                      Toast.makeText(DailyQuizActivity.this, "number not allowed", Toast.LENGTH_SHORT).show();
+
+                  } else {
+                      if (!(et_stressors.getText().toString().trim().equals(""))) {
+                          stressors = et_stressors.getText().toString();
+                      }
+                      if (!(et_other.getText().toString().trim().equals(""))) {
+                          other = et_other.getText().toString();
+                      }
+
+                      sleepTime = Integer.parseInt(String.valueOf(et_sleepTime.getText()));
+                      productiveTime = Integer.parseInt(String.valueOf(et_productiveTime.getText()));
+                      relaxTime = Integer.parseInt(String.valueOf(et_relaxTime.getText()));
+                      exerciseTime = Integer.parseInt(String.valueOf(et_exerciseTime.getText()));
+
+                      //technically, will we need to change this code because I basically copied it off a tutorial?
+                      dailyQuiz = new DailyQuiz(date, mood, sleepTime, sleepRating, productiveTime, relaxTime, exerciseTime, stressLevel, stressors, other);
+                      Toast.makeText(DailyQuizActivity.this, dailyQuiz.toString(), Toast.LENGTH_SHORT).show();
+                      databaseHelper = new DatabaseHelper(DailyQuizActivity.this);
+                      boolean success = databaseHelper.addDailyQuiz(dailyQuiz);
+                      Toast.makeText(DailyQuizActivity.this, "success " + success, Toast.LENGTH_SHORT).show();
+                  }
+              } catch (Exception e) {
+                  Toast.makeText(DailyQuizActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+
+              }
+          }
         });
 
         btn_mood1.setOnClickListener(new View.OnClickListener() {
@@ -172,6 +202,37 @@ public class DailyQuizActivity extends AppCompatActivity {
 
             }
         });
+
+        btn_stressLevel1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stressLevel = "High";
+                // Toast.makeText(MorningQuizActivity.this, "it works", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        btn_stressLevel2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stressLevel = "Moderate";
+
+            }
+        });
+        btn_stressLevel3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stressLevel = "Low";
+
+            }
+        });
+        btn_stressLevel4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stressLevel = "None";
+
+            }
+        });
+
     }
 
 

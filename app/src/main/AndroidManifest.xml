@@ -13,10 +13,6 @@
         <activity android:name=".DailyQuizActivity"
             android:label="Daily Quiz"
             android:parentActivityName=".ui.DailyQuizzesActivity"/>
-        <activity
-            android:name=".ui.DailyQuizzesActivity"
-            tools:ignore="ExtraText"
-            android:parentActivityName=".MainActivity"/>
         <activity android:name=".PastQuizzesActivity"/>
         <activity
             android:name=".MainActivity"

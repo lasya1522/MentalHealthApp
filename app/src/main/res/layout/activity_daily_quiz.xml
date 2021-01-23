@@ -239,7 +239,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="@string/question7"
+                android:text="Rate your stress level"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -256,28 +256,28 @@
                 app:layout_constraintVertical_bias="0.935">
 
                 <RadioButton
-                    android:id="@+id/radioButton"
+                    android:id="@+id/btn_stressLevel1"
                     android:layout_width="77dp"
                     android:layout_height="wrap_content"
                     android:text="@string/stressRating1"
                     android:textSize="18sp"/>
 
                 <RadioButton
-                    android:id="@+id/radioButton2"
+                    android:id="@+id/btn_stressLevel2"
                     android:layout_width="118dp"
                     android:layout_height="wrap_content"
                     android:text="@string/stressRating2"
                     android:textSize="18sp"/>
 
                 <RadioButton
-                    android:id="@+id/radioButton3"
+                    android:id="@+id/btn_stressLevel3"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="@string/stressRating3"
                     android:textSize="18sp"/>
 
                 <RadioButton
-                    android:id="@+id/radioButton4"
+                    android:id="@+id/btn_stressLevel4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/stressRating4"
@@ -300,7 +300,7 @@
                 app:layout_constraintVertical_bias="0.933" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/et_stressors"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -331,7 +331,7 @@
                 app:layout_constraintVertical_bias="0.89" />
 
             <EditText
-                android:id="@+id/editTextOtherNotes"
+                android:id="@+id/et_other"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
