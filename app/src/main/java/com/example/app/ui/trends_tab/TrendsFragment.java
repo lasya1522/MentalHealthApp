@@ -35,7 +35,6 @@ public class TrendsFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         trendsViewModel = new ViewModelProvider(this).get(TrendsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_trends, container, false);
-        final TextView textView = root.findViewById(R.id.trendTitle);
         databaseHelper = new DatabaseHelper(this.getContext()); //is this.getContext() safe to use? I guessed.
 
 

@@ -6,8 +6,6 @@ import androidx.lifecycle.ViewModel;
 
 public class TrendsViewModel extends ViewModel {
 
-    private MutableLiveData<String> mText;
-
     public TrendsViewModel() {
     }
 }

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,9 +36,12 @@ public class HomeFragment extends Fragment {
 
 
         Button button = (Button) root.findViewById(R.id.viewQuiz);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Toast.makeText(this.getContext(), )
+
                 Intent intent = new Intent(getActivity(), DailyQuizActivity.class);
                 startActivity(intent);
             }
