@@ -19,12 +19,12 @@
     <string name="how_much_time_did_you_spend_exercising">How much time did you spend exercising?</string>
     <string name="rateStress">Rate your stress levels:</string>
 
-    <string name="welcomeMsg">Welcome!</string>
-    <string name="introMessage">Logo of app goes here</string>
+    <string name="welcomeMsg">Welcome to Willow!</string>
+    <string name="startMessage">Lets get started!!!</string>
     <string name="quizDailyMessage">View today\'s quizzes!</string>
+    <string name="previous_quizzes">Previous Quizzes</string>
     <string name="stressGoalsInput">Write down your goals! (list below)</string>
     <string name="stressSectionHeader">Stress Section</string>
-    <string name="previous_quizzes">Previous Quizzes</string>
 
     <string name="question1">1. Rate your mood.</string>
     <string name="question2">2. Hold long did you sleep last night(hours)?</string>
@@ -34,6 +34,7 @@
     <string name="question6">6. How much time did you spend exercising(hours)?</string>
     <string name="question7">7. Rate your stress levels.</string>
     <string name="question8">8. What contributed to your stress?</string>
+    <string name="question9">9. Any other notes about your day</string>
 
     <string name="moodRating1">Good</string>
     <string name="rating2">Decent</string>
@@ -45,7 +46,6 @@
     <string name="stressRating3">Low</string>
     <string name="stressRating4">None</string>
     <string name="hintText">Enter response</string>
-    <string name="submit">Submit</string>
-    <string name="question9">9. Any other notes about your day</string>
     <string name="otherNotes">Enter notes</string>
+    <string name="submit">Submit</string>
 </resources>
