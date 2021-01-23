@@ -46,4 +46,6 @@
     <string name="stressRating4">None</string>
     <string name="hintText">Enter response</string>
     <string name="submit">Submit</string>
+    <string name="question9">9. Any other notes about your day</string>
+    <string name="otherNotes">Enter notes</string>
 </resources>

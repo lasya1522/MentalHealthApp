@@ -315,6 +315,36 @@
                 app:layout_constraintVertical_bias="1.0"
                 tools:ignore="MissingConstraints" />
 
+            <TextView
+                android:id="@+id/question9"
+                android:layout_width="311dp"
+                android:layout_height="64dp"
+                android:text="@string/question9"
+                android:layout_gravity="center_horizontal"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.42"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.89" />
+
+            <EditText
+                android:id="@+id/editTextOtherNotes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/otherNotes"
+                android:layout_gravity="center_horizontal"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.213"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.905" />
+
             <Button
                 android:id="@+id/btn_submit"
                 android:layout_width="match_parent"
@@ -324,11 +354,7 @@
                 android:textColor="#FFFFFF"
                 app:backgroundTint="#9F84FF" />
 
-
         </LinearLayout>
-
-
     </ScrollView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
