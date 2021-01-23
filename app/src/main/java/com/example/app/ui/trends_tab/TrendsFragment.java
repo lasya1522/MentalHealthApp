@@ -38,40 +38,6 @@ public class TrendsFragment extends Fragment {
         databaseHelper = new DatabaseHelper(this.getContext()); //is this.getContext() safe to use? I guessed.
 
 
-        //code for buttons
-       // submitBtn = (Button) root.findViewById(R.id.submitBtn);
-      /*  submitBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-
-            public void onClick(View v) {
-                SleepData sleepData2 = new SleepData("Homework", "Sleep for 8 hours tonight");
-                //Toast.makeText(SleepFragment.this, "Submit", Toast.LENGTH_SHORT).show();
-                //find out where and why use Toast(to confirm that you have added some respond
-                // which we have to further discuss and implement into our design
-            }
-        });
-
-       */
-     //   saveBtn = (Button) root.findViewById(R.id.saveBtn);
-       /* saveBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
-
-        */
-
-       /* trendsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-
-        */
-
-
-
         List<DailyQuiz> dailyQuizData = databaseHelper.getDailyQuizData();
 
         //TESTED OUT GRAPHS BY CREATING A TEST GRAPH HERE
@@ -125,8 +91,6 @@ public class TrendsFragment extends Fragment {
         relaxTimeData.setBarWidth(1f); // set custom bar width
         chart_exerciseTime.setData(exerciseTimeData);
         chart_exerciseTime.invalidate(); // refresh
-
-
 
         return root;
     }
