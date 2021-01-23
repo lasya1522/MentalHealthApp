@@ -8,17 +8,17 @@
 
     <item
         android:id="@+id/navigation_trends"
-        android:icon="?attr/actionModeShareDrawable"
+        android:icon="@android:drawable/ic_menu_sort_by_size"
         android:title="Trends" />
 
     <item
         android:id="@+id/navigation_goals"
-        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:icon="@android:drawable/btn_star_big_off"
         android:title="Goals" />
     <item
         android:id="@+id/navigation_journal"
         android:icon="@android:drawable/ic_menu_edit"
-        android:title="Strategies" />
+        android:title="Journal" />
 
     <item
         android:id="@+id/navigation_settings"
