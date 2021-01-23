@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -51,6 +52,8 @@ public class SettingsFragment extends Fragment {
     private SettingsViewModel settingsViewModel;
     private Button btn_clearData; // should the variables be private or not????????????
     DatabaseHelper databaseHelper;
+
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
