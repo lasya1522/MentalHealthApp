@@ -33,5 +33,11 @@
         app:layout_constraintVertical_bias="1.0"
         app:navGraph="@navigation/mobile_navigation" />
 
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="113dp"
+        tools:layout_editor_absoluteY="377dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
