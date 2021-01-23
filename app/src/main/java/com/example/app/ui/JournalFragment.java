@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -13,15 +12,15 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.app.R;
 
-public class StrategiesFragment extends Fragment {
+public class JournalFragment extends Fragment {
 
-    private StrategiesViewModel strategiesViewModel;
+    private JournalViewModel journalViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        strategiesViewModel =
-                new ViewModelProvider(this).get(StrategiesViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_strategies, container, false);
+        journalViewModel =
+                new ViewModelProvider(this).get(JournalViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_journal, container, false);
       //  final TextView textView = root.findViewById(R.id.test_text);
         //dailyViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             //@Override

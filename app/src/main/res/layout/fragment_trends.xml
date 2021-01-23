@@ -113,7 +113,20 @@
                 app:layout_constraintVertical_bias="1.6" />
 
             <com.github.mikephil.charting.charts.BarChart
-                android:id="@+id/chart"
+                android:id="@+id/chart_sleepTime"
+                android:layout_width="match_parent"
+                android:layout_height="166dp" />
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/chart_productiveTime"
+                android:layout_width="match_parent"
+                android:layout_height="166dp" />
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/chart_relaxTime"
+                android:layout_width="match_parent"
+                android:layout_height="166dp" />
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/chart_exerciseTime"
                 android:layout_width="match_parent"
                 android:layout_height="166dp" />
 

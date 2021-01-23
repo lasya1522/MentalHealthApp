@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -76,26 +76,57 @@ public class TrendsFragment extends Fragment {
 
         //TESTED OUT GRAPHS BY CREATING A TEST GRAPH HERE
 
+        //NEED TO PROTECT AGAINST NULL VALUES
         //we should do a "past 30 days" or "past 7 days" or whatever thing so that we have a finite thing
-        BarChart barChart;
-        barChart = (BarChart) root.findViewById(R.id.chart);
-        List<BarEntry> entries = new ArrayList<>();
+        BarChart chart_sleepTime;
+        chart_sleepTime = (BarChart) root.findViewById(R.id.chart_sleepTime);
+        List<BarEntry> sleepTimeEntries = new ArrayList<>();
+        for (int i = 0; i < dailyQuizData.size(); i++){
+            sleepTimeEntries.add( new BarEntry(i, dailyQuizData.get(i).getSleepTime()));
+        }
+        BarDataSet sleepTimeSet = new BarDataSet(sleepTimeEntries, "Sleep Time");
+        BarData sleepTimeData = new BarData(sleepTimeSet);
+        sleepTimeData.setBarWidth(1f); // set custom bar width
+        chart_sleepTime.setData(sleepTimeData);
+        chart_sleepTime.invalidate(); // refresh
 
-        //IMPORTANT: it is not showing the correct number on the graph here.?????????????????????
-        //entries.add(new BarEntry(0f, dailyQuizData.get(0).getProductiveTime()));
-        //Toast.makeText(this.getContext(), String.valueOf(dailyQuizData.get(0)), Toast.LENGTH_SHORT).show();
-        //entries.add(new BarEntry(1f, dailyQuizData.get(1).getProductiveTime()));
-        //entries.add(new BarEntry(2f, dailyQuizData.get(2).getProductiveTime()));
-        //entries.add(new BarEntry(3f, dailyQuizData.get(3).getProductiveTime()));
-        // gap of 2f
-        entries.add(new BarEntry(5f, 70f));
-        entries.add(new BarEntry(6f, 60f));
-        BarDataSet set = new BarDataSet(entries, "BarDataSet");
-        BarData data = new BarData(set);
-        data.setBarWidth(0.9f); // set custom bar width
-        barChart.setData(data);
-        barChart.setFitBars(true); // make the x-axis fit exactly all bars
-        barChart.invalidate(); // refresh
+        BarChart chart_productiveTime;
+        chart_productiveTime = (BarChart) root.findViewById(R.id.chart_productiveTime);
+        List<BarEntry> productiveTimeEntries = new ArrayList<>();
+        for (int i = 0; i < dailyQuizData.size(); i++){
+            productiveTimeEntries.add( new BarEntry(i, dailyQuizData.get(i).getProductiveTime()));
+        }
+        BarDataSet productiveTimeSet = new BarDataSet(productiveTimeEntries, "Productive Time");
+        BarData productiveTimeData = new BarData(productiveTimeSet);
+        productiveTimeData.setBarWidth(1f); // set custom bar width
+        chart_productiveTime.setData(productiveTimeData);
+        chart_productiveTime.invalidate(); // refresh
+
+        BarChart chart_relaxTime;
+        chart_relaxTime = (BarChart) root.findViewById(R.id.chart_relaxTime);
+        List<BarEntry> relaxTimeEntries = new ArrayList<>();
+        for (int i = 0; i < dailyQuizData.size(); i++){
+            relaxTimeEntries.add( new BarEntry(i, dailyQuizData.get(i).getRelaxTime()));
+        }
+        BarDataSet relaxTimeSet = new BarDataSet(relaxTimeEntries, "Relax Time");
+        BarData relaxTimeData = new BarData(relaxTimeSet);
+        relaxTimeData.setBarWidth(1f); // set custom bar width
+        chart_relaxTime.setData(relaxTimeData);
+        chart_relaxTime.invalidate(); // refresh
+
+        BarChart chart_exerciseTime;
+        chart_exerciseTime = (BarChart) root.findViewById(R.id.chart_exerciseTime);
+        List<BarEntry> exerciseTimeEntries = new ArrayList<>();
+        for (int i = 0; i < dailyQuizData.size(); i++){
+            exerciseTimeEntries.add( new BarEntry(i, dailyQuizData.get(i).getExerciseTime()));
+        }
+        BarDataSet exerciseTimeSet = new BarDataSet(exerciseTimeEntries, "Exercise Time");
+        BarData exerciseTimeData = new BarData(exerciseTimeSet);
+        relaxTimeData.setBarWidth(1f); // set custom bar width
+        chart_exerciseTime.setData(exerciseTimeData);
+        chart_exerciseTime.invalidate(); // refresh
+
+
 
         return root;
     }
