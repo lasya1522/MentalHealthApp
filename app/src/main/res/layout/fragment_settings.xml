@@ -38,8 +38,7 @@
         android:id="@+id/textView16"
         android:layout_width="328dp"
         android:layout_height="48dp"
-        android:text="Importance of mental health(students), summary of app,
-        0ur goal-paragraph or so(mayeb even include mesa logo as a drawable"
+        android:text="Willow is an app made by students, for students. Willow is used to assist anyone in tracking their mental health over time. In this app, you can fill out daily quizzes to update how you're feeling, and well as see data on it over time. Our goal is to help students find a way to track their mental health so they can get the help they need from professionals. "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.349"
@@ -79,6 +78,18 @@
         android:layout_height="wrap_content"
         android:text="Remind me"
         android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.945"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.882" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="140dp"
+        android:layout_height="166dp"
+        android:src="@drawable/aplstemmesa"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
