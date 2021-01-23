@@ -15,21 +15,23 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.app.DailyQuizActivity;
+import com.example.app.PastQuizzesActivity;
+import com.example.app.R;
+
 //import com.example.app.DailyQuizActivity;
 //import com.example.app.ui.DailyQuizzesActivity;
-import com.example.app.R;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
     private Button button; //Daily quiz button
+    Button btn_viewPastQuizzes; //Previous quiz button
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
             homeViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         final TextView textView = root.findViewById(R.id.text_home);
-        //Button button = root.findViewById(R.id.viewQuiz);
         homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -41,6 +43,15 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), DailyQuizActivity.class);
+                startActivity(intent);
+            }
+        });
+        //past quizzes btn
+        btn_viewPastQuizzes = root.findViewById(R.id.btn_viewPastQuizzes);
+        btn_viewPastQuizzes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), PastQuizzesActivity.class);
                 startActivity(intent);
             }
         });

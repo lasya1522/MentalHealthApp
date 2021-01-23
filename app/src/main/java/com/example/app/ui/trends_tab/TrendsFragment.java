@@ -1,35 +1,23 @@
 package com.example.app.ui.trends_tab;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.app.DailyQuiz;
-import com.example.app.DailyQuizActivity;
 import com.example.app.DatabaseHelper;
-import com.example.app.MainActivity;
-import com.example.app.PastQuizzesActivity;
 import com.example.app.R;
 import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.charts.Chart;
-import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,9 +28,8 @@ public class TrendsFragment extends Fragment {
     //create references to buttons
     Button submitBtn;
     Button saveBtn;
+    Button btn_viewPastQuizzes; //Previous quiz button
     DatabaseHelper databaseHelper;
-
-    Button btn_viewPastQuizzes;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -51,7 +38,6 @@ public class TrendsFragment extends Fragment {
         final TextView textView = root.findViewById(R.id.trendTitle);
         databaseHelper = new DatabaseHelper(this.getContext()); //is this.getContext() safe to use? I guessed.
 
-        btn_viewPastQuizzes = root.findViewById(R.id.btn_viewPastQuizzes);
 
         //code for buttons
        // submitBtn = (Button) root.findViewById(R.id.submitBtn);
@@ -85,13 +71,7 @@ public class TrendsFragment extends Fragment {
 
         */
 
-        btn_viewPastQuizzes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), PastQuizzesActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
         List<DailyQuiz> dailyQuizData = databaseHelper.getDailyQuizData();
 
