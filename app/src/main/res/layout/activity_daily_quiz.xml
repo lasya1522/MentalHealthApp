@@ -350,6 +350,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:insetBottom="0dp"
                 android:text="@string/submit"
                 android:textColor="#FFFFFF"
                 app:backgroundTint="#9F84FF" />
