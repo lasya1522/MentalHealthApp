@@ -45,7 +45,7 @@
         android:id="@+id/viewQuiz"
         android:layout_width="320dp"
         android:layout_height="72dp"
-        android:text="View the Daily Quiz!"
+        android:text="View the Daily Quiz"
         android:textColor="#FFFFFF"
         app:backgroundTint="#9F84FF"
         app:layout_constraintBottom_toBottomOf="parent"

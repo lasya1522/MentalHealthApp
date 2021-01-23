@@ -7,56 +7,58 @@
     tools:context=".ui.JournalFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
     <TextView
-        android:id="@+id/textView12"
-        android:layout_width="92dp"
-        android:layout_height="54dp"
-        android:text="Settings"
-        android:textSize="23sp"
-        android:textStyle="bold"
+        android:id="@+id/textView16"
+        android:layout_width="365dp"
+        android:layout_height="150dp"
+        android:text="Willow is an app made by students, for students. Willow is used to assist anyone in tracking their mental health over time. In this app, you can fill out daily quizzes to update how you're feeling, and well as see data on it over time. Our goal is to help students find a way to track their mental health so they can get the help they need from professionals. "
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintHorizontal_bias="0.652"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.027" />
+        app:layout_constraintVertical_bias="0.099" />
 
     <TextView
         android:id="@+id/textView15"
         android:layout_width="195dp"
         android:layout_height="27dp"
         android:text="About Willow"
-        android:textSize="20sp"
+        android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.133"
+        app:layout_constraintHorizontal_bias="0.138"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.172" />
+        app:layout_constraintVertical_bias="0.024" />
 
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="328dp"
-        android:layout_height="48dp"
-        android:text="Willow is an app made by students, for students. Willow is used to assist anyone in tracking their mental health over time. In this app, you can fill out daily quizzes to update how you're feeling, and well as see data on it over time. Our goal is to help students find a way to track their mental health so they can get the help they need from professionals. "
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="140dp"
+        android:layout_height="166dp"
+        android:src="@drawable/aplstemmesa"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.349"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.252" />
+        app:layout_constraintVertical_bias="0.446" />
 
     <Button
-        android:id="@+id/btn_clearData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Clear Data"
+        android:id="@+id/btn_remind"
+        android:layout_width="127dp"
+        android:layout_height="51dp"
+        android:text="Remind me"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.884" />
+        app:layout_constraintVertical_bias="0.652" />
 
     <TextView
         android:id="@+id/textView17"
@@ -69,30 +71,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView12"
-        app:layout_constraintVertical_bias="0.761" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_clearData"
+        app:layout_constraintVertical_bias="0.178" />
 
     <Button
-        android:id="@+id/btn_remind"
+        android:id="@+id/btn_clearData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Remind me"
+        android:text="Clear Data"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.945"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.882" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="140dp"
-        android:layout_height="166dp"
-        android:src="@drawable/aplstemmesa"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintVertical_bias="0.785" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
