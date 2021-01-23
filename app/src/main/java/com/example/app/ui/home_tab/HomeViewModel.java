@@ -12,15 +12,5 @@ public class HomeViewModel extends ViewModel {
     private MutableLiveData<String> dText;
 
     public HomeViewModel() {
-        //mText = new MutableLiveData<>();
-        //mText.setValue("This is home fragment");
-        dText = new MutableLiveData<>();
-        Date date = Calendar.getInstance().getTime();
-        dText.setValue(date.toString());
-       // Button button = (Button) findViewByID()
-    }
-
-    public LiveData<String> getText() {
-        return dText;
     }
 }
