@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,6 +23,8 @@ import com.github.mikephil.charting.data.BarEntry;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.String.format;
+
 public class TrendsFragment extends Fragment {
 
     private TrendsViewModel trendsViewModel;
@@ -29,6 +32,12 @@ public class TrendsFragment extends Fragment {
     Button submitBtn;
     Button saveBtn;
     Button btn_viewPastQuizzes; //Previous quiz button
+
+    TextView tv_sleepTimeData;
+    TextView tv_productiveTimeData;
+    TextView tv_relaxTimeData;
+    TextView tv_exerciseTimeData;
+
     DatabaseHelper databaseHelper;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -37,6 +46,10 @@ public class TrendsFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_trends, container, false);
         databaseHelper = new DatabaseHelper(this.getContext()); //is this.getContext() safe to use? I guessed.
 
+        tv_sleepTimeData = root.findViewById(R.id.tv_sleepTimeData);
+        tv_productiveTimeData = root.findViewById(R.id.tv_productiveTimeData);
+        tv_relaxTimeData = root.findViewById(R.id.tv_relaxTimeData);
+        tv_exerciseTimeData = root.findViewById(R.id.tv_exerciseTimeData);
 
         List<DailyQuiz> dailyQuizData = databaseHelper.getDailyQuizData();
 
@@ -55,6 +68,53 @@ public class TrendsFragment extends Fragment {
         sleepTimeData.setBarWidth(1f); // set custom bar width
         chart_sleepTime.setData(sleepTimeData);
         chart_sleepTime.invalidate(); // refresh
+
+        //FINDING MEAN, MEDIAN, MODE, and RANGE --> MUST MAKE THIS MORE EFFICIENT
+        double sleepTimeMean = 0;
+        for (int i = 0; i < dailyQuizData.size(); i++){
+            sleepTimeMean += dailyQuizData.get(i).getSleepTime();
+        }
+        sleepTimeMean /= dailyQuizData.size();
+
+
+        double productiveTimeMean = 0;
+        for (int i = 0; i < dailyQuizData.size(); i++){
+            productiveTimeMean += dailyQuizData.get(i).getProductiveTime();
+        }
+        productiveTimeMean /= dailyQuizData.size();
+
+        double relaxTimeMean = 0;
+        for (int i = 0; i < dailyQuizData.size(); i++){
+            relaxTimeMean += dailyQuizData.get(i).getRelaxTime();
+        }
+        relaxTimeMean /= dailyQuizData.size();
+
+        double exerciseTimeMean = 0;
+        for (int i = 0; i < dailyQuizData.size(); i++){
+            exerciseTimeMean += dailyQuizData.get(i).getExerciseTime();
+        }
+        exerciseTimeMean /= dailyQuizData.size();
+
+      /*   int sleepTimeMedian = 0;
+        if (dailyQuizData.size() %2 == 0){
+            sleepTimeMedian = dailyQuizData.get(dailyQuizData.size()/2).getSleepTime();
+        } else {
+            int lower = dailyQuizData.get(dailyQuizData.size()/2).getSleepTime();
+            int upper = dailyQuizData.get(dailyQuizData.size()/2).getSleepTime() + 1;
+            sleepTimeMedian = (lower + upper)/2;
+        }
+
+       */
+        //that doesnt work because the list isn't sorted. to revise later.
+
+        int sleepTimeRange = 0;
+        int highest;
+
+        tv_sleepTimeData.setText("Mean = " + sleepTimeMean );
+        tv_productiveTimeData.setText("Mean = " + productiveTimeMean);
+        tv_relaxTimeData.setText("Mean = " + relaxTimeMean);
+        tv_exerciseTimeData.setText("Mean = " +exerciseTimeMean);
+
 
         BarChart chart_productiveTime;
         chart_productiveTime = (BarChart) root.findViewById(R.id.chart_productiveTime);

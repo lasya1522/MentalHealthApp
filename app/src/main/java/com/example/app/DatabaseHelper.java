@@ -28,12 +28,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_STRESSORS = "STRESSORS";
     public static final String COLUMN_OTHER = "OTHER";//don't totally understand these vars
 
+    public static final String GOAL_TABLE = "GOAL_TABLE";
+    public static final String COLUMN_GOAL = "GOAL"; //THINK OF SOME BETTER VARIABLE NAMES
+    public static final String COLUMN_DATE_CREATED = "DATE_CREATED";
+    //public static final String COLUMN_IS_COMPLETED = "IS_COMPLETED";
+    public static final String COLUMN_DATE_COMPLETED = "DATE_COMPLETED";
 
-    //IS THERE A WAY TO SET THIS UP SO I DONT HAVE TO RECREATE THE THING EVERY TIME
+    //IS THERE A WAY TO SET THIS UP SO I DONT HAVE TO RECREATE THE THING EVERY TIME??!
 
     public DatabaseHelper(@Nullable Context context) {
 
-        super(context, "Save trial", null, 7); //I had to increment the version number in order to get it to work after adding the date column
+        super(context, "Save trial", null, 8); //I had to increment the version number in order to get it to work after adding the date column
         //the onUpgrade code won't be called unless I do that
     }
 
@@ -45,18 +50,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //I CAN'T GET THE ORDER OF THE MOOD AND THE DATE TO CHANGE
 
         String createDailyQuizTableStatement = "CREATE TABLE DAILY_QUIZ_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT, DATE TEXT, MOOD TEXT, SLEEP_TIME TEXT, SLEEP_RATING TEXT, PRODUCTIVE_TIME TEXT, RELAX_TIME TEXT, " + "EXERCISE_TIME TEXT, STRESS_LEVEL TEXT, STRESSORS TEXT, OTHER TEXT )";
-
         db.execSQL(createDailyQuizTableStatement);
+
+        String createGoalTableStatement = "CREATE TABLE GOAL_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT, GOAL TEXT, DATE_CREATED TEXT, DATE_COMPLETED TEXT)";
+        db.execSQL(createGoalTableStatement);
 
     }
 
     //called if the database version number changes. It prevents previous user's apps from breaking when you change the database design
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-        //String createDailyQuizTableStatement = "CREATE TABLE DAILY_QUIZ_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT, DATE TEXT, MOOD TEXT, SLEEP_TIME TEXT, SLEEP_RATING TEXT, PRODUCTIVE_TIME TEXT, RELAX_TIME TEXT, " + "EXERCISE_TIME TEXT, STRESS_LEVEL TEXT, STRESSORS TEXT, OTHER TEXT )";
-
-        //db.execSQL(createDailyQuizTableStatement);
+        String createGoalTableStatement = "CREATE TABLE GOAL_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT, GOAL TEXT, DATE_CREATED TEXT, DATE_COMPLETED TEXT)";
+        db.execSQL(createGoalTableStatement);
 
     }
 
@@ -76,6 +81,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         //tells me whether the item was put into the database successfully
         long insert = db.insert(DAILY_QUIZ_TABLE, null, cv);
+        if (insert == -1){
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public boolean addGoal(Goal goal){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_GOAL, goal.getGoalText());
+        cv.put(COLUMN_DATE_CREATED, goal.getDateCreated());
+        cv.put(COLUMN_DATE_COMPLETED, goal.getDateCompleted());
+
+        //tells me whether the item was put into the database successfully
+        long insert = db.insert(GOAL_TABLE, null, cv);
         if (insert == -1){
             return false;
         } else {
@@ -118,7 +139,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return returnList;
     }
 
-    //method edited from tutorial-- CHANGE SYNTAX???-- is this method needed though>???? should we just have a deleteAll method?
+    public List<Goal> getGoals () {
+        List<Goal> returnList = new ArrayList<>();
+        String queryString = "SELECT * FROM " + GOAL_TABLE;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        if (cursor.moveToFirst()){
+
+            do {
+                String goalText = cursor.getString(1);
+                String dateCreated = cursor.getString(2);
+                String dateCompleted = cursor.getString(3);
+
+                Goal goal = new Goal(goalText, dateCreated, dateCompleted);
+                returnList.add(goal);
+            } while(cursor.moveToNext());
+
+        } else {
+            //failure. do not add anything to the list
+        }
+
+        return returnList;
+    }
+
+   /* //method edited from tutorial-- CHANGE SYNTAX???-- is this method needed though>???? should we just have a deleteAll method?
     public boolean deleteOne (DailyQuiz dailyQuiz) {
         //find customerModel in the database. if it is found, delete it and return true
         // if it's not found, return false
@@ -131,11 +177,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+
+    */
+
+   // ADD FUNCTIONALITY TO DELETE ALL GOALS AND WHATEVER ELSE AS WELL
     public void deleteAll () {
         SQLiteDatabase db = this.getWritableDatabase();
-        String queryString = "DELETE FROM " + DAILY_QUIZ_TABLE;
-        Cursor cursor = db.rawQuery(queryString, null);
+        String queryStringDailyQuiz = "DELETE FROM " + DAILY_QUIZ_TABLE;
+        String queryStringGoal = "DELETE FROM " + GOAL_TABLE;
+        Cursor cursor = db.rawQuery(queryStringDailyQuiz, null);
         do {
         } while(cursor.moveToNext());
+        Cursor cursor2 = db.rawQuery(queryStringGoal, null);
+        do {
+        } while(cursor2.moveToNext());
     }
 }

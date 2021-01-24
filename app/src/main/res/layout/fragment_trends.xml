@@ -34,101 +34,46 @@
                 app:layout_constraintVertical_bias="0.0"
                 tools:ignore="RtlCompat,Suspicious0dp" />
 
-            <TextView
-                android:id="@+id/moodDataTxt"
-                android:layout_width="113dp"
-                android:layout_height="32dp"
-                android:text="Mood Data:"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.053"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.138" />
-
-            <TextView
-                android:id="@+id/sleepDataTxt"
-                android:layout_width="108dp"
-                android:layout_height="41dp"
-                android:text="Sleep Data:"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.053"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.442" />
-
-            <TextView
-                android:id="@+id/stressDataTxt"
-                android:layout_width="127dp"
-                android:layout_height="41dp"
-                android:text="Stress Data:"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.053"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.72" />
-
-            <TextView
-                android:id="@+id/relaxationDataTxt"
-                android:layout_width="168dp"
-                android:layout_height="41dp"
-                android:text="Relaxation Data:"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintHorizontal_bias="0.053"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.98" />
-
-            <TextView
-                android:id="@+id/exerciseDataTxt"
-                android:layout_width="171dp"
-                android:layout_height="51dp"
-                android:text="Exercise Data:"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintHorizontal_bias="0.053"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.2" />
-
-            <TextView
-                android:id="@+id/nutritionDataTxt"
-                android:layout_width="164dp"
-                android:layout_height="31dp"
-                android:text="Nutrition Data:"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintHorizontal_bias="0.053"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.6" />
-
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/chart_sleepTime"
                 android:layout_width="match_parent"
                 android:layout_height="166dp" />
 
+            <TextView
+                android:id="@+id/tv_sleepTimeData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/chart_productiveTime"
                 android:layout_width="match_parent"
                 android:layout_height="166dp" />
+
+            <TextView
+                android:id="@+id/tv_productiveTimeData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/chart_relaxTime"
                 android:layout_width="match_parent"
                 android:layout_height="166dp" />
+
+            <TextView
+                android:id="@+id/tv_relaxTimeData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/chart_exerciseTime"
                 android:layout_width="match_parent"
                 android:layout_height="166dp" />
+
+            <TextView
+                android:id="@+id/tv_exerciseTimeData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
 
         </LinearLayout>
 

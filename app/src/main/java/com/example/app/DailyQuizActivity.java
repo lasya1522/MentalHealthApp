@@ -16,6 +16,11 @@ public class DailyQuizActivity extends AppCompatActivity {
 
     //ARE THESE SUPPOSED TO BE PRIVATE OR JUST NOTHING??????? SEE PASTQUIZZESACTIVITY
 
+    //WE NEED TO FIGURE OUT HOW TO DEAL WITH POSSIBLE DECIMAL INPUT
+
+    //need more consistency with whether we're using instance vars or regular vars that are inside the onCreate()
+    //waht is the difference? rn, it's not so consistent
+
     EditText et_sleepRating;
     EditText et_sleepDuration;
 
