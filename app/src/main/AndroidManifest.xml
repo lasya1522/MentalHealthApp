@@ -12,8 +12,9 @@
         android:theme="@style/Theme.App">
         <activity android:name=".DailyQuizActivity"
             android:label="Daily Quiz"
-           />
-        <activity android:name=".PastQuizzesActivity"/>
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".PastQuizzesActivity"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".PastGoalsActivity"/>
         <activity android:name=".ViewPastQuizActivity"/>
         <activity
