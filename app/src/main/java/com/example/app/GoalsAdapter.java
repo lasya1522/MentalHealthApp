@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
@@ -36,15 +37,15 @@ public class GoalsAdapter extends RecyclerView.Adapter<GoalsAdapter.ViewHolder> 
     Goal goal = goals.get(position);
 
     holder.checkBox.setText(goal.getGoalText());
-    holder.checkBox.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
+        holder.checkBox.setOnClickListener(v -> {
            String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
            DatabaseHelper databaseHelper = new DatabaseHelper(context);
            databaseHelper.completeGoal(holder.checkBox.getText().toString(), date);
-        }
-    });
-
+           holder.checkBox.setVisibility(View.GONE);
+           //List<Goal> goalsList = databaseHelper.getCurrentGoals();
+           //RecyclerView.Adapter adapter = new GoalsAdapter(goalsList, context); //takes 2 arguments
+           // rv_currentGoals.setAdapter(adapter);
+        });
 
     }
 
@@ -59,6 +60,7 @@ public class GoalsAdapter extends RecyclerView.Adapter<GoalsAdapter.ViewHolder> 
        public LinearLayout linearLayoutCurrentGoals;
        public DatabaseHelper databaseHelper;
        public Context context;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

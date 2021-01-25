@@ -61,12 +61,7 @@ public class GoalsFragment extends Fragment {
         rv_currentGoals.setHasFixedSize(true);
         rv_currentGoals.setLayoutManager(new LinearLayoutManager((this.getContext())));
 
-        goalsList = databaseHelper.getCurrentGoals();
-
-        adapter = new GoalsAdapter(goalsList, this.getContext()); //takes 2 arguments?
-
-        rv_currentGoals.setAdapter(adapter);
-
+        refreshGoals(); //is it efficient to call this so much?
 
         goalText = "";
 
@@ -78,13 +73,16 @@ public class GoalsFragment extends Fragment {
                     } else {
                         date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
                         goalText = et_goal.getText().toString();
-                    }
                         //technically, will we need to change this code because I basically copied it off a tutorial?
                         Goal goal = new Goal(goalText, date, null);
                         Toast.makeText(this.getContext(), goal.getGoalText(), Toast.LENGTH_SHORT).show();
                         databaseHelper = new DatabaseHelper(this.getContext());
                         boolean success = databaseHelper.addGoal(goal);
                         Toast.makeText(this.getContext(), "success " + success, Toast.LENGTH_SHORT).show();
+                        refreshGoals();
+                        et_goal.setText("");
+                        goalText = "";
+                    }
 
                 } catch (Exception e) {
                     Toast.makeText(this.getContext(), e.toString(), Toast.LENGTH_SHORT).show();
@@ -102,5 +100,12 @@ public class GoalsFragment extends Fragment {
 
 
         return root;
+    }
+
+    //did I declare this method in the right spot? should it be public or private access modifier?
+    private void refreshGoals(){
+        goalsList = databaseHelper.getCurrentGoals();
+        adapter = new GoalsAdapter(goalsList, this.getContext()); //takes 2 arguments?
+        rv_currentGoals.setAdapter(adapter);
     }
 }
