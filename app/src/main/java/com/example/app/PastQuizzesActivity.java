@@ -21,7 +21,7 @@ public class PastQuizzesActivity extends AppCompatActivity {
     private Button dateBtn;
 
     ListView lv_quizData; //change to recyclerView???????
-    Button btn_viewAll;
+    Button btn_viewQuiz;
     ArrayAdapter dailyQuizArrayAdapter; //ARE THESE SUPPOSED TO BE PRIVATE?
 
     //revise code and var names so it isn't copying off the tutorial????????????? ********* very important************
@@ -35,15 +35,12 @@ public class PastQuizzesActivity extends AppCompatActivity {
         dateBtn.setText(getTodayDate());
 
         //lv_quizData = findViewById(R.id.lv_quizData);
-        btn_viewAll = findViewById(R.id.btn_viewAll);
+        btn_viewQuiz = findViewById(R.id.btn_viewQuiz);
 
-        btn_viewAll.setOnClickListener(new View.OnClickListener() {
+        btn_viewQuiz.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            DatabaseHelper databaseHelper = new DatabaseHelper(PastQuizzesActivity.this);
-            List<DailyQuiz> everyone = databaseHelper.getDailyQuizData();
-            dailyQuizArrayAdapter = new ArrayAdapter<DailyQuiz>(PastQuizzesActivity.this, android.R.layout.simple_selectable_list_item, everyone);
-            lv_quizData.setAdapter(dailyQuizArrayAdapter);
+
         }
     });
     }
@@ -74,7 +71,7 @@ public class PastQuizzesActivity extends AppCompatActivity {
 
         int style = AlertDialog.THEME_HOLO_DARK;
         datePickerDialog = new DatePickerDialog(this, style, dateSetListener, year, month, day);
-        datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+      //  datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
     }
 
     private String makeDateString(int dayOfMonth, int month, int year) {
@@ -108,6 +105,7 @@ public class PastQuizzesActivity extends AppCompatActivity {
             return "Dec";
         return "Jan";
     }
+
 
     public void openDatePicker(View view) {
         datePickerDialog.show();
