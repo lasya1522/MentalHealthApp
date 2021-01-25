@@ -1,5 +1,6 @@
 package com.example.app.ui.goals_tab;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.app.DatabaseHelper;
 import com.example.app.Goal;
 import com.example.app.GoalsAdapter;
+import com.example.app.PastGoalsActivity;
+import com.example.app.PastQuizzesActivity;
 import com.example.app.R;
 
 import java.text.SimpleDateFormat;
@@ -30,6 +33,8 @@ public class GoalsFragment extends Fragment {
     private GoalsViewModel goalsViewModel;
     EditText et_goal;
     Button btn_addGoal;
+    Button btn_pastGoals;
+
     RecyclerView rv_currentGoals;
     RecyclerView.Adapter adapter;
 
@@ -48,6 +53,7 @@ public class GoalsFragment extends Fragment {
 
         et_goal = root.findViewById(R.id.et_goal);
         btn_addGoal = root.findViewById(R.id.btn_addGoal);
+        btn_pastGoals = root.findViewById(R.id.btn_pastGoals);
 
         databaseHelper = new DatabaseHelper(this.getContext());
 
@@ -55,7 +61,7 @@ public class GoalsFragment extends Fragment {
         rv_currentGoals.setHasFixedSize(true);
         rv_currentGoals.setLayoutManager(new LinearLayoutManager((this.getContext())));
 
-        goalsList = databaseHelper.getGoals();
+        goalsList = databaseHelper.getCurrentGoals();
 
         adapter = new GoalsAdapter(goalsList, this.getContext()); //takes 2 arguments?
 
@@ -83,6 +89,13 @@ public class GoalsFragment extends Fragment {
                 } catch (Exception e) {
                     Toast.makeText(this.getContext(), e.toString(), Toast.LENGTH_SHORT).show();
                 }
+        });
+
+
+
+        btn_pastGoals.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), PastGoalsActivity.class);
+            startActivity(intent);
         });
 
 

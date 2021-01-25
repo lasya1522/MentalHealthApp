@@ -5,10 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class GoalsAdapter extends RecyclerView.Adapter<GoalsAdapter.ViewHolder> {
@@ -23,7 +27,7 @@ public class GoalsAdapter extends RecyclerView.Adapter<GoalsAdapter.ViewHolder> 
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_item, parent, false);
+              .inflate(R.layout.list_item_goal, parent, false);
         return new ViewHolder(v);
     }
 
@@ -32,8 +36,18 @@ public class GoalsAdapter extends RecyclerView.Adapter<GoalsAdapter.ViewHolder> 
     Goal goal = goals.get(position);
 
     holder.checkBox.setText(goal.getGoalText());
+    holder.checkBox.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+           String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+           DatabaseHelper databaseHelper = new DatabaseHelper(context);
+           databaseHelper.completeGoal(holder.checkBox.getText().toString(), date);
+        }
+    });
+
 
     }
+
 
     @Override
     public int getItemCount() {
@@ -42,10 +56,15 @@ public class GoalsAdapter extends RecyclerView.Adapter<GoalsAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
        public CheckBox checkBox;
+       public LinearLayout linearLayoutCurrentGoals;
+       public DatabaseHelper databaseHelper;
+       public Context context;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            context = itemView.getContext();
             checkBox = (CheckBox) itemView.findViewById(R.id.cb);
+            linearLayoutCurrentGoals = (LinearLayout) itemView.findViewById((R.id.linearLayoutCurrentGoals));
         }
     }
 }

@@ -139,7 +139,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return returnList;
     }
 
-    public List<Goal> getGoals () {
+    public void completeGoal(String goalText, String dateCompleted){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL(" update " + GOAL_TABLE + " set " + COLUMN_DATE_COMPLETED + " = \"" + dateCompleted + "\" where " + COLUMN_GOAL + " =  \"" + goalText + "\"");
+
+    }
+    public List<Goal> getCurrentGoals () {
         List<Goal> returnList = new ArrayList<>();
         String queryString = "SELECT * FROM " + GOAL_TABLE;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -149,12 +154,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()){
 
             do {
-                String goalText = cursor.getString(1);
-                String dateCreated = cursor.getString(2);
-                String dateCompleted = cursor.getString(3);
+                if (cursor.getString(3) == null){
+                    String goalText = cursor.getString(1);
+                    String dateCreated = cursor.getString(2);
+                    String dateCompleted = cursor.getString(3);
 
-                Goal goal = new Goal(goalText, dateCreated, dateCompleted);
-                returnList.add(goal);
+                    Goal goal = new Goal(goalText, dateCreated, dateCompleted);
+                    returnList.add(goal);
+                }
             } while(cursor.moveToNext());
 
         } else {
@@ -162,6 +169,33 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
         return returnList;
+    }
+
+    public List<Goal> getCompletedGoals() {
+        List<Goal> returnList = new ArrayList<>();
+        String queryString = "SELECT * FROM " + GOAL_TABLE;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        if (cursor.moveToFirst()){
+            do {
+                if (cursor.getString(3) != null) {
+                    String goalText = cursor.getString(1);
+                    String dateCreated = cursor.getString(2);
+                    String dateCompleted = cursor.getString(3);
+
+                    Goal goal = new Goal(goalText, dateCreated, dateCompleted);
+                    returnList.add(goal);
+                }
+            } while(cursor.moveToNext());
+
+        } else {
+            //failure. do not add anything to the list
+        }
+
+        return returnList;
+
     }
 
    /* //method edited from tutorial-- CHANGE SYNTAX???-- is this method needed though>???? should we just have a deleteAll method?
