@@ -39,6 +39,8 @@
         android:layout_height="82dp"
         android:text="Select Date"
         android:onClick="openDatePicker"
+        android:textColor="@color/black"
+        android:background="@color/purple_200"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.369"
