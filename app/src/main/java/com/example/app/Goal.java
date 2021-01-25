@@ -39,4 +39,11 @@ public class Goal {
     public void setDateCompleted(String dateCompleted) {
         this.dateCompleted = dateCompleted;
     }
+
+    @Override
+    public String toString() {
+        return "Goal{" +
+                "goalText='" + goalText + '\'' +
+                '}';
+    }
 }

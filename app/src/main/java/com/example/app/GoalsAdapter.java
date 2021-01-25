@@ -23,7 +23,7 @@ public class GoalsAdapter extends RecyclerView.Adapter<GoalsAdapter.ViewHolder> 
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_item, parent, false);
+              .inflate(R.layout.list_item, parent, false);
         return new ViewHolder(v);
     }
 
