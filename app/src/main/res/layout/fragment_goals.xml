@@ -23,34 +23,18 @@
 
 
     <Button
-        android:id="@+id/dataBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:insetTop="0dp"
-        android:insetBottom="2dp"
-        android:text="View data"
-        android:textColor="#FFFFFF"
-        app:backgroundTint="#9F84FF"
-        app:layout_constraintBottom_toTopOf="@+id/previousGoalsBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/previousGoalsBtn"
+        android:id="@+id/btn_pastGoals"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:insetTop="0dp"
-        android:text="Previous Goals"
+        android:text="Past Goals"
         android:textColor="#FFFFFF"
         app:backgroundTint="#9F84FF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.89" />
+        app:layout_constraintVertical_bias="0.849" />
 
     <EditText
         android:id="@+id/et_goal"
@@ -80,11 +64,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_currentGoals"
-        android:layout_width="338dp"
-        android:layout_height="279dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/dataBtn"
+        android:layout_width="376dp"
+        android:layout_height="316dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_pastGoals"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_goal" />
