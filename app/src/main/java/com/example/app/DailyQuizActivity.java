@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class DailyQuizActivity extends AppCompatActivity {
@@ -108,8 +109,7 @@ public class DailyQuizActivity extends AppCompatActivity {
               try {
 
                   //to make it consistent, should I use all String.valueOf() or all .toString()?? or is it ok how it is?
-                  String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
-
+                  String date = getTodayDate();
                   //surely there is a nicer way to code this?????
                   if ((et_sleepTime.getText().toString().trim().equals("")) || ((et_productiveTime.getText().toString().trim().equals(""))) || (et_relaxTime.getText().toString().trim().equals("") || (et_exerciseTime.getText().toString().trim().equals("")))) {
                       Toast.makeText(DailyQuizActivity.this, "required fields left empty", Toast.LENGTH_SHORT).show();
@@ -237,6 +237,19 @@ public class DailyQuizActivity extends AppCompatActivity {
             }
         });
 
+
+    }
+    private String getTodayDate() {
+        Calendar cal = Calendar.getInstance();
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        int month = cal.get(Calendar.MONTH);
+        month = month + 1;
+        int year = cal.get(Calendar.YEAR);
+        return makeDateString(day, month, year);
+    }
+
+    private String makeDateString(int dayOfMonth, int month, int year) {
+        return (month + "-" + dayOfMonth + "-" + year);
     }
 
 

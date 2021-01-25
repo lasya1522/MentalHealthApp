@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -34,10 +35,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //public static final String COLUMN_IS_COMPLETED = "IS_COMPLETED";
     public static final String COLUMN_DATE_COMPLETED = "DATE_COMPLETED";
 
+
     //IS THERE A WAY TO SET THIS UP SO I DONT HAVE TO RECREATE THE THING EVERY TIME??!
 
     public DatabaseHelper(@Nullable Context context) {
-
         super(context, "Save trial", null, 8); //I had to increment the version number in order to get it to work after adding the date column
         //the onUpgrade code won't be called unless I do that
     }
@@ -143,6 +144,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL(" update " + GOAL_TABLE + " set " + COLUMN_DATE_COMPLETED + " = \"" + dateCompleted + "\" where " + COLUMN_GOAL + " =  \"" + goalText + "\"");
 
+    }
+
+    public DailyQuiz getDailyQuiz (String date){
+        SQLiteDatabase db = this.getReadableDatabase();
+        DailyQuiz returnQuiz = new DailyQuiz("", "", -1, "", -1, -1, -1, "", "", "");
+        String queryString = " select * from " + DAILY_QUIZ_TABLE + " where " + COLUMN_DATE + " = \"" +  date + "\"";
+        Cursor cursor = db.rawQuery(queryString, null);
+       if (cursor.moveToFirst()){
+        do {
+                String mood = cursor.getString(1);
+                int sleepTime = cursor.getInt(3);
+                String sleepRating = cursor.getString(4);
+                int productiveTime = cursor.getInt(5);
+                int relaxTime = cursor.getInt(6);
+                int exerciseTime = cursor.getInt(7);
+                String stressLevel = cursor.getString(8);
+                String stressors = cursor.getString(9);
+                String other = cursor.getString(10);
+                returnQuiz = new DailyQuiz(date, mood, sleepTime, sleepRating, productiveTime, relaxTime, exerciseTime, stressLevel, stressors, other);
+
+            } while(cursor.moveToNext());
+       } else {
+            //failure. do not add anything to the list
+       }
+
+        return returnQuiz;
     }
 
     public List<Goal> getCurrentGoals () {
