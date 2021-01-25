@@ -144,6 +144,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(" update " + GOAL_TABLE + " set " + COLUMN_DATE_COMPLETED + " = \"" + dateCompleted + "\" where " + COLUMN_GOAL + " =  \"" + goalText + "\"");
 
     }
+
     public List<Goal> getCurrentGoals () {
         List<Goal> returnList = new ArrayList<>();
         String queryString = "SELECT * FROM " + GOAL_TABLE;
