@@ -7,6 +7,7 @@
     tools:context=".ui.goals_tab.GoalsFragment">
 
 
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="63dp"
@@ -40,36 +41,39 @@
         android:id="@+id/et_goal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
         android:ems="10"
         android:hint="Add a goal"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/btn_addGoal"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.184"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.137" />
 
     <Button
         android:id="@+id/btn_addGoal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
-        android:layout_marginEnd="55dp"
-        android:layout_marginRight="55dp"
         android:text="add"
         android:textColor="#FFFFFF"
         app:iconTint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.832"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.133" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_currentGoals"
-        android:layout_width="376dp"
-        android:layout_height="316dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_pastGoals"
+        android:layout_width="337dp"
+        android:layout_height="287dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_goal" />
+        android:overScrollMode="never"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
