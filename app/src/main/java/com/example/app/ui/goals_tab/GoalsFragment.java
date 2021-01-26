@@ -23,6 +23,7 @@ import com.example.app.PastQuizzesActivity;
 import com.example.app.R;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -71,7 +72,7 @@ public class GoalsFragment extends Fragment {
                     if (et_goal.getText().toString().trim().equals("")){
                         Toast.makeText(this.getContext(), "must specify input", Toast.LENGTH_SHORT).show();
                     } else {
-                        date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+                        date = getTodayDate();
                         goalText = et_goal.getText().toString();
                         //technically, will we need to change this code because I basically copied it off a tutorial?
                         Goal goal = new Goal(goalText, date, null);
@@ -107,5 +108,18 @@ public class GoalsFragment extends Fragment {
         goalsList = databaseHelper.getCurrentGoals();
         adapter = new GoalsAdapter(goalsList, this.getContext()); //takes 2 arguments?
         rv_currentGoals.setAdapter(adapter);
+    }
+
+    private String getTodayDate() {
+        Calendar cal = Calendar.getInstance();
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        int month = cal.get(Calendar.MONTH);
+        month = month + 1;
+        int year = cal.get(Calendar.YEAR);
+        return makeDateString(day, month, year);
+    }
+
+    private String makeDateString(int dayOfMonth, int month, int year) {
+        return (month + "-" + dayOfMonth + "-" + year);
     }
 }

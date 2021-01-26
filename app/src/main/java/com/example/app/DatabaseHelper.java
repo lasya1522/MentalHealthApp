@@ -14,9 +14,10 @@ import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    //??: are for the sql commands ??
-
     //Emily: yes but why declare redundant strings?
+
+    //NEED TO MAKE THE COLUMN NAMES ETC BETTER: ex: both the daily quiz and the journal table have dates and texts so it's confusing
+    //strings for the DAILY_QUIZ_TABLE
     public static final String DAILY_QUIZ_TABLE = "DAILY_QUIZ_TABLE";
     public static final String COLUMN_MOOD = "MOOD";
     public static final String COLUMN_DATE = "DATE";
@@ -29,11 +30,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_STRESSORS = "STRESSORS";
     public static final String COLUMN_OTHER = "OTHER";//don't totally understand these vars
 
+    //strings for the GOAL_TABLE
     public static final String GOAL_TABLE = "GOAL_TABLE";
     public static final String COLUMN_GOAL = "GOAL"; //THINK OF SOME BETTER VARIABLE NAMES
     public static final String COLUMN_DATE_CREATED = "DATE_CREATED";
-    //public static final String COLUMN_IS_COMPLETED = "IS_COMPLETED";
     public static final String COLUMN_DATE_COMPLETED = "DATE_COMPLETED";
+
+    //strings for the JOURNAL_TABLE
+    public static final String JOURNAL_TABLE = "JOURNAL_TABLE";
+    public static final String COLUMN_DATE_JOURNAL = "DATE_JOURNAL";
+    public static final String COLUMN_TEXT_JOURNAL = "TEXT_JOURNAL";
 
 
     //IS THERE A WAY TO SET THIS UP SO I DONT HAVE TO RECREATE THE THING EVERY TIME??!
@@ -56,16 +62,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String createGoalTableStatement = "CREATE TABLE GOAL_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT, GOAL TEXT, DATE_CREATED TEXT, DATE_COMPLETED TEXT)";
         db.execSQL(createGoalTableStatement);
 
+        String createJournalTableStatement = "CREATE TABLE JOURNAL_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT, DATE_JOURNAL TEXT, TEXT_JOURNAL TEXT)";
+        db.execSQL(createJournalTableStatement);
+
     }
 
     //called if the database version number changes. It prevents previous user's apps from breaking when you change the database design
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String createGoalTableStatement = "CREATE TABLE GOAL_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT, GOAL TEXT, DATE_CREATED TEXT, DATE_COMPLETED TEXT)";
-        db.execSQL(createGoalTableStatement);
+       // String createGoalTableStatement = "CREATE TABLE GOAL_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT, GOAL TEXT, DATE_CREATED TEXT, DATE_COMPLETED TEXT)";
+       // db.execSQL(createGoalTableStatement);
+        String createJournalTableStatement = "CREATE TABLE JOURNAL_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT, DATE_JOURNAL TEXT, TEXT_JOURNAL TEXT)";
+        db.execSQL(createJournalTableStatement);
+
 
     }
 
+    //methods for JOURNAL_TABLE
+    public boolean addJournalEntry(JournalEntry journalEntry){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_DATE_JOURNAL, journalEntry.getDate());
+        cv.put(COLUMN_TEXT_JOURNAL, journalEntry.getText());
+        long insert = db.insert(DAILY_QUIZ_TABLE, null, cv);
+        //deletethis if-else & the long var once we're sure everything works.
+        if (insert == -1){
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+   //methods for DAILY_QUIZ_TABLE
     public boolean addDailyQuiz(DailyQuiz dailyQuiz){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -82,22 +110,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         //tells me whether the item was put into the database successfully
         long insert = db.insert(DAILY_QUIZ_TABLE, null, cv);
-        if (insert == -1){
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    public boolean addGoal(Goal goal){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-        cv.put(COLUMN_GOAL, goal.getGoalText());
-        cv.put(COLUMN_DATE_CREATED, goal.getDateCreated());
-        cv.put(COLUMN_DATE_COMPLETED, goal.getDateCompleted());
-
-        //tells me whether the item was put into the database successfully
-        long insert = db.insert(GOAL_TABLE, null, cv);
         if (insert == -1){
             return false;
         } else {
@@ -139,20 +151,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return returnList;
     }
-
-    public void completeGoal(String goalText, String dateCompleted){
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL(" update " + GOAL_TABLE + " set " + COLUMN_DATE_COMPLETED + " = \"" + dateCompleted + "\" where " + COLUMN_GOAL + " =  \"" + goalText + "\"");
-
-    }
-
     public DailyQuiz getDailyQuiz (String date){
         SQLiteDatabase db = this.getReadableDatabase();
         DailyQuiz returnQuiz = new DailyQuiz("", "", -1, "", -1, -1, -1, "", "", "");
         String queryString = " select * from " + DAILY_QUIZ_TABLE + " where " + COLUMN_DATE + " = \"" +  date + "\"";
         Cursor cursor = db.rawQuery(queryString, null);
-       if (cursor.moveToFirst()){
-        do {
+        if (cursor.moveToFirst()){
+            do {
                 String mood = cursor.getString(1);
                 int sleepTime = cursor.getInt(3);
                 String sleepRating = cursor.getString(4);
@@ -165,11 +170,34 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 returnQuiz = new DailyQuiz(date, mood, sleepTime, sleepRating, productiveTime, relaxTime, exerciseTime, stressLevel, stressors, other);
 
             } while(cursor.moveToNext());
-       } else {
+        } else {
             //failure. do not add anything to the list
-       }
+        }
 
         return returnQuiz;
+    }
+
+
+    //Methods for GOAL_TABLE
+    public boolean addGoal(Goal goal){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_GOAL, goal.getGoalText());
+        cv.put(COLUMN_DATE_CREATED, goal.getDateCreated());
+        cv.put(COLUMN_DATE_COMPLETED, goal.getDateCompleted());
+
+        //tells me whether the item was put into the database successfully
+        long insert = db.insert(GOAL_TABLE, null, cv);
+        if (insert == -1){
+            return false;
+        } else {
+            return true;
+        }
+    }
+    public void completeGoal(String goalText, String dateCompleted){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL(" update " + GOAL_TABLE + " set " + COLUMN_DATE_COMPLETED + " = \"" + dateCompleted + "\" where " + COLUMN_GOAL + " =  \"" + goalText + "\"");
+
     }
 
     public List<Goal> getCurrentGoals () {
@@ -226,23 +254,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-   /* //method edited from tutorial-- CHANGE SYNTAX???-- is this method needed though>???? should we just have a deleteAll method?
-    public boolean deleteOne (DailyQuiz dailyQuiz) {
-        //find customerModel in the database. if it is found, delete it and return true
-        // if it's not found, return false
-        SQLiteDatabase db = this.getWritableDatabase();
-        String queryString = "DELETE FROM " + DAILY_QUIZ_TABLE + " WHERE " + COLUMN_DATE  + " = " + dailyQuiz.getDate();
-        Cursor cursor = db.rawQuery(queryString, null);
-        if (cursor.moveToFirst()){
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    */
-
-   // ADD FUNCTIONALITY TO DELETE ALL GOALS AND WHATEVER ELSE AS WELL
+    //clear data method-- clears BOTH tables
     public void deleteAll () {
         SQLiteDatabase db = this.getWritableDatabase();
         String queryStringDailyQuiz = "DELETE FROM " + DAILY_QUIZ_TABLE;
