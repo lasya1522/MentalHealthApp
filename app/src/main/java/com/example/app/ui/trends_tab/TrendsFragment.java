@@ -69,6 +69,8 @@ public class TrendsFragment extends Fragment {
         sleepTimeSet.setValueTextSize(22f);
         sleepTimeData.setBarWidth(1f); // set custom bar width
         chart_sleepTime.setData(sleepTimeData);
+        chart_sleepTime.getViewPortHandler().setMinMaxScaleX(0, 10);
+        chart_sleepTime.getViewPortHandler().setMinMaxScaleY(0, 20);
         chart_sleepTime.invalidate(); // refresh
 
         //FINDING MEAN, MEDIAN, MODE, and RANGE --> MUST MAKE THIS MORE EFFICIENT
