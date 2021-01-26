@@ -1,12 +1,12 @@
 package com.example.app.ui.trends_tab;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -19,14 +19,13 @@ import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
-import static java.lang.String.format;
 
 public class TrendsFragment extends Fragment {
 
@@ -70,8 +69,13 @@ public class TrendsFragment extends Fragment {
         }
         BarDataSet sleepTimeSet = new BarDataSet(sleepTimeEntries, "Sleep Time");
         BarData sleepTimeData = new BarData(sleepTimeSet);
+        sleepTimeSet.setColors(ColorTemplate.MATERIAL_COLORS);
+        sleepTimeSet.setValueTextColor(Color.BLACK);
+        sleepTimeSet.setValueTextSize(22f);
         sleepTimeData.setBarWidth(1f); // set custom bar width
         chart_sleepTime.setData(sleepTimeData);
+        chart_sleepTime.getViewPortHandler().setMinMaxScaleX(0, 10);
+        chart_sleepTime.getViewPortHandler().setMinMaxScaleY(0, 20);
         chart_sleepTime.invalidate(); // refresh
 
         //FINDING MEAN, MEDIAN, MODE, and RANGE --> MUST MAKE THIS MORE EFFICIENT
@@ -137,6 +141,9 @@ public class TrendsFragment extends Fragment {
         }
         BarDataSet productiveTimeSet = new BarDataSet(productiveTimeEntries, "Productive Time");
         BarData productiveTimeData = new BarData(productiveTimeSet);
+        productiveTimeSet.setColors(ColorTemplate.MATERIAL_COLORS);
+        productiveTimeSet.setValueTextColor(Color.BLACK);
+        productiveTimeSet.setValueTextSize(22f);
         productiveTimeData.setBarWidth(1f); // set custom bar width
         chart_productiveTime.setData(productiveTimeData);
         chart_productiveTime.invalidate(); // refresh
@@ -149,6 +156,9 @@ public class TrendsFragment extends Fragment {
         }
         BarDataSet relaxTimeSet = new BarDataSet(relaxTimeEntries, "Relax Time");
         BarData relaxTimeData = new BarData(relaxTimeSet);
+        relaxTimeSet.setColors(ColorTemplate.MATERIAL_COLORS);
+        relaxTimeSet.setValueTextColor(Color.BLACK);
+        relaxTimeSet.setValueTextSize(22f);
         relaxTimeData.setBarWidth(1f); // set custom bar width
         chart_relaxTime.setData(relaxTimeData);
         chart_relaxTime.invalidate(); // refresh
@@ -161,7 +171,17 @@ public class TrendsFragment extends Fragment {
         }
         BarDataSet exerciseTimeSet = new BarDataSet(exerciseTimeEntries, "Exercise Time");
         BarData exerciseTimeData = new BarData(exerciseTimeSet);
+        exerciseTimeSet.setColors(ColorTemplate.MATERIAL_COLORS);
+        exerciseTimeSet.setValueTextColor(Color.BLACK);
+        exerciseTimeSet.setValueTextSize(22f);
         relaxTimeData.setBarWidth(1f); // set custom bar width
+
+        //set axis limits
+        chart_exerciseTime.getViewPortHandler().setMinMaxScaleX(0, 10);
+        chart_exerciseTime.getViewPortHandler().setMinMaxScaleY(0, 20);
+
+
+
         chart_exerciseTime.setData(exerciseTimeData);
         chart_exerciseTime.invalidate(); // refresh
 
