@@ -64,7 +64,6 @@ public class ViewPastQuizActivity extends AppCompatActivity {
         tv_other.setText("other: " + dailyQuiz.getOther());
 
 
-
     }
 
 }

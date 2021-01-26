@@ -20,7 +20,10 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static java.lang.String.format;
@@ -53,6 +56,8 @@ public class TrendsFragment extends Fragment {
 
         List<DailyQuiz> dailyQuizData = databaseHelper.getDailyQuizData();
 
+
+
         //TESTED OUT GRAPHS BY CREATING A TEST GRAPH HERE
 
         //NEED TO PROTECT AGAINST NULL VALUES
@@ -70,30 +75,6 @@ public class TrendsFragment extends Fragment {
         chart_sleepTime.invalidate(); // refresh
 
         //FINDING MEAN, MEDIAN, MODE, and RANGE --> MUST MAKE THIS MORE EFFICIENT
-        double sleepTimeMean = 0;
-        for (int i = 0; i < dailyQuizData.size(); i++){
-            sleepTimeMean += dailyQuizData.get(i).getSleepTime();
-        }
-        sleepTimeMean /= dailyQuizData.size();
-
-
-        double productiveTimeMean = 0;
-        for (int i = 0; i < dailyQuizData.size(); i++){
-            productiveTimeMean += dailyQuizData.get(i).getProductiveTime();
-        }
-        productiveTimeMean /= dailyQuizData.size();
-
-        double relaxTimeMean = 0;
-        for (int i = 0; i < dailyQuizData.size(); i++){
-            relaxTimeMean += dailyQuizData.get(i).getRelaxTime();
-        }
-        relaxTimeMean /= dailyQuizData.size();
-
-        double exerciseTimeMean = 0;
-        for (int i = 0; i < dailyQuizData.size(); i++){
-            exerciseTimeMean += dailyQuizData.get(i).getExerciseTime();
-        }
-        exerciseTimeMean /= dailyQuizData.size();
 
       /*   int sleepTimeMedian = 0;
         if (dailyQuizData.size() %2 == 0){
@@ -105,15 +86,47 @@ public class TrendsFragment extends Fragment {
         }
 
        */
-        //that doesnt work because the list isn't sorted. to revise later.
+        ArrayList<Integer> sleepTimeList = new ArrayList<>();
+        for (int i = 0; i < dailyQuizData.size(); i++){
+            sleepTimeList.add(dailyQuizData.get(i).getSleepTime());
+        }
+        double sleepTimeMean = calculateMean(sleepTimeList);
+        double sleepTimeMedian = calculateMedian(sleepTimeList);
+        double sleepTimeMode = calculateMode(sleepTimeList);
+        double sleepTimeRange = calculateRange(sleepTimeList);
+        tv_sleepTimeData.setText("Mean = " + sleepTimeMean + " Median = " +sleepTimeMedian + " Mode = " + sleepTimeMode + " Range = " + sleepTimeRange);
 
-        int sleepTimeRange = 0;
-        int highest;
 
-        tv_sleepTimeData.setText("Mean = " + sleepTimeMean );
-        tv_productiveTimeData.setText("Mean = " + productiveTimeMean);
-        tv_relaxTimeData.setText("Mean = " + relaxTimeMean);
-        tv_exerciseTimeData.setText("Mean = " +exerciseTimeMean);
+        ArrayList<Integer> productiveTimeList = new ArrayList<>();
+        for (int i = 0; i < dailyQuizData.size(); i++){
+            productiveTimeList.add(dailyQuizData.get(i).getProductiveTime());
+        }
+        double productiveTimeMean = calculateMean(productiveTimeList);
+        double productiveTimeMedian = calculateMedian(productiveTimeList);
+        double productiveTimeMode = calculateMode(productiveTimeList);
+        double productiveTimeRange = calculateRange(productiveTimeList);
+
+        tv_productiveTimeData.setText("Mean = " + productiveTimeMean + " Median = " +productiveTimeMedian + " Mode = " + productiveTimeMode + " Range = " + productiveTimeRange);
+
+        ArrayList<Integer> relaxTimeList = new ArrayList<>();
+        for (int i = 0; i < dailyQuizData.size(); i++ ){
+            relaxTimeList.add(dailyQuizData.get(i).getRelaxTime());
+        }
+        double relaxTimeMean = calculateMean(relaxTimeList);
+        double relaxTimeMedian = calculateMedian(relaxTimeList);
+        double relaxTimeMode = calculateMode(relaxTimeList);
+        double relaxTimeRange = calculateRange(relaxTimeList);
+        tv_relaxTimeData.setText("Mean = " + relaxTimeMean + " Median = " + relaxTimeMedian + " Mode = " +relaxTimeMode + " Range = " + relaxTimeRange);
+
+        ArrayList<Integer> exerciseTimeList = new ArrayList<>();
+        for (int i = 0; i < dailyQuizData.size(); i++ ){
+            exerciseTimeList.add(dailyQuizData.get(i).getExerciseTime());
+        }
+        double exerciseTimeMean = calculateMean(exerciseTimeList);
+        double exerciseTimeMedian = calculateMedian(exerciseTimeList);
+        double exerciseTimeMode = calculateMode(exerciseTimeList);
+        double exerciseTimeRange = calculateRange(exerciseTimeList);
+        tv_exerciseTimeData.setText("Mean = " + exerciseTimeMean + " Median = " + exerciseTimeMedian + " Mode = " + exerciseTimeMode + " Range = " + exerciseTimeRange);
 
 
         BarChart chart_productiveTime;
@@ -154,5 +167,58 @@ public class TrendsFragment extends Fragment {
 
         return root;
     }
+
+    private double calculateMean(ArrayList<Integer> list ){
+        double mean = 0;
+        double sleepTimeMean = 0;
+        for (int i = 0; i < list.size(); i++){
+            mean += list.get(i);
+        }
+        mean /= list.size();
+        return mean;
+    }
+
+    private double calculateMedian(ArrayList<Integer> list){
+        //TEST AND MAKE SURE THIS ACTUALLY WORKS
+        double median = 0;
+        Collections.sort(list);
+        if (list.size() % 2 == 0) {
+            median = (list.get(list.size()/2) + list.get(list.size()/2)+1)/2; //check to make sure this line actually works. integer divisi
+        } else {
+            median = list.get(list.size() / 2);
+        }
+        return median;
+    }
+
+   private int calculateMode(ArrayList<Integer> list){
+        // ********************
+       // do we need to account for sets with multiple modes???????????????
+       int mode = 0;
+       int max = Integer.MIN_VALUE;
+        int[] freq = new int[list.size()];
+        for (int i = 0; i < list.size(); i++){
+            int counter = 0;
+            for (int j = 0; j < list.size(); j ++){
+                if (list.get(i) == list.get(j)){
+                    counter++;
+                }
+            }
+            if (counter > max){
+                max = counter;
+                mode = list.get(i);
+            }
+
+        }
+        return mode;
+   }
+
+   private int calculateRange(ArrayList<Integer> list){
+        int range = 0;
+        Collections.sort(list);
+        range = list.get(list.size()-1) - list.get(0);
+        return range;
+   }
+
+
 
     }
