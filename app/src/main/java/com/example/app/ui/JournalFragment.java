@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.app.R;
+import java.util.Arrays;
+import java.util.ArrayList;
 
 public class JournalFragment extends Fragment {
 
@@ -30,5 +32,17 @@ public class JournalFragment extends Fragment {
         //});
 
         return root;
+    }
+
+    // range menthod
+    public static int returnRange(int[] array)
+    {
+        // Our arr contains 8 elements
+
+        Arrays.sort(array);
+        int max = array[array.length-1];
+        int min = array[0];
+
+        return max-min;
     }
 }
