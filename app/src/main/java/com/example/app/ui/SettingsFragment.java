@@ -2,6 +2,7 @@ package com.example.app.ui;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import java.util.Calendar;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -84,8 +85,8 @@ public class SettingsFragment extends Fragment {
 
         //button can be found on settings page - fragment_settings.xml
 
-        //this is where the error is. he uses this weird v-> thing which i guess is like a method
-        button_remind.setOnClickListener(v -> { //what is this doing???? why is ther v-> iinsteadof new View.OnClickListener? code consistency
+
+        button_remind.setOnClickListener(v -> {
             //toast says that user clicked the button.
             Toast.makeText(this.getContext(), "Reminder in one hour set!", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this.getContext(), ReminderBroadcast.class);
@@ -100,8 +101,15 @@ public class SettingsFragment extends Fragment {
             //We could later have a user input field and take that information and use it for custom time here.
             long tenSecondsInMillis = 1000+5;
 
-            alarmManager.set(AlarmManager.RTC_WAKEUP,
-                    timeAtButtonClick + tenSecondsInMillis, pendingIntent);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(System.currentTimeMillis());
+            calendar.set(Calendar.HOUR_OF_DAY, 19);
+
+          // With setInexactRepeating(), you have to use one of the AlarmManager interval
+           // constants--in this case, AlarmManager.INTERVAL_DAY.
+            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                    AlarmManager.INTERVAL_DAY, pendingIntent);
+
         });
 
         return root;

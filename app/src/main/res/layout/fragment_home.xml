@@ -83,20 +83,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textView19"
         app:layout_constraintVertical_bias="0.221" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="253dp"
-        android:layout_height="93dp"
-        android:onClick="browser1"
-        android:text="View the National Suicide Prevention Lifeline Page"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.935"
-        tools:ignore="OnClick" />
-
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"

@@ -78,18 +78,6 @@ public class TrendsFragment extends Fragment {
         chart_sleepTime.getViewPortHandler().setMinMaxScaleY(0, 20);
         chart_sleepTime.invalidate(); // refresh
 
-        //FINDING MEAN, MEDIAN, MODE, and RANGE --> MUST MAKE THIS MORE EFFICIENT
-
-      /*   int sleepTimeMedian = 0;
-        if (dailyQuizData.size() %2 == 0){
-            sleepTimeMedian = dailyQuizData.get(dailyQuizData.size()/2).getSleepTime();
-        } else {
-            int lower = dailyQuizData.get(dailyQuizData.size()/2).getSleepTime();
-            int upper = dailyQuizData.get(dailyQuizData.size()/2).getSleepTime() + 1;
-            sleepTimeMedian = (lower + upper)/2;
-        }
-
-       */
         ArrayList<Integer> sleepTimeList = new ArrayList<>();
         for (int i = 0; i < dailyQuizData.size(); i++){
             sleepTimeList.add(dailyQuizData.get(i).getSleepTime());

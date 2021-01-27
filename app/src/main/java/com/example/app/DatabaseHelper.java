@@ -84,7 +84,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_DATE_JOURNAL, journalEntry.getDate());
         cv.put(COLUMN_TEXT_JOURNAL, journalEntry.getText());
-        long insert = db.insert(DAILY_QUIZ_TABLE, null, cv);
+        long insert = db.insert(JOURNAL_TABLE, null, cv);
         //deletethis if-else & the long var once we're sure everything works.
         if (insert == -1){
             return false;

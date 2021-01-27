@@ -24,19 +24,6 @@
         app:layout_constraintVertical_bias="0.008" />
 
     <TextView
-        android:id="@+id/textView14"
-        android:layout_width="314dp"
-        android:layout_height="36dp"
-        android:text="Write about your day today"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.241" />
-
-    <TextView
         android:id="@+id/textView4"
         android:layout_width="353dp"
         android:layout_height="50dp"
@@ -49,16 +36,18 @@
 
     <EditText
         android:id="@+id/et_journal"
-        android:layout_width="343dp"
-        android:layout_height="360dp"
+        android:layout_width="337dp"
+        android:layout_height="292dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginBottom="127dp"
         android:ems="10"
         android:gravity="start|top"
+        android:hint="Today, I..."
         android:inputType="textMultiLine"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14"
-        app:layout_constraintVertical_bias="0.225" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <Button
         android:id="@+id/btn_save"
