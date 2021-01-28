@@ -61,22 +61,6 @@ public class TrendsFragment extends Fragment {
 
         //NEED TO PROTECT AGAINST NULL VALUES
         //we should do a "past 30 days" or "past 7 days" or whatever thing so that we have a finite thing
-        BarChart chart_sleepTime;
-        chart_sleepTime = (BarChart) root.findViewById(R.id.chart_sleepTime);
-        List<BarEntry> sleepTimeEntries = new ArrayList<>();
-        for (int i = 0; i < dailyQuizData.size(); i++){
-            sleepTimeEntries.add( new BarEntry(i, dailyQuizData.get(i).getSleepTime()));
-        }
-        BarDataSet sleepTimeSet = new BarDataSet(sleepTimeEntries, "Sleep Time");
-        BarData sleepTimeData = new BarData(sleepTimeSet);
-        sleepTimeSet.setColors(ColorTemplate.MATERIAL_COLORS);
-        sleepTimeSet.setValueTextColor(Color.BLACK);
-        sleepTimeSet.setValueTextSize(22f);
-        sleepTimeData.setBarWidth(1f); // set custom bar width
-        chart_sleepTime.setData(sleepTimeData);
-        chart_sleepTime.getViewPortHandler().setMinMaxScaleX(0, 10);
-        chart_sleepTime.getViewPortHandler().setMinMaxScaleY(0, 20);
-        chart_sleepTime.invalidate(); // refresh
 
         ArrayList<Integer> sleepTimeList = new ArrayList<>();
         for (int i = 0; i < dailyQuizData.size(); i++){
@@ -120,7 +104,26 @@ public class TrendsFragment extends Fragment {
         double exerciseTimeRange = calculateRange(exerciseTimeList);
         tv_exerciseTimeData.setText("Mean = " + exerciseTimeMean + " Median = " + exerciseTimeMedian + " Mode = " + exerciseTimeMode + " Range = " + exerciseTimeRange);
 
+        //sleep time bar chart
+        BarChart chart_sleepTime;
+        chart_sleepTime = (BarChart) root.findViewById(R.id.chart_sleepTime);
+        List<BarEntry> sleepTimeEntries = new ArrayList<>();
+        for (int i = 0; i < dailyQuizData.size(); i++){
+            sleepTimeEntries.add( new BarEntry(i, dailyQuizData.get(i).getSleepTime()));
+        }
+        BarDataSet sleepTimeSet = new BarDataSet(sleepTimeEntries, "Sleep Time");
+        BarData sleepTimeData = new BarData(sleepTimeSet);
+        sleepTimeSet.setColors(new int[] {R.color.purple_graph_1, R.color.purple_graph_2, R.color.purple_graph_3}, this.getContext());
+        sleepTimeSet.setValueTextColor(Color.BLACK);
+        sleepTimeSet.setValueTextSize(22f);
+        sleepTimeData.setBarWidth(1f); // set custom bar width
+        chart_sleepTime.setData(sleepTimeData);
+        chart_sleepTime.getViewPortHandler().setMinMaxScaleX(0, 10);
+        chart_sleepTime.getViewPortHandler().setMinMaxScaleY(0, 20);
+        chart_sleepTime.invalidate(); // refresh
 
+
+        //productive time bar chart
         BarChart chart_productiveTime;
         chart_productiveTime = (BarChart) root.findViewById(R.id.chart_productiveTime);
         List<BarEntry> productiveTimeEntries = new ArrayList<>();
@@ -129,13 +132,14 @@ public class TrendsFragment extends Fragment {
         }
         BarDataSet productiveTimeSet = new BarDataSet(productiveTimeEntries, "Productive Time");
         BarData productiveTimeData = new BarData(productiveTimeSet);
-        productiveTimeSet.setColors(ColorTemplate.MATERIAL_COLORS);
+        productiveTimeSet.setColors(new int[] { R.color.purple_graph_1, R.color.purple_graph_2, R.color.purple_graph_3}, this.getContext());
         productiveTimeSet.setValueTextColor(Color.BLACK);
         productiveTimeSet.setValueTextSize(22f);
         productiveTimeData.setBarWidth(1f); // set custom bar width
         chart_productiveTime.setData(productiveTimeData);
         chart_productiveTime.invalidate(); // refresh
 
+        //relax time bar chart
         BarChart chart_relaxTime;
         chart_relaxTime = (BarChart) root.findViewById(R.id.chart_relaxTime);
         List<BarEntry> relaxTimeEntries = new ArrayList<>();
@@ -144,13 +148,14 @@ public class TrendsFragment extends Fragment {
         }
         BarDataSet relaxTimeSet = new BarDataSet(relaxTimeEntries, "Relax Time");
         BarData relaxTimeData = new BarData(relaxTimeSet);
-        relaxTimeSet.setColors(ColorTemplate.MATERIAL_COLORS);
+        relaxTimeSet.setColors(new int[] {R.color.purple_graph_1, R.color.purple_graph_2, R.color.purple_graph_3}, this.getContext() );
         relaxTimeSet.setValueTextColor(Color.BLACK);
         relaxTimeSet.setValueTextSize(22f);
         relaxTimeData.setBarWidth(1f); // set custom bar width
         chart_relaxTime.setData(relaxTimeData);
         chart_relaxTime.invalidate(); // refresh
 
+        //exercise time bar chart
         BarChart chart_exerciseTime;
         chart_exerciseTime = (BarChart) root.findViewById(R.id.chart_exerciseTime);
         List<BarEntry> exerciseTimeEntries = new ArrayList<>();
@@ -159,19 +164,25 @@ public class TrendsFragment extends Fragment {
         }
         BarDataSet exerciseTimeSet = new BarDataSet(exerciseTimeEntries, "Exercise Time");
         BarData exerciseTimeData = new BarData(exerciseTimeSet);
-        exerciseTimeSet.setColors(ColorTemplate.MATERIAL_COLORS);
+        exerciseTimeSet.setColors(new int[] {R.color.purple_graph_1, R.color.purple_graph_2, R.color.purple_graph_3}, this.getContext());
         exerciseTimeSet.setValueTextColor(Color.BLACK);
         exerciseTimeSet.setValueTextSize(22f);
+        chart_exerciseTime.setData(exerciseTimeData);
+        chart_exerciseTime.invalidate(); // refresh
         relaxTimeData.setBarWidth(1f); // set custom bar width
 
         //set axis limits
+        chart_sleepTime.getViewPortHandler().setMinMaxScaleX(0, 10);
+        chart_sleepTime.getViewPortHandler().setMinMaxScaleY(0, 20);
+
+        chart_productiveTime.getViewPortHandler().setMinMaxScaleX(0, 10);
+        chart_productiveTime.getViewPortHandler().setMinMaxScaleY(0, 20);
+
+        chart_relaxTime.getViewPortHandler().setMinMaxScaleX(0, 10);
+        chart_relaxTime.getViewPortHandler().setMinMaxScaleY(0, 20);
+
         chart_exerciseTime.getViewPortHandler().setMinMaxScaleX(0, 10);
         chart_exerciseTime.getViewPortHandler().setMinMaxScaleY(0, 20);
-
-
-
-        chart_exerciseTime.setData(exerciseTimeData);
-        chart_exerciseTime.invalidate(); // refresh
 
         return root;
     }

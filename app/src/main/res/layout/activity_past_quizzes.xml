@@ -38,7 +38,7 @@
         android:id="@+id/datePickerBtn"
         android:layout_width="219dp"
         android:layout_height="82dp"
-        android:background="@color/purple_200"
+        android:background="@color/purple_500"
         android:onClick="openDatePicker"
         android:text="Select Date"
         android:textColor="@color/white"
