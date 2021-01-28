@@ -130,8 +130,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 //should i change the order of the stuff because the date is second and that's kind of annoying? should I make it second
 
                 //I CAN'T GET  THE DATE AND THE MOOD TO SWITCH COLUMN ORDER
-                String dailyQuizDate = cursor.getString(2);
-                String dailyQuizMood = cursor.getString(1);
+                String dailyQuizMood = cursor.getString(2);
+                String dailyQuizDate = cursor.getString(1);
                 int dailyQuizSleepTime = cursor.getInt(3);
                 String dailyQuizSleepRating = cursor.getString(4);
                 int dailyQuizProductiveTime = cursor.getInt(5);
@@ -158,7 +158,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(queryString, null);
         if (cursor.moveToFirst()){
             do {
-                String mood = cursor.getString(1);
+                String mood = cursor.getString(2);
                 int sleepTime = cursor.getInt(3);
                 String sleepRating = cursor.getString(4);
                 int productiveTime = cursor.getInt(5);

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name= "purple_graph_1">#BCAFEA</color>
-    <color name= "purple_graph_2">#9285C1</color>
-    <color name = "purple_graph_3">#6D59AF</color>
+    <color name= "purple_graph_1">#BFB3EA</color>
+    <color name= "purple_graph_2">#8E7BAE</color>
+    <color name = "purple_graph_3">#8459B5</color>
+    <color name = "purple_graph_4">#493685</color>
     <color name="purple_200">#9F84FF</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>

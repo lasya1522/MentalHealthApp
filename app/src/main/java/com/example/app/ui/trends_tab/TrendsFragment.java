@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -16,9 +17,13 @@ import com.example.app.DailyQuiz;
 import com.example.app.DatabaseHelper;
 import com.example.app.R;
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.lang.reflect.Array;
@@ -57,10 +62,30 @@ public class TrendsFragment extends Fragment {
 
 
 
-        //TESTED OUT GRAPHS BY CREATING A TEST GRAPH HERE
-
         //NEED TO PROTECT AGAINST NULL VALUES
         //we should do a "past 30 days" or "past 7 days" or whatever thing so that we have a finite thing
+        ArrayList<String> moodList = new ArrayList<>();
+        for (int i = 0; i < dailyQuizData.size(); i++){
+            moodList.add(dailyQuizData.get(i).getMood());
+        }
+        PieChart chart_mood;
+        chart_mood = (PieChart) root.findViewById(R.id.chart_mood);
+        Toast.makeText(this.getContext(), moodList.toString(), Toast.LENGTH_LONG).show();
+        List<PieEntry> moodEntries = new ArrayList<>();
+        List<Float> moodFreqData = getMoodFreq(moodList);
+        moodEntries.add(new PieEntry(moodFreqData.get(0), "Good"));
+        moodEntries.add(new PieEntry(moodFreqData.get(1), "Decent"));
+        moodEntries.add(new PieEntry(moodFreqData.get(2), "Bad"));
+        moodEntries.add(new PieEntry(moodFreqData.get(3), "Tired"));
+        PieDataSet moodSet = new PieDataSet(moodEntries, "Mood");
+        PieData moodData = new PieData(moodSet);
+        moodSet.setColors(new int[] {R.color.purple_graph_1, R.color.purple_graph_2, R.color.purple_graph_3, R.color.purple_graph_4}, this.getContext());
+        chart_mood.setData(moodData);
+        //makes the pie chart completely filled in
+        chart_mood.setHoleRadius(0);
+        chart_mood.setTransparentCircleAlpha(0);
+
+        chart_mood.invalidate(); // refresh
 
         ArrayList<Integer> sleepTimeList = new ArrayList<>();
         for (int i = 0; i < dailyQuizData.size(); i++){
@@ -108,8 +133,14 @@ public class TrendsFragment extends Fragment {
         BarChart chart_sleepTime;
         chart_sleepTime = (BarChart) root.findViewById(R.id.chart_sleepTime);
         List<BarEntry> sleepTimeEntries = new ArrayList<>();
-        for (int i = 0; i < dailyQuizData.size(); i++){
-            sleepTimeEntries.add( new BarEntry(i, dailyQuizData.get(i).getSleepTime()));
+        if (dailyQuizData.size() >= 7){
+            for (int i = dailyQuizData.size()-7; i < dailyQuizData.size(); i++) {
+                sleepTimeEntries.add(new BarEntry(i, dailyQuizData.get(i).getSleepTime()));
+            }
+        } else {
+            for (int i = 0; i < dailyQuizData.size(); i++) {
+                sleepTimeEntries.add(new BarEntry(i, dailyQuizData.get(i).getSleepTime()));
+            }
         }
         BarDataSet sleepTimeSet = new BarDataSet(sleepTimeEntries, "Sleep Time");
         BarData sleepTimeData = new BarData(sleepTimeSet);
@@ -118,7 +149,7 @@ public class TrendsFragment extends Fragment {
         sleepTimeSet.setValueTextSize(22f);
         sleepTimeData.setBarWidth(1f); // set custom bar width
         chart_sleepTime.setData(sleepTimeData);
-        chart_sleepTime.getViewPortHandler().setMinMaxScaleX(0, 10);
+        chart_sleepTime.getViewPortHandler().setMinMaxScaleX(0, 7);
         chart_sleepTime.getViewPortHandler().setMinMaxScaleY(0, 20);
         chart_sleepTime.invalidate(); // refresh
 
@@ -238,6 +269,33 @@ public class TrendsFragment extends Fragment {
         return range;
    }
 
+   private ArrayList<Float> getMoodFreq(ArrayList<String> list){
+        ArrayList<Float> counter = new ArrayList<>();
+        counter.add(0f);
+        counter.add(0f);
+        counter.add(0f);
+        counter.add(0f);
+
+        for (int i = 0; i < list.size(); i++){
+            if (list.get(i).equals("Good")){
+                counter.set(0, counter.get(0)+1);
+                Toast.makeText(this.getContext(), "counter.get(0) == " + counter.get(0), Toast.LENGTH_SHORT).show();
+            } else if (list.get(i).equals("Decent")){
+                counter.set(1, counter.get(1)+1);
+            } else if (list.get(i).equals("Bad")){
+                counter.set(2, counter.get(2)+1);
+            } else {
+                counter.set(3, counter.get(3)+1);
+            }
+        }
+        counter.set(0, counter.get(0));
+        Toast.makeText(this.getContext(), counter.get(0).toString(), Toast.LENGTH_SHORT).show();
+        counter.set(1, counter.get(1));
+        counter.set(2, counter.get(2));
+        counter.set(3, counter.get(3));
+
+       return counter;
+    }
 
 
     }
