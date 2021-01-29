@@ -259,7 +259,7 @@ public class TrendsFragment extends Fragment {
 
         YAxis right_axis_sleepTime = chart_sleepTime.getAxisRight();
         right_axis_sleepTime.setDrawGridLines(false);
-        right_axis_sleepTime.setDrawAxisLine(false);
+        right_axis_sleepTime.setDrawAxisLine(true);
         right_axis_sleepTime.setDrawAxisLine(false);
         right_axis_sleepTime.setDrawLabels(false);
         right_axis_sleepTime.setAxisMaximum(24f);
@@ -396,21 +396,37 @@ public class TrendsFragment extends Fragment {
 
         chart_sleepTime.setData(sleepTimeData);
         chart_sleepTime.invalidate();
-        tv_sleepTimeData.setText("Mean = " + sleepTimeMean + " Median = " +sleepTimeMedian + " Mode = " + sleepTimeMode + " Range = " + sleepTimeRange);
+        tv_sleepTimeData.setText("Mean = " + sleepTimeMean + "\n"
+                + "Median = " +sleepTimeMedian + "\n" +
+                "Mode = " + sleepTimeMode + "\n" +
+                "Range = " + sleepTimeRange + "\n" +
+                "");
 
         chart_productiveTime.setData(productiveTimeData);
         chart_productiveTime.invalidate();
-        tv_productiveTimeData.setText("Mean = " + productiveTimeMean + " Median = " +productiveTimeMedian + " Mode = " + productiveTimeMode + " Range = " + productiveTimeRange);
+        tv_productiveTimeData.setText("Mean = " + productiveTimeMean + "\n" +
+                "Median = " + productiveTimeMedian + "\n" +
+                "Mode = " + productiveTimeMode + "\n" +
+                "Range = " + productiveTimeRange + "\n" +
+                "");
 
 
         chart_relaxTime.setData(relaxTimeData);
         chart_relaxTime.invalidate();
-        tv_relaxTimeData.setText("Mean = " + relaxTimeMean + " Median = " + relaxTimeMedian + " Mode = " +relaxTimeMode + " Range = " + relaxTimeRange);
+        tv_relaxTimeData.setText("Mean = " + relaxTimeMean + "\n" +
+                "Median = " + relaxTimeMedian + "\n" +
+                "Mode = " +relaxTimeMode + "\n" +
+                "Range = " + relaxTimeRange + "\n" +
+                "");
 
 
         chart_exerciseTime.setData(exerciseTimeData);
         chart_exerciseTime.invalidate();
-        tv_exerciseTimeData.setText("Mean = " + exerciseTimeMean + " Median = " + exerciseTimeMedian + " Mode = " + exerciseTimeMode + " Range = " + exerciseTimeRange);
+        tv_exerciseTimeData.setText("Mean = " + exerciseTimeMean + "\n" +
+                "Median = " + exerciseTimeMedian + "\n" +
+                "Mode = " + exerciseTimeMode + "\n" +
+                "Range = " + exerciseTimeRange+ "\n" +
+                "");
 
         return root;
     }

@@ -1,14 +1,15 @@
 package com.example.app;
 
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -68,6 +69,10 @@ public class DailyQuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_quiz);
+
+        //Underline quiz title
+        TextView quizTitle = (TextView) findViewById(R.id.dailyQuizTitle);
+        quizTitle.setPaintFlags(quizTitle.getPaintFlags()|Paint.UNDERLINE_TEXT_FLAG);
 
         btn_mood1 = findViewById(R.id.btn_mood1);
         btn_mood2 = findViewById(R.id.btn_mood2);
