@@ -26,11 +26,8 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.utils.ColorTemplate;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -71,6 +68,7 @@ public class TrendsFragment extends Fragment {
             sleepRatingList.add(dailyQuizData.get(i).getSleepRating());
         }
         PieChart chart_sleepRating;
+
         chart_sleepRating = (PieChart) root.findViewById(R.id.chart_sleepRating);
         Toast.makeText(this.getContext(), sleepRatingList.toString(), Toast.LENGTH_LONG).show();
         List<PieEntry> sleepRatingEntries = new ArrayList<>();
@@ -78,10 +76,12 @@ public class TrendsFragment extends Fragment {
         sleepRatingEntries.add(new PieEntry(sleepRatingFreqData.get(0), "Good"));
         sleepRatingEntries.add(new PieEntry(sleepRatingFreqData.get(1), "Decent"));
         sleepRatingEntries.add(new PieEntry(sleepRatingFreqData.get(2), "Bad"));
+
         PieDataSet sleepRatingSet = new PieDataSet(sleepRatingEntries, "Sleep Rating");
         PieData sleepRatingData = new PieData(sleepRatingSet);
         sleepRatingSet.setColors(new int[] {R.color.purple_graph_1, R.color.purple_graph_2, R.color.purple_graph_3, R.color.purple_graph_4}, this.getContext());
         chart_sleepRating.setData(sleepRatingData);
+
         //makes the pie chart completely filled in
         chart_sleepRating.setHoleRadius(0);
         chart_sleepRating.setTransparentCircleAlpha(0);
@@ -188,14 +188,18 @@ public class TrendsFragment extends Fragment {
 
         XAxis xaxis_sleepTime = chart_sleepTime.getXAxis();
         xaxis_sleepTime.setDrawGridLines(false);
-        xaxis_sleepTime.setDrawAxisLine(false);
+        xaxis_sleepTime.setDrawAxisLine(true);
+        XAxis xAxis = chart_sleepTime.getXAxis();
+        xAxis.setTextSize(10f);
+        xAxis.setDrawAxisLine(true);
+        xAxis.setDrawGridLines(false);
 
-        
+
         //do I have to call other things? AxisDependenct.LEFT or RIGHT in order for this to work properly
         YAxis left_axis_sleepTime = chart_sleepTime.getAxisLeft();
         left_axis_sleepTime.setDrawGridLines(false);
-        left_axis_sleepTime.setDrawAxisLine(false);
-        left_axis_sleepTime.setDrawAxisLine(false);
+        left_axis_sleepTime.setDrawAxisLine(true);
+        //left_axis_sleepTime.setDrawAxisLine(false);
         left_axis_sleepTime.setDrawLabels(false);
         left_axis_sleepTime.setAxisMaximum(24f);
 

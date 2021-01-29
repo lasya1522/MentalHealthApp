@@ -35,10 +35,26 @@
                 app:layout_constraintVertical_bias="0.0"
                 tools:ignore="RtlCompat,Suspicious0dp" />
 
+            <TextView
+                android:id="@+id/moodPieChartTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mood:"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/chart_mood"
                 android:layout_width="match_parent"
                 android:layout_height="200dp" />
+
+            <TextView
+                android:id="@+id/sleepTimeBarTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Amount of Sleep "
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/chart_sleepTime"
@@ -48,12 +64,23 @@
             <TextView
                 android:id="@+id/tv_sleepTimeData"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="Sleep Quality:"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/chart_sleepRating"
                 android:layout_width="match_parent"
                 android:layout_height="200dp" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Productivity"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/chart_productiveTime"
@@ -63,7 +90,16 @@
             <TextView
                 android:id="@+id/tv_productiveTimeData"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Relaxation"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/chart_relaxTime"
@@ -71,9 +107,18 @@
                 android:layout_height="166dp" />
 
             <TextView
+                android:id="@+id/textView21"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Exercise"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+            <TextView
                 android:id="@+id/tv_relaxTimeData"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                />
 
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/chart_exerciseTime"
@@ -83,7 +128,9 @@
             <TextView
                 android:id="@+id/tv_exerciseTimeData"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="Exercise:"
+                />
 
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/chart_stressLevel"
