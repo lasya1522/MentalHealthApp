@@ -18,6 +18,8 @@ import com.example.app.DatabaseHelper;
 import com.example.app.R;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -60,10 +62,30 @@ public class TrendsFragment extends Fragment {
 
         List<DailyQuiz> dailyQuizData = databaseHelper.getDailyQuizData();
 
-
-
         //NEED TO PROTECT AGAINST NULL VALUES
         //we should do a "past 30 days" or "past 7 days" or whatever thing so that we have a finite thing
+        ArrayList<String> sleepRatingList = new ArrayList<>();
+        for (int i = 0; i < dailyQuizData.size(); i++){
+            sleepRatingList.add(dailyQuizData.get(i).getSleepRating());
+        }
+        PieChart chart_sleepRating;
+        chart_sleepRating = (PieChart) root.findViewById(R.id.chart_sleepRating);
+        Toast.makeText(this.getContext(), sleepRatingList.toString(), Toast.LENGTH_LONG).show();
+        List<PieEntry> sleepRatingEntries = new ArrayList<>();
+        List<Float> sleepRatingFreqData = getMoodFreq(sleepRatingList);
+        sleepRatingEntries.add(new PieEntry(sleepRatingFreqData.get(0), "Good"));
+        sleepRatingEntries.add(new PieEntry(sleepRatingFreqData.get(1), "Decent"));
+        sleepRatingEntries.add(new PieEntry(sleepRatingFreqData.get(2), "Bad"));
+        sleepRatingEntries.add(new PieEntry(sleepRatingFreqData.get(3), "Tired"));
+        PieDataSet sleepRatingSet = new PieDataSet(sleepRatingEntries, "Mood");
+        PieData sleepRatingData = new PieData(sleepRatingSet);
+        sleepRatingSet.setColors(new int[] {R.color.purple_graph_1, R.color.purple_graph_2, R.color.purple_graph_3, R.color.purple_graph_4}, this.getContext());
+        chart_sleepRating.setData(sleepRatingData);
+        //makes the pie chart completely filled in
+        chart_sleepRating.setHoleRadius(0);
+        chart_sleepRating.setTransparentCircleAlpha(0);
+
+        chart_sleepRating.invalidate(); // refresh
         ArrayList<String> moodList = new ArrayList<>();
         for (int i = 0; i < dailyQuizData.size(); i++){
             moodList.add(dailyQuizData.get(i).getMood());
@@ -145,12 +167,33 @@ public class TrendsFragment extends Fragment {
         BarDataSet sleepTimeSet = new BarDataSet(sleepTimeEntries, "Sleep Time");
         BarData sleepTimeData = new BarData(sleepTimeSet);
         sleepTimeSet.setColors(new int[] {R.color.purple_graph_1, R.color.purple_graph_2, R.color.purple_graph_3}, this.getContext());
-        sleepTimeSet.setValueTextColor(Color.BLACK);
-        sleepTimeSet.setValueTextSize(22f);
-        sleepTimeData.setBarWidth(1f); // set custom bar width
+        chart_sleepTime.setEnabled(false);
+
+        XAxis xaxis_sleepTime = chart_sleepTime.getXAxis();
+        xaxis_sleepTime.setDrawGridLines(false);
+        xaxis_sleepTime.setDrawAxisLine(false);
+
+        
+        //do I have to call other things? AxisDependenct.LEFT or RIGHT in order for this to work properly
+        YAxis left_axis_sleepTime = chart_sleepTime.getAxisLeft();
+        left_axis_sleepTime.setDrawGridLines(false);
+        left_axis_sleepTime.setDrawAxisLine(false);
+        left_axis_sleepTime.setDrawAxisLine(false);
+        left_axis_sleepTime.setDrawLabels(false);
+
+        YAxis right_axis_sleepTime = chart_sleepTime.getAxisRight();
+        right_axis_sleepTime.setDrawGridLines(false);
+        right_axis_sleepTime.setDrawAxisLine(false);
+        right_axis_sleepTime.setDrawAxisLine(false);
+        right_axis_sleepTime.setDrawLabels(false);
+
+
+        sleepTimeData.setBarWidth(0.9f);
+        chart_sleepTime.setDrawGridBackground(false);
         chart_sleepTime.setData(sleepTimeData);
+        chart_sleepTime.setFitBars(true);
         chart_sleepTime.getViewPortHandler().setMinMaxScaleX(0, 7);
-        chart_sleepTime.getViewPortHandler().setMinMaxScaleY(0, 20);
+        chart_sleepTime.getViewPortHandler().setMinMaxScaleY(0, 24);
         chart_sleepTime.invalidate(); // refresh
 
 
