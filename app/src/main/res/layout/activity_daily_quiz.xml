@@ -269,12 +269,6 @@
                     android:text="@string/stressRating3"
                     android:textSize="18sp"/>
 
-                <RadioButton
-                    android:id="@+id/btn_stressLevel4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/stressRating4"
-                    android:textSize="18sp"/>
             </RadioGroup>
 
             <TextView

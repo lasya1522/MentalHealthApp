@@ -86,7 +86,6 @@ public class DailyQuizActivity extends AppCompatActivity {
         btn_stressLevel1 = findViewById(R.id.btn_stressLevel1);
         btn_stressLevel2 = findViewById(R.id.btn_stressLevel2);
         btn_stressLevel3 = findViewById(R.id.btn_stressLevel3);
-        btn_stressLevel4 = findViewById(R.id.btn_stressLevel4);
 
         et_stressors = findViewById(R.id.et_stressors);
         et_other = findViewById(R.id.et_other);
@@ -184,6 +183,7 @@ public class DailyQuizActivity extends AppCompatActivity {
                 sleepRating = "Good";
             }
         });
+
         btn_sleepRating2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -221,14 +221,6 @@ public class DailyQuizActivity extends AppCompatActivity {
 
             }
         });
-        btn_stressLevel4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                stressLevel = "None";
-
-            }
-        });
-
 
     }
     private String getTodayDate() {
