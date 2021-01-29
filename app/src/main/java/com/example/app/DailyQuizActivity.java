@@ -72,7 +72,6 @@ public class DailyQuizActivity extends AppCompatActivity {
         btn_mood1 = findViewById(R.id.btn_mood1);
         btn_mood2 = findViewById(R.id.btn_mood2);
         btn_mood3 = findViewById(R.id.btn_mood3);
-        btn_mood4 = findViewById(R.id.btn_mood4);
 
         et_sleepTime = findViewById(R.id.et_sleepTime);
 
@@ -175,13 +174,6 @@ public class DailyQuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mood = "Bad";
-
-            }
-        });
-        btn_mood4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               mood = "Tired";
 
             }
         });

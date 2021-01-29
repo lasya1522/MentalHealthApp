@@ -73,13 +73,6 @@
                     android:text="@string/rating3"
                     android:textSize="18sp" />
 
-                <RadioButton
-                    android:id="@+id/btn_mood4"
-                    android:layout_width="228dp"
-                    android:layout_height="31dp"
-                    android:layout_weight="1"
-                    android:text="@string/moodRating4"
-                    android:textSize="18sp" />
             </RadioGroup>
 
             <TextView

@@ -64,7 +64,9 @@ public class TrendsFragment extends Fragment {
 
         //NEED TO PROTECT AGAINST NULL VALUES
         //we should do a "past 30 days" or "past 7 days" or whatever thing so that we have a finite thing
-        ArrayList<String> sleepRatingList = new ArrayList<>();
+
+        //******** PIE CHART SLEEP RATING *******
+         ArrayList<String> sleepRatingList = new ArrayList<>();
         for (int i = 0; i < dailyQuizData.size(); i++){
             sleepRatingList.add(dailyQuizData.get(i).getSleepRating());
         }
@@ -72,12 +74,11 @@ public class TrendsFragment extends Fragment {
         chart_sleepRating = (PieChart) root.findViewById(R.id.chart_sleepRating);
         Toast.makeText(this.getContext(), sleepRatingList.toString(), Toast.LENGTH_LONG).show();
         List<PieEntry> sleepRatingEntries = new ArrayList<>();
-        List<Float> sleepRatingFreqData = getMoodFreq(sleepRatingList);
+        List<Integer> sleepRatingFreqData = getFreq(sleepRatingList);
         sleepRatingEntries.add(new PieEntry(sleepRatingFreqData.get(0), "Good"));
         sleepRatingEntries.add(new PieEntry(sleepRatingFreqData.get(1), "Decent"));
         sleepRatingEntries.add(new PieEntry(sleepRatingFreqData.get(2), "Bad"));
-        sleepRatingEntries.add(new PieEntry(sleepRatingFreqData.get(3), "Tired"));
-        PieDataSet sleepRatingSet = new PieDataSet(sleepRatingEntries, "Mood");
+        PieDataSet sleepRatingSet = new PieDataSet(sleepRatingEntries, "Sleep Rating");
         PieData sleepRatingData = new PieData(sleepRatingSet);
         sleepRatingSet.setColors(new int[] {R.color.purple_graph_1, R.color.purple_graph_2, R.color.purple_graph_3, R.color.purple_graph_4}, this.getContext());
         chart_sleepRating.setData(sleepRatingData);
@@ -85,7 +86,7 @@ public class TrendsFragment extends Fragment {
         chart_sleepRating.setHoleRadius(0);
         chart_sleepRating.setTransparentCircleAlpha(0);
 
-        chart_sleepRating.invalidate(); // refresh
+        //********* PIE CHART MOOD ************
         ArrayList<String> moodList = new ArrayList<>();
         for (int i = 0; i < dailyQuizData.size(); i++){
             moodList.add(dailyQuizData.get(i).getMood());
@@ -94,11 +95,10 @@ public class TrendsFragment extends Fragment {
         chart_mood = (PieChart) root.findViewById(R.id.chart_mood);
         Toast.makeText(this.getContext(), moodList.toString(), Toast.LENGTH_LONG).show();
         List<PieEntry> moodEntries = new ArrayList<>();
-        List<Float> moodFreqData = getMoodFreq(moodList);
+        List<Integer> moodFreqData = getFreq(moodList);
         moodEntries.add(new PieEntry(moodFreqData.get(0), "Good"));
         moodEntries.add(new PieEntry(moodFreqData.get(1), "Decent"));
         moodEntries.add(new PieEntry(moodFreqData.get(2), "Bad"));
-        moodEntries.add(new PieEntry(moodFreqData.get(3), "Tired"));
         PieDataSet moodSet = new PieDataSet(moodEntries, "Mood");
         PieData moodData = new PieData(moodSet);
         moodSet.setColors(new int[] {R.color.purple_graph_1, R.color.purple_graph_2, R.color.purple_graph_3, R.color.purple_graph_4}, this.getContext());
@@ -167,7 +167,24 @@ public class TrendsFragment extends Fragment {
         BarDataSet sleepTimeSet = new BarDataSet(sleepTimeEntries, "Sleep Time");
         BarData sleepTimeData = new BarData(sleepTimeSet);
         sleepTimeSet.setColors(new int[] {R.color.purple_graph_1, R.color.purple_graph_2, R.color.purple_graph_3}, this.getContext());
+        sleepTimeData.setBarWidth(0.9f);
+        //do we need to explicitly set all of these to false, or is it default
         chart_sleepTime.setEnabled(false);
+        chart_sleepTime.setTouchEnabled(false);
+        chart_sleepTime.setDragEnabled(false);
+        chart_sleepTime.setScaleXEnabled(false);
+        chart_sleepTime.setScaleYEnabled(false);
+        chart_sleepTime.setScaleEnabled(false);
+        chart_sleepTime.setPinchZoom(false);
+        chart_sleepTime.setDoubleTapToZoomEnabled(false);
+        chart_sleepTime.setHighlightPerDragEnabled(false);
+        chart_sleepTime.setHighlightPerTapEnabled(false);
+        chart_sleepTime.setDrawGridBackground(false);
+        chart_sleepTime.setData(sleepTimeData);
+        chart_sleepTime.setFitBars(true);
+        chart_sleepTime.getViewPortHandler().setMinMaxScaleX(0, 7);
+        chart_sleepTime.getViewPortHandler().setMinMaxScaleY(0, 24);
+        chart_sleepTime.invalidate(); // refresh
 
         XAxis xaxis_sleepTime = chart_sleepTime.getXAxis();
         xaxis_sleepTime.setDrawGridLines(false);
@@ -180,21 +197,14 @@ public class TrendsFragment extends Fragment {
         left_axis_sleepTime.setDrawAxisLine(false);
         left_axis_sleepTime.setDrawAxisLine(false);
         left_axis_sleepTime.setDrawLabels(false);
+        left_axis_sleepTime.setAxisMaximum(24f);
 
         YAxis right_axis_sleepTime = chart_sleepTime.getAxisRight();
         right_axis_sleepTime.setDrawGridLines(false);
         right_axis_sleepTime.setDrawAxisLine(false);
         right_axis_sleepTime.setDrawAxisLine(false);
         right_axis_sleepTime.setDrawLabels(false);
-
-
-        sleepTimeData.setBarWidth(0.9f);
-        chart_sleepTime.setDrawGridBackground(false);
-        chart_sleepTime.setData(sleepTimeData);
-        chart_sleepTime.setFitBars(true);
-        chart_sleepTime.getViewPortHandler().setMinMaxScaleX(0, 7);
-        chart_sleepTime.getViewPortHandler().setMinMaxScaleY(0, 24);
-        chart_sleepTime.invalidate(); // refresh
+        right_axis_sleepTime.setAxisMaximum(24f);
 
 
         //productive time bar chart
@@ -312,12 +322,12 @@ public class TrendsFragment extends Fragment {
         return range;
    }
 
-   private ArrayList<Float> getMoodFreq(ArrayList<String> list){
-        ArrayList<Float> counter = new ArrayList<>();
-        counter.add(0f);
-        counter.add(0f);
-        counter.add(0f);
-        counter.add(0f);
+   private ArrayList<Integer> getFreq(ArrayList<String> list){
+        ArrayList<Integer> counter = new ArrayList<>();
+        counter.add(0);
+        counter.add(0);
+        counter.add(0);
+        counter.add(0);
 
         for (int i = 0; i < list.size(); i++){
             if (list.get(i).equals("Good")){
@@ -328,7 +338,7 @@ public class TrendsFragment extends Fragment {
             } else if (list.get(i).equals("Bad")){
                 counter.set(2, counter.get(2)+1);
             } else {
-                counter.set(3, counter.get(3)+1);
+               Toast.makeText(this.getContext(), "not valid String", Toast.LENGTH_SHORT).show();
             }
         }
         counter.set(0, counter.get(0));
