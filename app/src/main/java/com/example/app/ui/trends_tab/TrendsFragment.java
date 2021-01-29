@@ -79,7 +79,7 @@ public class TrendsFragment extends Fragment {
         chart_sleepTime = root.findViewById(R.id.chart_sleepTime);
         chart_productiveTime = root.findViewById(R.id.chart_productiveTime);
         chart_relaxTime = root.findViewById(R.id.chart_relaxTime);
-        chart_exerciseTime = root.findViewById(R.id.tv_exerciseTime);
+        chart_exerciseTime = root.findViewById(R.id.chart_exerciseTime);
 
 
         dailyQuizData = databaseHelper.getDailyQuizData();
@@ -131,15 +131,15 @@ public class TrendsFragment extends Fragment {
 
         // 4) SleepTime BarChart and Mean, Median, Mode & Range Data Retrieval
         List<BarEntry> sleepTimeEntries = new ArrayList<>();
+        ArrayList<Integer> sleepTimeList = new ArrayList<>();
+        Toast.makeText(this.getContext(), "dailyQuizData.size() " + dailyQuizData.size(), Toast.LENGTH_LONG).show();
         for (int i = dailyQuizData.size()-7; i < dailyQuizData.size(); i++) {
             sleepTimeEntries.add(new BarEntry(i, dailyQuizData.get(i).getSleepTime()));
+            sleepTimeList.add(dailyQuizData.get(i).getSleepTime());
         }
         BarDataSet sleepTimeSet = new BarDataSet(sleepTimeEntries, "Sleep Time");
         BarData sleepTimeData = new BarData(sleepTimeSet);
-        ArrayList<Integer> sleepTimeList = new ArrayList<>();
-        for (int i = 0; i < dailyQuizData.size(); i++){
-            sleepTimeList.add(dailyQuizData.get(i).getSleepTime());
-        }
+
         double sleepTimeMean = calculateMean(sleepTimeList);
         double sleepTimeMedian = calculateMedian(sleepTimeList);
         double sleepTimeMode = calculateMode(sleepTimeList);
@@ -162,6 +162,10 @@ public class TrendsFragment extends Fragment {
         double productiveTimeRange = calculateRange(productiveTimeList);
 
         //6) RelaxTime BarChart and Mean, Median, Mode & Range Data Retrieval
+        List<BarEntry> relaxTimeEntries = new ArrayList<>();
+        for (int i = 0; i < dailyQuizData.size(); i++){
+            relaxTimeEntries.add( new BarEntry(i, dailyQuizData.get(i).getRelaxTime()));
+        }
         ArrayList<Integer> relaxTimeList = new ArrayList<>();
         for (int i = 0; i < dailyQuizData.size(); i++ ){
             relaxTimeList.add(dailyQuizData.get(i).getRelaxTime());
@@ -237,19 +241,6 @@ public class TrendsFragment extends Fragment {
         xaxis_sleepTime.setDrawGridLines(false);
         xaxis_sleepTime.setAxisMaximum(7f);
 
-        final String[] dates = new String[7];
-        for (int i = 0; i < 7; i++){
-    // i< dailyQuizData.size() is what it really should b
-            dates[i] = dailyQuizData.get(i).getDate();
-        }
-        // this is current NOT WORKING------ see comment inside of getAxisLabel
-        ValueFormatter formatter = new ValueFormatter() {
-            @Override
-            public String getAxisLabel(float value, AxisBase axis) {
-                return dates[(int) value - 7 ]; //for some reason, this is using the y value instead of the x value, and that's causing an index out of bounds exception
-            }
-        };
-        xaxis_sleepTime.setValueFormatter(formatter);
         YAxis left_axis_sleepTime = chart_sleepTime.getAxisLeft();
         left_axis_sleepTime.setDrawGridLines(false);
         left_axis_sleepTime.setDrawAxisLine(true);
