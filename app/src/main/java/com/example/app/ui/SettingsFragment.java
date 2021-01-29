@@ -62,7 +62,7 @@ public class SettingsFragment extends Fragment {
                 new ViewModelProvider(this).get(SettingsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_settings, container, false);
         btn_clearData = root.findViewById(R.id.btn_clearData);
-        databaseHelper = new DatabaseHelper(this.getContext()); // does this.getContext() work?
+        databaseHelper = new DatabaseHelper(this.getContext());
 
         btn_clearData.setOnClickListener(new View.OnClickListener() {
             @Override
