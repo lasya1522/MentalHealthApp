@@ -23,7 +23,7 @@
                 android:layout_height="35dp"
                 android:layout_marginTop="32dp"
                 android:gravity="center_vertical"
-                android:text="Trends"
+                android:text="Trends (Past Week)"
                 android:textAlignment="center"
                 android:textSize="25dp"
                 android:textStyle="bold"
@@ -39,7 +39,7 @@
                 android:id="@+id/moodPieChartTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Mood:"
+                android:text="Mood"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
@@ -52,7 +52,7 @@
                 android:id="@+id/sleepTimeBarTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Amount of Sleep "
+                android:text="Amount of Sleep (hours) "
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
@@ -65,7 +65,15 @@
                 android:id="@+id/tv_sleepTimeData"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Sleep Quality:"
+                android:text="Sleep Quality"
+                android:textSize="12sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sleep Quality"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
@@ -78,7 +86,7 @@
                 android:id="@+id/textView14"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Productivity"
+                android:text="Productivity (hours)"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
@@ -91,13 +99,15 @@
                 android:id="@+id/tv_productiveTimeData"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textStyle="bold"
                 />
 
             <TextView
                 android:id="@+id/textView20"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Relaxation"
+                android:text="Relaxation (hours) "
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
@@ -107,18 +117,21 @@
                 android:layout_height="166dp" />
 
             <TextView
-                android:id="@+id/textView21"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Exercise"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-
-            <TextView
                 android:id="@+id/tv_relaxTimeData"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textStyle="bold"
                 />
+
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Exercise (hours)"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/chart_exerciseTime"
@@ -129,8 +142,17 @@
                 android:id="@+id/tv_exerciseTimeData"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Exercise:"
+                android:textSize="12sp"
+                android:textStyle="bold"
                 />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Stress Level"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/chart_stressLevel"
