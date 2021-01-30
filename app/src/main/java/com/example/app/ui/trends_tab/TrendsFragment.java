@@ -20,6 +20,7 @@ import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
@@ -35,6 +36,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 public class TrendsFragment extends Fragment {
 
@@ -185,23 +187,23 @@ public class TrendsFragment extends Fragment {
 
             }
             List<Integer> moodFreqData = getFreq(moodList, "Good", "Decent", "Bad");
-            moodEntries.add(new PieEntry(moodFreqData.get(0), "Good"));
-            moodEntries.add(new PieEntry(moodFreqData.get(1), "Decent"));
-            moodEntries.add(new PieEntry(moodFreqData.get(2), "Bad"));
+            if (moodFreqData.get(0) != 0) moodEntries.add(new PieEntry(moodFreqData.get(0), "Good"));
+            if (moodFreqData.get(1) != 0) moodEntries.add(new PieEntry(moodFreqData.get(1), "Decent"));
+            if (moodFreqData.get(2) != 0) moodEntries.add(new PieEntry(moodFreqData.get(2), "Bad"));
             PieDataSet moodSet = new PieDataSet(moodEntries, "Mood");
             PieData moodData = new PieData(moodSet);
 
             List<Integer> sleepRatingFreqData = getFreq(sleepRatingList, "Good", "Decent", "Bad");
-            sleepRatingEntries.add(new PieEntry(sleepRatingFreqData.get(0), "Good"));
-            sleepRatingEntries.add(new PieEntry(sleepRatingFreqData.get(1), "Decent"));
-            sleepRatingEntries.add(new PieEntry(sleepRatingFreqData.get(2), "Bad"));
+            if (sleepRatingFreqData.get(0) != 0) sleepRatingEntries.add(new PieEntry(sleepRatingFreqData.get(0), "Good"));
+            if (sleepRatingFreqData.get(1) != 0)sleepRatingEntries.add(new PieEntry(sleepRatingFreqData.get(1), "Decent"));
+            if (sleepRatingFreqData.get(2) != 0)sleepRatingEntries.add(new PieEntry(sleepRatingFreqData.get(2), "Bad"));
             PieDataSet sleepRatingSet = new PieDataSet(sleepRatingEntries, "Sleep Rating");
             PieData sleepRatingData = new PieData(sleepRatingSet);
 
             List<Integer> stressLevelFreqData = getFreq(stressLevelList, "High", "Moderate", "Low");
-            stressLevelEntries.add(new PieEntry(stressLevelFreqData.get(0), "High"));
-            stressLevelEntries.add(new PieEntry(stressLevelFreqData.get(1), "Moderate"));
-            stressLevelEntries.add(new PieEntry(stressLevelFreqData.get(2), "Low"));
+            if (stressLevelFreqData.get(0) != 0)stressLevelEntries.add(new PieEntry(stressLevelFreqData.get(0), "High"));
+            if (stressLevelFreqData.get(1) != 0)stressLevelEntries.add(new PieEntry(stressLevelFreqData.get(1), "Moderate"));
+            if (stressLevelFreqData.get(2) != 0)stressLevelEntries.add(new PieEntry(stressLevelFreqData.get(2), "Low"));
             PieDataSet stressLevelSet = new PieDataSet(stressLevelEntries, "Stress Level");
             PieData stressLevelData = new PieData(stressLevelSet);
 
@@ -241,26 +243,56 @@ public class TrendsFragment extends Fragment {
             //********* FORMATTING *********//
 
             // ----- 1) Mood PieChart Formatting------
+            Description moodDescription = chart_mood.getDescription();
+            moodDescription.setEnabled(false);
+
+            Legend moodLegend = chart_mood.getLegend();
+            moodLegend.setEnabled(false);
+
             moodSet.setColors(new int[]{R.color.scheme_blue_1, R.color.scheme_blue_2, R.color.scheme_purple_1}, this.getContext());
+            moodSet.setDrawValues(false);
+
             chart_mood.setHoleRadius(0);
             chart_mood.setTransparentCircleAlpha(0);
-            chart_mood.setDrawEntryLabels(false);
-            chart_mood.setUsePercentValues(true); // how do I get the values to just not show up??
 
             // ----- 2) SleepRating PieChart Formatting----
+            Description sleepRatingDescription = chart_sleepRating.getDescription();
+            sleepRatingDescription.setEnabled(false);
+
+            Legend sleepRatingLegend = chart_sleepRating.getLegend();
+            sleepRatingLegend.setEnabled(false);
+
             sleepRatingSet.setColors(new int[]{R.color.scheme_green_1, R.color.scheme_blue_1, R.color.scheme_blue_2}, this.getContext());
+            sleepRatingSet.setDrawValues(false);
+
             chart_sleepRating.setHoleRadius(0);
             chart_sleepRating.setTransparentCircleAlpha(0);
-            chart_sleepRating.setDrawEntryLabels(false);
+
 
             // ---- 3) StressLevel PieChart Formatting----
+            Description stressLevelDescription = chart_stressLevel.getDescription();
+            stressLevelDescription.setEnabled(false);
+
+            Legend stressLevelLegend = chart_stressLevel.getLegend();
+            stressLevelLegend.setEnabled(false);
+
             stressLevelSet.setColors(new int[]{R.color.scheme_blue_2, R.color.scheme_purple_1, R.color.scheme_purple_2}, this.getContext());
+            stressLevelSet.setDrawValues(false);
+
             chart_stressLevel.setHoleRadius(0);
             chart_stressLevel.setTransparentCircleAlpha(0);
-            chart_sleepRating.setDrawEntryLabels(false);
+
 
             // ----- 4) SleepTime BarChart Formatting-----
+            Description sleepTimeDescription = chart_sleepTime.getDescription();
+            sleepTimeDescription.setEnabled(false);
+
+            Legend sleepTimeLegend = chart_sleepTime.getLegend();
+            sleepTimeLegend.setEnabled(false);
+
             sleepTimeSet.setColors(new int[]{R.color.scheme_blue_1, R.color.scheme_blue_2, R.color.scheme_purple_1}, this.getContext());
+            sleepTimeSet.setDrawValues(false);
+
             chart_sleepTime.setEnabled(false);
             chart_sleepTime.setTouchEnabled(false);
             chart_sleepTime.setDragEnabled(false);
@@ -275,6 +307,8 @@ public class TrendsFragment extends Fragment {
             chart_sleepTime.setData(sleepTimeData);
             chart_sleepTime.setDrawValueAboveBar(false);
             chart_sleepTime.setFitBars(true);
+
+            //chart_sleepTime.animateXY(1000, 1000); //cool animation we can maybe add later
 
             XAxis xaxis_sleepTime = chart_sleepTime.getXAxis();
             xaxis_sleepTime.setDrawGridLines(false);
@@ -302,13 +336,20 @@ public class TrendsFragment extends Fragment {
             YAxis right_axis_sleepTime = chart_sleepTime.getAxisRight();
             right_axis_sleepTime.setDrawGridLines(false);
             right_axis_sleepTime.setDrawAxisLine(true);
-            right_axis_sleepTime.setDrawAxisLine(false);
             right_axis_sleepTime.setDrawLabels(false);
             left_axis_sleepTime.setAxisMinimum(0f);
             // right_axis_sleepTime.setAxisMaximum(24f);
 
             //----- 5) ProductiveTime BarChart Formatting -------
+            Description productiveTimeDescription = chart_productiveTime.getDescription();
+            productiveTimeDescription.setEnabled(false);
+
+            Legend productiveTimeLegend = chart_productiveTime.getLegend();
+            productiveTimeLegend.setEnabled(false);
+
             productiveTimeSet.setColors(new int[]{R.color.scheme_blue_2, R.color.scheme_purple_1, R.color.scheme_purple_2}, this.getContext());
+            productiveTimeSet.setDrawValues(false);
+
             chart_productiveTime.setEnabled(false);
             chart_productiveTime.setTouchEnabled(false);
             chart_productiveTime.setDragEnabled(false);
@@ -322,31 +363,41 @@ public class TrendsFragment extends Fragment {
             chart_productiveTime.setDrawGridBackground(false);
             chart_productiveTime.setData(productiveTimeData);
             chart_productiveTime.setFitBars(true);
+            chart_productiveTime.setDrawValueAboveBar(false);
             chart_productiveTime.invalidate(); // refresh
 
             XAxis xaxis_productiveTime = chart_productiveTime.getXAxis();
-            xaxis_productiveTime.setValueFormatter(formatter);
             xaxis_productiveTime.setDrawGridLines(false);
             xaxis_productiveTime.setDrawAxisLine(true);
-            ;
             xaxis_productiveTime.setDrawAxisLine(true);
             xaxis_productiveTime.setDrawGridLines(false);
+            xaxis_productiveTime.setAxisMinimum(-0.5f);
+            xaxis_productiveTime.setAxisMaximum(6.5f);
 
+            xaxis_productiveTime.setValueFormatter(formatter);
             YAxis left_axis_productiveTime = chart_productiveTime.getAxisLeft();
-            left_axis_productiveTime.setDrawGridLines(false);
+            left_axis_productiveTime.setDrawGridLines(true);
             left_axis_productiveTime.setDrawAxisLine(true);
-            left_axis_productiveTime.setDrawLabels(false);
-            // left_axis_productiveTime.setAxisMaximum(24f);
+            left_axis_productiveTime.setDrawLabels(true);
+            left_axis_productiveTime.setAxisMinimum(0f); // is this necessary? will it cut off part of the thing
+            //  left_axis_sleepTime.setAxisMaximum(24f);
 
             YAxis right_axis_productiveTime = chart_productiveTime.getAxisRight();
             right_axis_productiveTime.setDrawGridLines(false);
-            right_axis_productiveTime.setDrawAxisLine(false);
             right_axis_productiveTime.setDrawAxisLine(true);
             right_axis_productiveTime.setDrawLabels(false);
-            // right_axis_productiveTime.setAxisMaximum(24f);
+            left_axis_productiveTime.setAxisMinimum(0f);
+            // right_axis_sleepTime.setAxisMaximum(24f);
 
             //----- 6) RelaxTime BarChart Formatting -------
+            Description relaxTimeDescription = chart_relaxTime.getDescription();
+            relaxTimeDescription.setEnabled(false);
+
+            Legend relaxTimeLegend = chart_relaxTime.getLegend();
+            relaxTimeLegend.setEnabled(false);
+
             relaxTimeSet.setColors(new int[]{R.color.scheme_purple_1, R.color.scheme_purple_2, R.color.scheme_blue_1}, this.getContext());
+            relaxTimeSet.setDrawValues(false);
 
             chart_relaxTime.setEnabled(false);
             chart_relaxTime.setTouchEnabled(false);
@@ -360,30 +411,41 @@ public class TrendsFragment extends Fragment {
             chart_relaxTime.setHighlightPerTapEnabled(false);
             chart_relaxTime.setDrawGridBackground(false);
             chart_relaxTime.setData(relaxTimeData);
+            chart_relaxTime.setDrawValueAboveBar(false);
             chart_relaxTime.setFitBars(true);
 
             XAxis xaxis_relaxTime = chart_relaxTime.getXAxis();
+            xaxis_relaxTime.setDrawGridLines(false);
+            xaxis_relaxTime.setDrawAxisLine(true);
+            xaxis_relaxTime.setDrawAxisLine(true);
+            xaxis_relaxTime.setDrawGridLines(false);
+            xaxis_relaxTime.setAxisMinimum(-0.5f);
+            xaxis_relaxTime.setAxisMaximum(6.5f);
             xaxis_relaxTime.setValueFormatter(formatter);
-            xaxis_relaxTime.setDrawGridLines(false);
-            xaxis_relaxTime.setDrawAxisLine(true);
-            xaxis_relaxTime.setDrawAxisLine(true);
-            xaxis_relaxTime.setDrawGridLines(false);
 
             YAxis left_axis_relaxTime = chart_relaxTime.getAxisLeft();
-            left_axis_relaxTime.setDrawGridLines(false);
+            left_axis_relaxTime.setDrawGridLines(true);
             left_axis_relaxTime.setDrawAxisLine(true);
-            left_axis_relaxTime.setDrawLabels(false);
-            //left_axis_relaxTime.setAxisMaximum(24f);
+            left_axis_relaxTime.setDrawLabels(true);
+            left_axis_relaxTime.setAxisMinimum(0f); // is this necessary? will it cut off part of the thing
+            //  left_axis_sleepTime.setAxisMaximum(24f);
 
             YAxis right_axis_relaxTime = chart_relaxTime.getAxisRight();
             right_axis_relaxTime.setDrawGridLines(false);
-            right_axis_relaxTime.setDrawAxisLine(false);
-            right_axis_relaxTime.setDrawAxisLine(false);
+            right_axis_relaxTime.setDrawAxisLine(true);
             right_axis_relaxTime.setDrawLabels(false);
-            // right_axis_relaxTime.setAxisMaximum(24f);
+            left_axis_relaxTime.setAxisMinimum(0f);
+            // right_axis_sleepTime.setAxisMaximum(24f);
 
             // ------ 7) ExerciseTime BarChart Formatting -----
+            Description exerciseTimeDescription = chart_exerciseTime.getDescription();
+            exerciseTimeDescription.setEnabled(false);
+
+            Legend exerciseTimeLegend = chart_exerciseTime.getLegend();
+            exerciseTimeLegend.setEnabled(false);
+
             exerciseTimeSet.setColors(new int[]{R.color.scheme_purple_2, R.color.scheme_blue_1, R.color.scheme_blue_2}, this.getContext());
+            exerciseTimeSet.setDrawValues(false);
 
             chart_exerciseTime.setEnabled(false);
             chart_exerciseTime.setTouchEnabled(false);
@@ -398,27 +460,30 @@ public class TrendsFragment extends Fragment {
             chart_exerciseTime.setDrawGridBackground(false);
             chart_exerciseTime.setData(exerciseTimeData);
             chart_exerciseTime.setFitBars(true);
-            chart_exerciseTime.invalidate(); // refresh
+            chart_exerciseTime.setDrawValueAboveBar(false);
 
             XAxis xaxis_exerciseTime = chart_exerciseTime.getXAxis();
+            xaxis_exerciseTime.setDrawGridLines(false);
+            xaxis_exerciseTime.setDrawAxisLine(true);
+            xaxis_exerciseTime.setDrawAxisLine(true);
+            xaxis_exerciseTime.setDrawGridLines(false);
+            xaxis_exerciseTime.setAxisMinimum(-0.5f);
+            xaxis_exerciseTime.setAxisMaximum(6.5f);
             xaxis_exerciseTime.setValueFormatter(formatter);
-            xaxis_exerciseTime.setDrawGridLines(false);
-            xaxis_exerciseTime.setDrawAxisLine(true);
-            xaxis_exerciseTime.setDrawAxisLine(true);
-            xaxis_exerciseTime.setDrawGridLines(false);
 
             YAxis left_axis_exerciseTime = chart_exerciseTime.getAxisLeft();
-            left_axis_exerciseTime.setDrawGridLines(false);
+            left_axis_exerciseTime.setDrawGridLines(true);
             left_axis_exerciseTime.setDrawAxisLine(true);
-            left_axis_exerciseTime.setDrawLabels(false);
-            // left_axis_exerciseTime.setAxisMaximum(24f);
+            left_axis_exerciseTime.setDrawLabels(true);
+            left_axis_exerciseTime.setAxisMinimum(0f); // is this necessary? will it cut off part of the thing
+            //  left_axis_sleepTime.setAxisMaximum(24f);
 
             YAxis right_axis_exerciseTime = chart_exerciseTime.getAxisRight();
             right_axis_exerciseTime.setDrawGridLines(false);
-            right_axis_exerciseTime.setDrawAxisLine(false);
-            right_axis_exerciseTime.setDrawAxisLine(false);
+            right_axis_exerciseTime.setDrawAxisLine(true);
             right_axis_exerciseTime.setDrawLabels(false);
-            // right_axis_exerciseTime.setAxisMaximum(24f);
+            left_axis_exerciseTime.setAxisMinimum(0f);
+            // right_axis_sleepTime.setAxisMaximum(24f);
 
             //********** SETTING DATA **********
 
@@ -431,41 +496,40 @@ public class TrendsFragment extends Fragment {
             chart_stressLevel.setData(stressLevelData);
             chart_stressLevel.invalidate();
 
-            chart_sleepTime.setData(sleepTimeData);
-            chart_sleepTime.invalidate();
-
             DecimalFormat decimalFormat = new DecimalFormat("##.##"); // does this round or simply truncate??????
 
+            chart_sleepTime.setData(sleepTimeData);
+            chart_sleepTime.invalidate();
             tv_sleepTimeData.setText("Mean = " + decimalFormat.format(sleepTimeMean) + " hours \n"
-                    + "Median = " + sleepTimeMedian + " hours \n" +
-                    "Mode = " + sleepTimeMode + " hours \n" +
-                    "Range = " + sleepTimeRange + " hours \n" +
+                    + "Median = " + decimalFormat.format(sleepTimeMedian) + " hours \n" +
+                    "Mode = " + decimalFormat.format(sleepTimeMode) + " hours \n" +
+                    "Range = " + decimalFormat.format(sleepTimeRange) + " hours \n" +
                     "");
 
             chart_productiveTime.setData(productiveTimeData);
             chart_productiveTime.invalidate();
             tv_productiveTimeData.setText("Mean = " + decimalFormat.format(productiveTimeMean) + " hours \n" +
-                    "Median = " + productiveTimeMedian + " hours \n" +
-                    "Mode = " + productiveTimeMode + " hours \n" +
-                    "Range = " + productiveTimeRange + " hours \n" +
+                    "Median = " + decimalFormat.format(productiveTimeMedian) + " hours \n" +
+                    "Mode = " + decimalFormat.format(productiveTimeMode) + " hours \n" +
+                    "Range = " + decimalFormat.format(productiveTimeRange) + " hours \n" +
                     "");
 
 
             chart_relaxTime.setData(relaxTimeData);
             chart_relaxTime.invalidate();
             tv_relaxTimeData.setText("Mean = " + decimalFormat.format(relaxTimeMean) + " hours \n" +
-                    "Median = " + relaxTimeMedian + " hours \n" +
-                    "Mode = " + relaxTimeMode + " hours \n" +
-                    "Range = " + relaxTimeRange + " hours \n" +
+                    "Median = " + decimalFormat.format(relaxTimeMedian) + " hours \n" +
+                    "Mode = " + decimalFormat.format(relaxTimeMode) + " hours \n" +
+                    "Range = " + decimalFormat.format(relaxTimeRange) + " hours \n" +
                     "");
 
 
             chart_exerciseTime.setData(exerciseTimeData);
             chart_exerciseTime.invalidate();
             tv_exerciseTimeData.setText("Mean = " + decimalFormat.format(exerciseTimeMean) + " hours \n" +
-                    "Median = " + exerciseTimeMedian + " hours \n" +
-                    "Mode = " + exerciseTimeMode + " hours \n" +
-                    "Range = " + exerciseTimeRange + " hours \n" +
+                    "Median = " + decimalFormat.format(exerciseTimeMedian) + " hours \n" +
+                    "Mode = " + decimalFormat.format(exerciseTimeMode) + " hours \n" +
+                    "Range = " + decimalFormat.format(exerciseTimeRange) + " hours \n" +
                     "");
 
         }

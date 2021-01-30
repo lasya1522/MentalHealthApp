@@ -52,16 +52,16 @@ public class ViewPastQuizActivity extends AppCompatActivity {
 
         DatabaseHelper databaseHelper = new DatabaseHelper(this);
         dailyQuiz = databaseHelper.getDailyQuiz(passedDate);
-        tv_date.setText(passedDate);
+        tv_date.setText("Quiz results for " + passedDate);
         tv_mood.setText("Mood: " + dailyQuiz.getMood());
-        tv_sleepTime.setText("sleepTime: " + dailyQuiz.getSleepTime().toString());
-        tv_sleepRating.setText("sleepRating: " + dailyQuiz.getSleepRating());
-        tv_productiveTime.setText("productiveTime: " + dailyQuiz.getProductiveTime().toString());
-        tv_relaxTime.setText("relaxTime: " + dailyQuiz.getRelaxTime().toString());
-        tv_exerciseTime.setText("exerciseTime: " + dailyQuiz.getExerciseTime().toString());
-        tv_stressLevel.setText("stressLevel: " + dailyQuiz.getStressLevel());
-        tv_stressors.setText("stressors: " + dailyQuiz.getStressors());
-        tv_other.setText("other: " + dailyQuiz.getOther());
+        tv_sleepTime.setText("Hours spent sleeping: " + dailyQuiz.getSleepTime().toString());
+        tv_sleepRating.setText("Sleep rating: " + dailyQuiz.getSleepRating());
+        tv_productiveTime.setText("Hours spent being productive: " + dailyQuiz.getProductiveTime().toString());
+        tv_relaxTime.setText("Hours spent relaxing: " + dailyQuiz.getRelaxTime().toString());
+        tv_exerciseTime.setText("Hours spend exercising: " + dailyQuiz.getExerciseTime().toString());
+        tv_stressLevel.setText("Stress levels: " + dailyQuiz.getStressLevel());
+        tv_stressors.setText("Stressors: " + dailyQuiz.getStressors());
+        tv_other.setText("Other notes: " + dailyQuiz.getOther());
 
 
     }
