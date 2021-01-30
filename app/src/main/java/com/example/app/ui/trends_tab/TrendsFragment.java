@@ -29,6 +29,7 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -101,7 +102,7 @@ public class TrendsFragment extends Fragment {
 
         // 2) SleepRating PieChart Data Retrieval
         ArrayList<String> sleepRatingList = new ArrayList<>();
-        for (int i = 0; i < dailyQuizData.size(); i++){
+        for (int i = dailyQuizData.size()-7; i < dailyQuizData.size(); i++){
             sleepRatingList.add(dailyQuizData.get(i).getSleepRating());
         }
         Toast.makeText(this.getContext(), sleepRatingList.toString(), Toast.LENGTH_LONG).show();
@@ -133,9 +134,11 @@ public class TrendsFragment extends Fragment {
         List<BarEntry> sleepTimeEntries = new ArrayList<>();
         ArrayList<Integer> sleepTimeList = new ArrayList<>();
         Toast.makeText(this.getContext(), "dailyQuizData.size() " + dailyQuizData.size(), Toast.LENGTH_LONG).show();
-        for (int i = dailyQuizData.size()-7; i < dailyQuizData.size(); i++) {
-            sleepTimeEntries.add(new BarEntry(i, dailyQuizData.get(i).getSleepTime()));
+        final ArrayList<String> dates = new ArrayList<>();
+        for (int i = 0; i < 7; i++) {
+            sleepTimeEntries.add(new BarEntry(i, dailyQuizData.get(dailyQuizData.size()-1-i).getSleepTime()));
             sleepTimeList.add(dailyQuizData.get(i).getSleepTime());
+            dates.add(dailyQuizData.get(i).getDate());
         }
         BarDataSet sleepTimeSet = new BarDataSet(sleepTimeEntries, "Sleep Time");
         BarData sleepTimeData = new BarData(sleepTimeSet);
@@ -229,8 +232,6 @@ public class TrendsFragment extends Fragment {
         chart_sleepTime.setDrawGridBackground(false);
         chart_sleepTime.setData(sleepTimeData);
         chart_sleepTime.setFitBars(true);
-        chart_sleepTime.getViewPortHandler().setMinMaxScaleX(0, 7);
-        chart_sleepTime.getViewPortHandler().setMinMaxScaleY(0, 24);
         chart_sleepTime.invalidate(); // refresh
 
         XAxis xaxis_sleepTime = chart_sleepTime.getXAxis();
@@ -239,13 +240,23 @@ public class TrendsFragment extends Fragment {
         xaxis_sleepTime.setTextSize(10f);
         xaxis_sleepTime.setDrawAxisLine(true);
         xaxis_sleepTime.setDrawGridLines(false);
-        xaxis_sleepTime.setAxisMaximum(7f);
+        xaxis_sleepTime.setAxisMaximum(6f);
+        xaxis_sleepTime.setAxisMinimum(0f);
 
+        // this is current NOT WORKING------ see comment inside of getAxisLabel
+        ValueFormatter formatter = new ValueFormatter() {
+            @Override
+            public String getAxisLabel(float value, AxisBase axis) {
+                return dates.get((int) value); //for some reason, this is using the y value instead of the x value, and that's causing an index out of bounds exception
+            }
+        };
+        xaxis_sleepTime.setValueFormatter(formatter);
         YAxis left_axis_sleepTime = chart_sleepTime.getAxisLeft();
         left_axis_sleepTime.setDrawGridLines(false);
         left_axis_sleepTime.setDrawAxisLine(true);
         left_axis_sleepTime.setDrawAxisLine(false);
         left_axis_sleepTime.setDrawLabels(false);
+        left_axis_sleepTime.setAxisMinimum(0f);
         left_axis_sleepTime.setAxisMaximum(24f);
 
         YAxis right_axis_sleepTime = chart_sleepTime.getAxisRight();
@@ -253,6 +264,7 @@ public class TrendsFragment extends Fragment {
         right_axis_sleepTime.setDrawAxisLine(true);
         right_axis_sleepTime.setDrawAxisLine(false);
         right_axis_sleepTime.setDrawLabels(false);
+        left_axis_sleepTime.setAxisMinimum(0f);
         right_axis_sleepTime.setAxisMaximum(24f);
 
         //----- 5) ProductiveTime BarChart Formatting -------
