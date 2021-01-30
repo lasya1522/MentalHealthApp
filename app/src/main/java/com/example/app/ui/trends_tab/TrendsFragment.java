@@ -110,8 +110,7 @@ public class TrendsFragment extends Fragment {
         List<BarEntry> exerciseTimeEntries = new ArrayList<>();
         ArrayList<Integer> exerciseTimeList = new ArrayList<>();
 
-        final String [] dates = {"", "", "", "", "", "", "", "", ""};
-
+        final String [] dates = {"", "", "", "", "", "", ""};
         if (dailyQuizData.size() == 0){
 
             chart_mood.setNoDataText("No data available. Complete the daily quiz!");
@@ -141,20 +140,20 @@ public class TrendsFragment extends Fragment {
 
                     stressLevelList.add(dailyQuizData.get(dailyQuizData.size() - 1 - i).getStressLevel());
 
-                    sleepTimeEntries.add(new BarEntry(i, dailyQuizData.get(dailyQuizData.size() - 1 - i).getSleepTime()));
+                    sleepTimeEntries.add(new BarEntry(6-i, dailyQuizData.get(dailyQuizData.size() - 1 - i).getSleepTime()));
                     sleepTimeList.add(dailyQuizData.get(dailyQuizData.size() - 1 - i).getSleepTime());
 
-                    productiveTimeEntries.add(new BarEntry(i, dailyQuizData.get(dailyQuizData.size() - 1 - i).getProductiveTime()));
+                    productiveTimeEntries.add(new BarEntry(6-i, dailyQuizData.get(dailyQuizData.size() - 1 - i).getProductiveTime()));
                     productiveTimeList.add(dailyQuizData.get(dailyQuizData.size() - 1 - i).getProductiveTime());
 
-                    relaxTimeEntries.add(new BarEntry(i, dailyQuizData.get(dailyQuizData.size() - 1 - i).getRelaxTime()));
+                    relaxTimeEntries.add(new BarEntry(6-i, dailyQuizData.get(dailyQuizData.size() - 1 - i).getRelaxTime()));
                     relaxTimeList.add(dailyQuizData.get(dailyQuizData.size() - 1 - i).getRelaxTime());
 
-                    exerciseTimeEntries.add(new BarEntry(i, dailyQuizData.get(dailyQuizData.size() - 1 - i).getExerciseTime()));
+                    exerciseTimeEntries.add(new BarEntry(6-i, dailyQuizData.get(dailyQuizData.size() - 1 - i).getExerciseTime()));
                     exerciseTimeList.add(dailyQuizData.get(dailyQuizData.size() - 1 - i).getExerciseTime());
                     String date = dailyQuizData.get(dailyQuizData.size() - 1 - i).getDate();
                     String noYearDate = date.substring(0, date.length() - 5);
-                    dates[i] = noYearDate;
+                    dates[i] = noYearDate; // TEST & MAKE SURE THE DATES ARE WORKING RIGHT (check that the dates are corresponding with the correct bars
 
                 }
 
@@ -167,20 +166,20 @@ public class TrendsFragment extends Fragment {
 
                     stressLevelList.add(dailyQuizData.get(dailyQuizData.size() - 1 - i).getStressLevel());
 
-                    sleepTimeEntries.add(new BarEntry(i, dailyQuizData.get(dailyQuizData.size() - 1 - i).getSleepTime()));
+                    sleepTimeEntries.add(new BarEntry(6-i, dailyQuizData.get(dailyQuizData.size() - 1 - i).getSleepTime()));
                     sleepTimeList.add(dailyQuizData.get(dailyQuizData.size() - 1 - i).getSleepTime());
 
-                    productiveTimeEntries.add(new BarEntry(i, dailyQuizData.get(dailyQuizData.size() - 1 - i).getProductiveTime()));
+                    productiveTimeEntries.add(new BarEntry(6-i, dailyQuizData.get(dailyQuizData.size() - 1 - i).getProductiveTime()));
                     productiveTimeList.add(dailyQuizData.get(dailyQuizData.size() - 1 - i).getProductiveTime());
 
-                    relaxTimeEntries.add(new BarEntry(i, dailyQuizData.get(dailyQuizData.size() - 1 - i).getRelaxTime()));
+                    relaxTimeEntries.add(new BarEntry(6-i, dailyQuizData.get(dailyQuizData.size() - 1 - i).getRelaxTime()));
                     relaxTimeList.add(dailyQuizData.get(dailyQuizData.size() - 1 - i).getRelaxTime());
 
-                    exerciseTimeEntries.add(new BarEntry(i, dailyQuizData.get(dailyQuizData.size() - 1 - i).getExerciseTime()));
+                    exerciseTimeEntries.add(new BarEntry(6-i, dailyQuizData.get(dailyQuizData.size() - 1 - i).getExerciseTime()));
                     exerciseTimeList.add(dailyQuizData.get(dailyQuizData.size() - 1 - i).getExerciseTime());
                     String date = dailyQuizData.get(dailyQuizData.size() - 1 - i).getDate();
                     String noYearDate = date.substring(0, date.length() - 5);
-                    dates[i] = noYearDate;
+                    dates[i] = noYearDate; // TEST & MAKE SURE THE DATES ARE WORKING RIGHT (check that the dates are corresponding with the correct bars
 
                 }
 
@@ -282,14 +281,14 @@ public class TrendsFragment extends Fragment {
             xaxis_sleepTime.setDrawAxisLine(true);
             xaxis_sleepTime.setDrawAxisLine(true);
             xaxis_sleepTime.setDrawGridLines(false);
-            xaxis_sleepTime.setAxisMinimum(0f);
-            xaxis_sleepTime.setAxisMaximum(6f); // this line makes the value formatter actually work... don't change it
+            xaxis_sleepTime.setAxisMinimum(-0.5f);
+            xaxis_sleepTime.setAxisMaximum(6.5f);
             Toast.makeText(this.getContext(), String.valueOf(dates.length), Toast.LENGTH_LONG).show();
 
             ValueFormatter formatter = new ValueFormatter() {
                 @Override
                 public String getAxisLabel(float value, AxisBase axis) {
-                    return dates[(int) value];
+                    return dates[(int) value ];
                 }
             };
             xaxis_sleepTime.setValueFormatter(formatter);
@@ -342,7 +341,7 @@ public class TrendsFragment extends Fragment {
             YAxis right_axis_productiveTime = chart_productiveTime.getAxisRight();
             right_axis_productiveTime.setDrawGridLines(false);
             right_axis_productiveTime.setDrawAxisLine(false);
-            right_axis_productiveTime.setDrawAxisLine(false);
+            right_axis_productiveTime.setDrawAxisLine(true);
             right_axis_productiveTime.setDrawLabels(false);
             // right_axis_productiveTime.setAxisMaximum(24f);
 
