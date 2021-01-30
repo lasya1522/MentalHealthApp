@@ -35,6 +35,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 public class TrendsFragment extends Fragment {
 
@@ -241,26 +242,44 @@ public class TrendsFragment extends Fragment {
             //********* FORMATTING *********//
 
             // ----- 1) Mood PieChart Formatting------
+            Description moodDescription = chart_mood.getDescription();
+            moodDescription.setEnabled(false);
             moodSet.setColors(new int[]{R.color.scheme_blue_1, R.color.scheme_blue_2, R.color.scheme_purple_1}, this.getContext());
+            moodSet.setDrawValues(false);
+
             chart_mood.setHoleRadius(0);
             chart_mood.setTransparentCircleAlpha(0);
             chart_mood.setDrawEntryLabels(false);
-            chart_mood.setUsePercentValues(true); // how do I get the values to just not show up??
+
 
             // ----- 2) SleepRating PieChart Formatting----
+            Description sleepRatingDescription = chart_sleepRating.getDescription();
+            sleepRatingDescription.setEnabled(false);
             sleepRatingSet.setColors(new int[]{R.color.scheme_green_1, R.color.scheme_blue_1, R.color.scheme_blue_2}, this.getContext());
+            sleepRatingSet.setDrawValues(false);
+
             chart_sleepRating.setHoleRadius(0);
             chart_sleepRating.setTransparentCircleAlpha(0);
             chart_sleepRating.setDrawEntryLabels(false);
 
+
             // ---- 3) StressLevel PieChart Formatting----
+            Description stressLevelDescription = chart_stressLevel.getDescription();
+            stressLevelDescription.setEnabled(false);
             stressLevelSet.setColors(new int[]{R.color.scheme_blue_2, R.color.scheme_purple_1, R.color.scheme_purple_2}, this.getContext());
+            stressLevelSet.setDrawValues(false);
+
             chart_stressLevel.setHoleRadius(0);
             chart_stressLevel.setTransparentCircleAlpha(0);
-            chart_sleepRating.setDrawEntryLabels(false);
+            chart_stressLevel.setDrawEntryLabels(false);
+
 
             // ----- 4) SleepTime BarChart Formatting-----
+            Description sleepTimeDescription = chart_sleepTime.getDescription();
+            sleepTimeDescription.setEnabled(false);
             sleepTimeSet.setColors(new int[]{R.color.scheme_blue_1, R.color.scheme_blue_2, R.color.scheme_purple_1}, this.getContext());
+            sleepTimeSet.setDrawValues(false);
+
             chart_sleepTime.setEnabled(false);
             chart_sleepTime.setTouchEnabled(false);
             chart_sleepTime.setDragEnabled(false);
@@ -275,6 +294,8 @@ public class TrendsFragment extends Fragment {
             chart_sleepTime.setData(sleepTimeData);
             chart_sleepTime.setDrawValueAboveBar(false);
             chart_sleepTime.setFitBars(true);
+
+            //chart_sleepTime.animateXY(1000, 1000); //cool animation we can maybe add later
 
             XAxis xaxis_sleepTime = chart_sleepTime.getXAxis();
             xaxis_sleepTime.setDrawGridLines(false);
@@ -307,7 +328,11 @@ public class TrendsFragment extends Fragment {
             // right_axis_sleepTime.setAxisMaximum(24f);
 
             //----- 5) ProductiveTime BarChart Formatting -------
+            Description productiveTimeDescription = chart_productiveTime.getDescription();
+            productiveTimeDescription.setEnabled(false);
             productiveTimeSet.setColors(new int[]{R.color.scheme_blue_2, R.color.scheme_purple_1, R.color.scheme_purple_2}, this.getContext());
+            productiveTimeSet.setDrawValues(false);
+
             chart_productiveTime.setEnabled(false);
             chart_productiveTime.setTouchEnabled(false);
             chart_productiveTime.setDragEnabled(false);
@@ -348,7 +373,11 @@ public class TrendsFragment extends Fragment {
             // right_axis_sleepTime.setAxisMaximum(24f);
 
             //----- 6) RelaxTime BarChart Formatting -------
+            Description relaxTimeDescription = chart_relaxTime.getDescription();
+            relaxTimeDescription.setEnabled(false);
+
             relaxTimeSet.setColors(new int[]{R.color.scheme_purple_1, R.color.scheme_purple_2, R.color.scheme_blue_1}, this.getContext());
+            relaxTimeSet.setDrawValues(false);
 
             chart_relaxTime.setEnabled(false);
             chart_relaxTime.setTouchEnabled(false);
@@ -389,7 +418,10 @@ public class TrendsFragment extends Fragment {
             // right_axis_sleepTime.setAxisMaximum(24f);
 
             // ------ 7) ExerciseTime BarChart Formatting -----
+            Description exerciseTimeDescription = chart_exerciseTime.getDescription();
+            exerciseTimeDescription.setEnabled(false);
             exerciseTimeSet.setColors(new int[]{R.color.scheme_purple_2, R.color.scheme_blue_1, R.color.scheme_blue_2}, this.getContext());
+            exerciseTimeSet.setDrawValues(false);
 
             chart_exerciseTime.setEnabled(false);
             chart_exerciseTime.setTouchEnabled(false);
