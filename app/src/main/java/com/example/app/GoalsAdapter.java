@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class GoalsAdapter extends RecyclerView.Adapter<GoalsAdapter.ViewHolder> 
 
     holder.checkBox.setText(goal.getGoalText());
         holder.checkBox.setOnClickListener(v -> {
-           String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+           String date = getTodayDate();
            DatabaseHelper databaseHelper = new DatabaseHelper(context);
            databaseHelper.completeGoal(holder.checkBox.getText().toString(), date);
            holder.checkBox.setVisibility(View.GONE);
@@ -68,5 +69,16 @@ public class GoalsAdapter extends RecyclerView.Adapter<GoalsAdapter.ViewHolder> 
             checkBox = (CheckBox) itemView.findViewById(R.id.cb);
             linearLayoutCurrentGoals = (LinearLayout) itemView.findViewById((R.id.linearLayoutCurrentGoals));
         }
+    }
+    private String getTodayDate() {
+        Calendar cal = Calendar.getInstance();
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        int month = cal.get(Calendar.MONTH);
+        month = month + 1;
+        int year = cal.get(Calendar.YEAR);
+        return makeDateString(day, month, year);
+    }
+    private String makeDateString(int dayOfMonth, int month, int year) {
+        return (month + "-" + dayOfMonth + "-" + year);
     }
 }

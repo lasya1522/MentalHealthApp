@@ -20,6 +20,7 @@ import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
@@ -186,23 +187,23 @@ public class TrendsFragment extends Fragment {
 
             }
             List<Integer> moodFreqData = getFreq(moodList, "Good", "Decent", "Bad");
-            moodEntries.add(new PieEntry(moodFreqData.get(0), "Good"));
-            moodEntries.add(new PieEntry(moodFreqData.get(1), "Decent"));
-            moodEntries.add(new PieEntry(moodFreqData.get(2), "Bad"));
+            if (moodFreqData.get(0) != 0) moodEntries.add(new PieEntry(moodFreqData.get(0), "Good"));
+            if (moodFreqData.get(1) != 0) moodEntries.add(new PieEntry(moodFreqData.get(1), "Decent"));
+            if (moodFreqData.get(2) != 0) moodEntries.add(new PieEntry(moodFreqData.get(2), "Bad"));
             PieDataSet moodSet = new PieDataSet(moodEntries, "Mood");
             PieData moodData = new PieData(moodSet);
 
             List<Integer> sleepRatingFreqData = getFreq(sleepRatingList, "Good", "Decent", "Bad");
-            sleepRatingEntries.add(new PieEntry(sleepRatingFreqData.get(0), "Good"));
-            sleepRatingEntries.add(new PieEntry(sleepRatingFreqData.get(1), "Decent"));
-            sleepRatingEntries.add(new PieEntry(sleepRatingFreqData.get(2), "Bad"));
+            if (sleepRatingFreqData.get(0) != 0) sleepRatingEntries.add(new PieEntry(sleepRatingFreqData.get(0), "Good"));
+            if (sleepRatingFreqData.get(1) != 0)sleepRatingEntries.add(new PieEntry(sleepRatingFreqData.get(1), "Decent"));
+            if (sleepRatingFreqData.get(2) != 0)sleepRatingEntries.add(new PieEntry(sleepRatingFreqData.get(2), "Bad"));
             PieDataSet sleepRatingSet = new PieDataSet(sleepRatingEntries, "Sleep Rating");
             PieData sleepRatingData = new PieData(sleepRatingSet);
 
             List<Integer> stressLevelFreqData = getFreq(stressLevelList, "High", "Moderate", "Low");
-            stressLevelEntries.add(new PieEntry(stressLevelFreqData.get(0), "High"));
-            stressLevelEntries.add(new PieEntry(stressLevelFreqData.get(1), "Moderate"));
-            stressLevelEntries.add(new PieEntry(stressLevelFreqData.get(2), "Low"));
+            if (stressLevelFreqData.get(0) != 0)stressLevelEntries.add(new PieEntry(stressLevelFreqData.get(0), "High"));
+            if (stressLevelFreqData.get(1) != 0)stressLevelEntries.add(new PieEntry(stressLevelFreqData.get(1), "Moderate"));
+            if (stressLevelFreqData.get(2) != 0)stressLevelEntries.add(new PieEntry(stressLevelFreqData.get(2), "Low"));
             PieDataSet stressLevelSet = new PieDataSet(stressLevelEntries, "Stress Level");
             PieData stressLevelData = new PieData(stressLevelSet);
 
@@ -244,39 +245,51 @@ public class TrendsFragment extends Fragment {
             // ----- 1) Mood PieChart Formatting------
             Description moodDescription = chart_mood.getDescription();
             moodDescription.setEnabled(false);
+
+            Legend moodLegend = chart_mood.getLegend();
+            moodLegend.setEnabled(false);
+
             moodSet.setColors(new int[]{R.color.scheme_blue_1, R.color.scheme_blue_2, R.color.scheme_purple_1}, this.getContext());
             moodSet.setDrawValues(false);
 
             chart_mood.setHoleRadius(0);
             chart_mood.setTransparentCircleAlpha(0);
-            chart_mood.setDrawEntryLabels(false);
-
 
             // ----- 2) SleepRating PieChart Formatting----
             Description sleepRatingDescription = chart_sleepRating.getDescription();
             sleepRatingDescription.setEnabled(false);
+
+            Legend sleepRatingLegend = chart_sleepRating.getLegend();
+            sleepRatingLegend.setEnabled(false);
+
             sleepRatingSet.setColors(new int[]{R.color.scheme_green_1, R.color.scheme_blue_1, R.color.scheme_blue_2}, this.getContext());
             sleepRatingSet.setDrawValues(false);
 
             chart_sleepRating.setHoleRadius(0);
             chart_sleepRating.setTransparentCircleAlpha(0);
-            chart_sleepRating.setDrawEntryLabels(false);
 
 
             // ---- 3) StressLevel PieChart Formatting----
             Description stressLevelDescription = chart_stressLevel.getDescription();
             stressLevelDescription.setEnabled(false);
+
+            Legend stressLevelLegend = chart_stressLevel.getLegend();
+            stressLevelLegend.setEnabled(false);
+
             stressLevelSet.setColors(new int[]{R.color.scheme_blue_2, R.color.scheme_purple_1, R.color.scheme_purple_2}, this.getContext());
             stressLevelSet.setDrawValues(false);
 
             chart_stressLevel.setHoleRadius(0);
             chart_stressLevel.setTransparentCircleAlpha(0);
-            chart_stressLevel.setDrawEntryLabels(false);
 
 
             // ----- 4) SleepTime BarChart Formatting-----
             Description sleepTimeDescription = chart_sleepTime.getDescription();
             sleepTimeDescription.setEnabled(false);
+
+            Legend sleepTimeLegend = chart_sleepTime.getLegend();
+            sleepTimeLegend.setEnabled(false);
+
             sleepTimeSet.setColors(new int[]{R.color.scheme_blue_1, R.color.scheme_blue_2, R.color.scheme_purple_1}, this.getContext());
             sleepTimeSet.setDrawValues(false);
 
@@ -330,6 +343,10 @@ public class TrendsFragment extends Fragment {
             //----- 5) ProductiveTime BarChart Formatting -------
             Description productiveTimeDescription = chart_productiveTime.getDescription();
             productiveTimeDescription.setEnabled(false);
+
+            Legend productiveTimeLegend = chart_productiveTime.getLegend();
+            productiveTimeLegend.setEnabled(false);
+
             productiveTimeSet.setColors(new int[]{R.color.scheme_blue_2, R.color.scheme_purple_1, R.color.scheme_purple_2}, this.getContext());
             productiveTimeSet.setDrawValues(false);
 
@@ -376,6 +393,9 @@ public class TrendsFragment extends Fragment {
             Description relaxTimeDescription = chart_relaxTime.getDescription();
             relaxTimeDescription.setEnabled(false);
 
+            Legend relaxTimeLegend = chart_relaxTime.getLegend();
+            relaxTimeLegend.setEnabled(false);
+
             relaxTimeSet.setColors(new int[]{R.color.scheme_purple_1, R.color.scheme_purple_2, R.color.scheme_blue_1}, this.getContext());
             relaxTimeSet.setDrawValues(false);
 
@@ -410,7 +430,7 @@ public class TrendsFragment extends Fragment {
             left_axis_relaxTime.setAxisMinimum(0f); // is this necessary? will it cut off part of the thing
             //  left_axis_sleepTime.setAxisMaximum(24f);
 
-            YAxis right_axis_relaxTime = chart_productiveTime.getAxisRight();
+            YAxis right_axis_relaxTime = chart_relaxTime.getAxisRight();
             right_axis_relaxTime.setDrawGridLines(false);
             right_axis_relaxTime.setDrawAxisLine(true);
             right_axis_relaxTime.setDrawLabels(false);
@@ -420,6 +440,10 @@ public class TrendsFragment extends Fragment {
             // ------ 7) ExerciseTime BarChart Formatting -----
             Description exerciseTimeDescription = chart_exerciseTime.getDescription();
             exerciseTimeDescription.setEnabled(false);
+
+            Legend exerciseTimeLegend = chart_exerciseTime.getLegend();
+            exerciseTimeLegend.setEnabled(false);
+
             exerciseTimeSet.setColors(new int[]{R.color.scheme_purple_2, R.color.scheme_blue_1, R.color.scheme_blue_2}, this.getContext());
             exerciseTimeSet.setDrawValues(false);
 
