@@ -1,52 +1,30 @@
 package com.example.app.ui;
 
 import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
-import java.util.Calendar;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import android.app.AlarmManager;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-//import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.app.DatabaseHelper;
-import com.example.app.MainActivity;
 import com.example.app.R;
 import com.example.app.ReminderBroadcast;
-import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
 
-import java.util.ArrayList;
+import java.util.Calendar;
 
-import android.app.AlarmManager;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Intent;
-import android.os.Build;
-import android.os.Bundle;
-import android.widget.Button;
-import android.widget.Toast;
-
-import static androidx.core.content.ContextCompat.getSystemService;
+//import androidx.lifecycle.ViewModel;
 
 public class SettingsFragment extends Fragment {
 
